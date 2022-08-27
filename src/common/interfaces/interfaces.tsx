@@ -19,3 +19,11 @@ export interface ICryptoData {
     image: string;
     price_change_percentage_24h: number
 }
+
+export interface INewsData {
+    title: string;
+    desc: string;
+    image: string;
+    url: string;
+    date: string;
+}

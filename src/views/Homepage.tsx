@@ -1,17 +1,19 @@
-import { Button, Switch } from '@mui/material';
-import React from 'react';
-import Datagrid from '../common/components/Datagrid';
+import { useEffect, useState } from 'react';
+import Banner from '../common/components/Banner';
 import CryptoCards from '../common/components/CryptoCard';
-import NavigationBar from '../common/components/NavigationBar';
-import GetCardByName from '../common/services/client';
+import { News } from '../common/components/News';
+import { INewsData } from '../common/interfaces/interfaces';
+
 
 export default function Homepage() {
   return (
     <>
-      <NavigationBar />
-      <Switch />
+      <br />
+      <Banner />
       <br />
       <CryptoCards />
+      <br />
+      <News />
     </>
   );
 }

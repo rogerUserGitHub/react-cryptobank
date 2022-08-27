@@ -1,21 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from '@mui/material/Button';
-import RadioButton from './common/components/RadioButton';
 import Switch from './common/components/Switch';
-import Datagrid from './common/components/Datagrid';
-import GetCardByName from './common/services/client';
-import NavigationBar from './common/components/NavigationBar';
-import { CryptoCards } from './common/components/CryptoCard';
+import NavBar from './common/components/NavBar';
 import Homepage from './views/Homepage';
+import About from './views/About';
+import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function App() {
-
   return (
     <>
-      <Homepage />
+    {/* <Homepage /> */}
+    <BrowserRouter>  
+    <NavBar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+    </BrowserRouter> 
+
+
     </>
+
   );
 }
 
