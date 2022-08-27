@@ -9,15 +9,8 @@ export default function Homepage() {
   return (
     <>
       <NavigationBar />
-      <div className='App'>
-        <Button variant='contained' color='success' size='large'>
-          Hello World
-        </Button>
-      </div>
       <Switch />
       <br />
-
-      <GetCardByName />
       <CryptoCards />
     </>
   );
