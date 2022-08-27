@@ -6,19 +6,14 @@ import RadioButton from './common/components/RadioButton';
 import Switch from './common/components/Switch';
 import Datagrid from './common/components/Datagrid';
 import GetCardByName from './common/services/client';
+import NavigationBar from './common/components/NavigationBar';
+import { Featured } from './common/components/FeatureCrypto';
 
 function App() {
-  function toggleDarkMode(event: any) {
-    let colour = document.body.style.backgroundColor;
-    if (colour === 'black') {
-      document.body.style.backgroundColor = 'white';
-    } else {
-      document.body.style.backgroundColor = 'black';
-    }
-  }
 
   return (
     <>
+      <NavigationBar />
       <div className='App'>
         <Button variant='contained' color='success' size='large'>
           Hello World
@@ -28,6 +23,7 @@ function App() {
       <br />
       <Datagrid />
       <GetCardByName />
+      <Featured />
     </>
   );
 }

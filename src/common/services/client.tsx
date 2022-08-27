@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Datagrid from './common/components/Datagrid';
+import { useState, useEffect } from 'react';
 
-export default function DoApiCall() {
-  const [query, setQuery] = useState('');
-  const [cardName, setCardName] = useState([{}]);
+export default function GetCardByName() {
+  const [query, setQuery] = useState(' ');
+  const [cardDetails, setCardDetails] = useState([{}]);
   const [hasError, setError] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
     method: 'GET',
     headers: {
@@ -14,6 +14,26 @@ export default function DoApiCall() {
     },
   };
 
+  // useEffect(() => {
+  //   try {
+  //     fetch(`https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/${query}`, options)
+  //       .then(response => response.json())
+  //       .then(result => {
+  //         console.log(result);
+  //         setCardDetails(result);
+  //         setQuery(' ')
+  //       });
+  //   } catch (error) {
+  //     setError(true);
+  //   }
+  //   if (hasError) {
+  //     console.log(hasError);
+  //     return;
+  //     //setCardDetails([{}]);
+  //   }
+    
+  // }, [])
+
   const search = (evt: { key: string }) => {
     if (evt.key === 'Enter') {
       try {
@@ -21,14 +41,15 @@ export default function DoApiCall() {
           .then(response => response.json())
           .then(result => {
             console.log(result);
-            setCardName(result);
+            setCardDetails(result);
+            setQuery(' ')
           });
       } catch (error) {
         setError(true);
       }
       if (hasError) {
         console.log(hasError);
-        setCardName([{}]);
+        //setCardDetails([{}]);
       }
     }
   };
@@ -44,15 +65,15 @@ export default function DoApiCall() {
           onChange={e => setQuery(e.target.value)}
           // bind value to query
           value={query}
-          onKeyPress={search}
+          //onKeyPress={search}
         />
       </div>
       {/* checks if weather.main (city name value in object is not undefined)*/}
-      {(cardName.main != 'undefined') ? (
+      {/* {(cardDetails.main != 'undefined') ? (
         <div>
           <div className='result-box'>
             <div className='location'>
-              <output>{cardName[0].faction}</output>
+              <output>{cardDetails[0].faction}</output>
             </div>
           </div>
         </div>
@@ -62,7 +83,7 @@ export default function DoApiCall() {
             <output>no result</output>
           </div>
         </div>
-      </div> )}
+      </div> )} */}
     </main>
   );
 }
