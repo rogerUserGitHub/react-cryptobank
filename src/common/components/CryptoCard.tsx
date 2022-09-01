@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Button,
   Card,
@@ -10,29 +10,23 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-//import HighlightedCode from 'docs/src/modules/components/HighlightedCode';
-import { ICryptoData } from '../interfaces/interfaces';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { sizeHeight } from '@mui/system';
+import { ICryptoData } from './../interfaces/interfaces';
 
-export const CryptoCards = () => {
-  const [cyrptoData, setCryptoData] = useState<ICryptoData[]>([]);
+interface IProps {
+  cryptoData: ICryptoData[]
+  handleToggle: any
+  buttonClicked: any
+}
+
+export const CryptoCards = (props: IProps) => {
+
   const [toggle, setToggle] = useState(false);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
-  const [loading, setLoading] = useState();
 
-  const url =
-    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=6&page=1&sparkline=false';
-
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setCryptoData(data);
-      });
-  }, []);
-
-  console.log(cyrptoData);
+  const { 
+    cryptoData,
+  } = props
 
   const handleToggle = () => {
     if (buttonClicked === 'default') {
@@ -46,7 +40,7 @@ export const CryptoCards = () => {
     <>
       <Container>
         <Grid container spacing={10}>
-          {cyrptoData.map(crypto => (
+          {cryptoData.map(crypto => (
             <Grid item xs={12} md={6} lg={4}>
               <Card className='card-grid'>
                 <CardContent className='card-grid'>

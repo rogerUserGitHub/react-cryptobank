@@ -14,26 +14,6 @@ export default function GetCardByName() {
     },
   };
 
-  // useEffect(() => {
-  //   try {
-  //     fetch(`https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/${query}`, options)
-  //       .then(response => response.json())
-  //       .then(result => {
-  //         console.log(result);
-  //         setCardDetails(result);
-  //         setQuery(' ')
-  //       });
-  //   } catch (error) {
-  //     setError(true);
-  //   }
-  //   if (hasError) {
-  //     console.log(hasError);
-  //     return;
-  //     //setCardDetails([{}]);
-  //   }
-    
-  // }, [])
-
   const search = (evt: { key: string }) => {
     if (evt.key === 'Enter') {
       try {
