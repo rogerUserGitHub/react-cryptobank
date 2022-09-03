@@ -14,10 +14,11 @@ import { IGlobalData } from '../interfaces/interfaces';
 import { componentShadowSX } from '../utils/SxStyles';
 
 interface IProps {
-  globalData: IGlobalData;
+  globalData: IGlobalData | undefined;
 }
 
 const GlobalData = (props: IProps) => {
+
   const { globalData } = props;
 
   const [radioButton, setRadioButton] = useState(false);
@@ -65,7 +66,7 @@ const GlobalData = (props: IProps) => {
                     # of active crypto
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {globalData.data.active_cryptocurrencies}
+                    {globalData?.data?.active_cryptocurrencies}
                   </Typography>
                 </CardContent>
               </Card>
@@ -77,7 +78,7 @@ const GlobalData = (props: IProps) => {
                     # of crypto markets
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {globalData.data.markets}
+                    {globalData?.data?.markets}
                   </Typography>
                 </CardContent>
               </Card>
@@ -89,7 +90,7 @@ const GlobalData = (props: IProps) => {
                     upcoming ICOs
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {globalData.data.upcoming_icos}
+                    {globalData?.data?.upcoming_icos}
                   </Typography>
                 </CardContent>
               </Card>
@@ -101,7 +102,7 @@ const GlobalData = (props: IProps) => {
                     Ongoing ICOs
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {globalData.data.ongoing_icos}
+                    {globalData?.data?.ongoing_icos}
                   </Typography>
                 </CardContent>
               </Card>

@@ -35,10 +35,10 @@ export interface INewsData {
 }
 
 export interface IGlobalData {
-    data: {
-        active_cryptocurrencies: number | undefined;
-        upcoming_icos: number | undefined;
-        ongoing_icos: number | undefined;
-        markets: number | undefined;
+    data?: {
+        active_cryptocurrencies?: number;
+        upcoming_icos?: number;
+        ongoing_icos?: number;
+        markets?: number;
     }
 }
