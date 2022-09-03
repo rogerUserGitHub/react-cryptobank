@@ -1,15 +1,14 @@
 import { Switch } from "@mui/material";
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import RadioButton from './RadioButton';
 
 export const NavBar = () => {
   return (
     <nav className='nav'>
       <Link to='/' className='site-title'>
-        CyrptoNews
+        Crypto Rates and News
       </Link>
       <ul>
-        <Switch>Darkmode</Switch>  
+        {/* <Switch>Darkmode</Switch>   */}
         <CustomLink to='/pricing'>Crypto statistics</CustomLink>
         <CustomLink to='/about'>About</CustomLink>
       </ul>

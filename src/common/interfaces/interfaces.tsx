@@ -17,7 +17,13 @@ export interface ICryptoData {
     symbol: string;
     market_cap_rank: number;
     image: string;
-    price_change_percentage_24h: number
+    price_change_percentage_24h: number;
+    low_24h: number;
+    high_24h: number;
+    market_cap: number
+    total_supply: number;
+    fully_diluted_valuation: number
+    total_volume: number
 }
 
 export interface INewsData {
@@ -26,4 +32,13 @@ export interface INewsData {
     image: string;
     url: string;
     date: string;
+}
+
+export interface IGlobalData {
+    data: {
+        active_cryptocurrencies: number | undefined;
+        upcoming_icos: number | undefined;
+        ongoing_icos: number | undefined;
+        markets: number | undefined;
+    }
 }

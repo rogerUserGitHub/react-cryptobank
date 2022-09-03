@@ -26,7 +26,11 @@
 }
 
 .card-grid {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(236, 250, 236);
+}
+
+.global-card-grid {
+  background-color: rgb(233, 226, 250);
 }
 
 .nav {
@@ -76,8 +80,16 @@
   background-position: center;
 }
 
+#crypto-list-container{
+  background-color: rgb(238, 245, 245);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-left: 4em;
+}
+
 #news-container{
-  background-color: rgb(26, 149, 149);
+  background-color: rgb(238, 248, 248);
   padding-top: 1em;
   padding-bottom: 1em;
 }
+

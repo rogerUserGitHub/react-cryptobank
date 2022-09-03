@@ -6,6 +6,7 @@ export const Banner = () => {
 
     return(
         <>
+        <br />
         <Container>
             <div id="bannerimage"></div>
         </Container>
