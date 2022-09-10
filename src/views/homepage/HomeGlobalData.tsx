@@ -43,6 +43,7 @@ const GlobalData = (props: IProps) => {
               </>
             </Typography>
           </Grid>
+          
           <Grid item xs={5} md={5} lg={5}>
             <FormGroup>
               <FormControlLabel

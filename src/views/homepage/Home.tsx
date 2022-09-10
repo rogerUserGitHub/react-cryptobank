@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import Banner from '../../common/components/Banner';
 import CryptoCards from './HomeCryptoCard';
 import { NewsCards } from './HomeNewsCards';
-import CryptoList from './HomeCryptoList';
+import CryptoList from './HomeCryptoTable';
 import { ICryptoData, IGlobalData, INewsData } from '../../common/interfaces/interfaces';
 import GlobalData from './HomeGlobalData';
 
-export default function Homepage() {
+export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [newsItems, setNewsItems] = useState<INewsData[]>([]);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
@@ -20,7 +20,6 @@ export default function Homepage() {
     fetch(url1)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setGlobalData(data);
       })
       .catch(err => console.error(err));
@@ -35,9 +34,10 @@ export default function Homepage() {
       .then(res => res.json())
       .then(data => {
         setCryptoData(data);
+        setLoading(false);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [loading]);
 
   // GET request news info
   const url3 = 'https://crypto-news14.p.rapidapi.com/news/cointelegraph';
@@ -53,7 +53,6 @@ export default function Homepage() {
     fetch(url3, options)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setNewsItems(data);
       })
       .catch(err => console.error(err));
@@ -78,6 +77,7 @@ export default function Homepage() {
         slicedCryptoItems={slicedCryptoItems}
         buttonClicked={buttonClicked}
         handleToggle={handleToggle}
+        loading={loading}
       />
       <br /><br />
       <CryptoList cryptoData={cryptoData} />

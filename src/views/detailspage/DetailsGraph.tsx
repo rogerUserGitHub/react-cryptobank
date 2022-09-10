@@ -1,4 +1,6 @@
+import { Grid } from '@mui/material';
 import { XAxis, YAxis, CartesianGrid, Tooltip, Area, AreaChart } from 'recharts';
+import Spinner from '../../common/components/Spinner';
 import { IGraphData } from '../../common/interfaces/interfaces';
 
 interface IProps {
@@ -6,11 +8,16 @@ interface IProps {
 }
 
 const DetailsGraph = (props: any) => {
-
   const graphDataCategory = props?.graphData?.prices;
 
   if (!graphDataCategory) {
-    return <div>loading</div>;
+    return (
+      <Grid item xs={12} md={12} lg={12}>
+        <div className='grid-container-spinner'>
+          <Spinner />
+        </div>
+      </Grid>
+    );
   }
 
   const arrangedGraphDataCategory = graphDataCategory.map((a: any[]) => a[1]);

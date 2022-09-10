@@ -17,7 +17,7 @@ interface IProps {
   cryptoData: ICryptoData[]
 }
 
-const CryptoList = (props: IProps) => {
+const CryptoTable = (props: IProps) => {
 
   const { cryptoData } = props;  
 
@@ -47,4 +47,4 @@ const CryptoList = (props: IProps) => {
   );
 }
 
-export default CryptoList
+export default CryptoTable

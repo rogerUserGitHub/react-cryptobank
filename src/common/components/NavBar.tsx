@@ -1,17 +1,21 @@
-import { Switch } from "@mui/material";
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Container, Grid, Switch } from '@mui/material';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 export const NavBar = () => {
   return (
-    <nav className='nav'>
-      <Link to='/' className='site-title'>
-        Crypto Rates and News
-      </Link>
-      <ul>
-        <CustomLink to='/pricing'>Crypto statistics</CustomLink>
-        <CustomLink to='/about'>About</CustomLink>
-      </ul>
-    </nav>
+    <Container>
+      <Grid >
+        <nav className='nav'>
+          <Link to='/' className='site-title'>
+            Crypto Rates and News
+          </Link>
+          <ul>
+            <CustomLink to='/pricing'>Crypto statistics</CustomLink>
+            <CustomLink to='/about'>About</CustomLink>
+          </ul>
+        </nav>
+      </Grid>
+    </Container>
   );
 };
 
