@@ -1,11 +1,11 @@
 import './App.css';
 import Switch from './common/components/Switch';
 import NavBar from './common/components/NavBar';
-import Homepage from './views/Homepage';
-import About from './views/About';
+import Homepage from './views/homepage/Homepage';
+import About from './views/aboutpage/About';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import DetailsPage from './views/DetailsPage';
+import DetailsPage from './views/detailspage/DetailsPage';
 import { Details } from '@mui/icons-material';
 import Banner from './common/components/Banner';
 

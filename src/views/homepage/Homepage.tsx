@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import Banner from '../common/components/Banner';
-import CryptoCards from '../common/components/CryptoCard';
-import { NewsCards } from '../common/components/NewsCards';
-import CryptoList from '../common/components/CryptoList';
-import { ICryptoData, IGlobalData, INewsData } from '../common/interfaces/interfaces';
-import GlobalData from '../common/components/GlobalData';
+import Banner from '../../common/components/Banner';
+import CryptoCards from './HomeCryptoCard';
+import { NewsCards } from './HomeNewsCards';
+import CryptoList from './HomeCryptoList';
+import { ICryptoData, IGlobalData, INewsData } from '../../common/interfaces/interfaces';
+import GlobalData from './HomeGlobalData';
 
 export default function Homepage() {
   const [globalData, setGlobalData] = useState<IGlobalData>();

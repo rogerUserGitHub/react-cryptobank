@@ -80,6 +80,7 @@
   background-position: center;
 }
 
+/* Homepage */
 #crypto-list-container{
   background-color: rgb(238, 245, 245);
   padding-top: 3em;
@@ -92,4 +93,55 @@
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
+/* Detailspage */
+
+.current-price {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.column-title {
+  font-weight: bold;
+  color: darkgrey
+}
+
+.grid-container-details {
+  display: grid;
+  grid-template-columns: auto auto ;
+  background-color: #ffffff;
+  padding: 0px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.grid-item-details {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color:lightgray;
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.rounded-corners {
+  background-color: rgb(223, 224, 251); 
+  width:75px;
+  height:25px;
+  overflow: hidden;
+  border-radius:0.5em;
+  padding: 7px;
+  text-align: center;
+}
+
+/* .border-line {
+  grid-column: 1/6;
+  height: 2px;
+  border-bottom: 1px solid black;
+} */
 

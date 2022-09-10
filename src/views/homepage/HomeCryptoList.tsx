@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import { Container, Grid, makeStyles, Typography } from '@mui/material';
-import { ICryptoData } from '../interfaces/interfaces';
-
-interface IProps {
-  cryptoData: ICryptoData[]
-}
+import { colors, Container, Grid, makeStyles, Typography } from '@mui/material';
+import { ICryptoData } from '../../common/interfaces/interfaces';
 
 const columns: GridColDef[] = [
   { field: 'market_cap_rank', headerName: 'Market cap rank', width: 150, description: 'This column has a value getter and is not sortable.',},
@@ -17,7 +13,13 @@ const columns: GridColDef[] = [
   { field: 'total_supply', headerName: 'Total supply', width: 200 },
 ];
 
+interface IProps {
+  cryptoData: ICryptoData[]
+}
+
 const CryptoList = (props: IProps) => {
+
+  const { cryptoData } = props;  
 
   return (
     <>
@@ -30,10 +32,10 @@ const CryptoList = (props: IProps) => {
     </Grid>
   </Container>
     <Container id='crypto-list-container'>
-      <Grid container spacing={5}>
-        <div style={{ height: 2712, width: '100%' }}>
+      <Grid container spacing={5} >
+        <div style={{ height: 2712, width: '100%' }} className='border-line'>
           <DataGrid
-            rows={props.cryptoData}
+            rows={cryptoData}
             columns={columns}
             pageSize={50}
             rowsPerPageOptions={[100]}

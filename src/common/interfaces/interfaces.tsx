@@ -42,3 +42,9 @@ export interface IGlobalData {
         markets?: number;
     }
 }
+
+export interface IGraphData {
+    market_caps: number,
+    prices: number,
+    total_volumes: number
+}

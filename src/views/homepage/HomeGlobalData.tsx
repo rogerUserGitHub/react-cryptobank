@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import { IGlobalData } from '../interfaces/interfaces';
-import { componentShadowSX } from '../utils/SxStyles';
+import { IGlobalData } from '../../common/interfaces/interfaces';
+import { componentShadowSX } from '../../common/utils/SxStyles';
 
 interface IProps {
   globalData: IGlobalData | undefined;
@@ -58,8 +58,8 @@ const GlobalData = (props: IProps) => {
       </Container>
       {radioButton === true ? (
         <Container className='global-info-cards'>
-          <Grid container spacing={3}>
-            <Grid item xs={3} md={3} lg={3}>
+          <Grid container spacing={3} >
+            <Grid item xs={3} md={3} lg={3} >
               <Card className='global-card-grid' sx={componentShadowSX}>
                 <CardContent className='global-card-grid'>
                   <Typography variant='h5' component='div'>

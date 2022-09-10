@@ -12,8 +12,8 @@ import {
   Typography,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { ICryptoData } from './../interfaces/interfaces';
-import { componentShadowSX } from '../utils/SxStyles';
+import { ICryptoData } from '../../common/interfaces/interfaces';
+import { componentShadowSX } from '../../common/utils/SxStyles';
 
 interface IProps {
   slicedCryptoItems: ICryptoData[];
@@ -44,7 +44,7 @@ export const CryptoCards = (props: IProps) => {
                       component='img'
                       height='110'
                       image={crypto?.image}
-                      alt='green iguana'
+                      alt='crypto image'
                     />
                     <Typography
                       sx={{ fontSize: 14 }}

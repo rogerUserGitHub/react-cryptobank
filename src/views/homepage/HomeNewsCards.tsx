@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { INewsData } from '../interfaces/interfaces';
-import { componentShadowSX } from '../utils/SxStyles';
+import { INewsData } from '../../common/interfaces/interfaces';
+import { componentShadowSX } from '../../common/utils/SxStyles';
 
 interface IProps {
   slicedCardNewsItems: INewsData[];
@@ -33,13 +33,13 @@ export const NewsCards = (props: IProps) => {
         <Grid container spacing={3}>
           {slicedCardNewsItems.map(newsItem => (
             <Grid item xs={12} md={4} lg={4}>
-              <Card sx={{ maxWidth: 345, height: 460, componentShadowSX }}>
+              <Card sx={{ maxWidth: 345, height: 480, componentShadowSX }}>
                 <CardContent id='global-info-cards'>
                   <CardMedia
                     component='img'
                     height='170'
                     image={newsItem?.image}
-                    alt='green iguana'
+                    alt='image'
                   />
                   <CardContent>
                     <Typography gutterBottom variant='h5' component='div'>

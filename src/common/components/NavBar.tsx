@@ -8,7 +8,6 @@ export const NavBar = () => {
         Crypto Rates and News
       </Link>
       <ul>
-        {/* <Switch>Darkmode</Switch>   */}
         <CustomLink to='/pricing'>Crypto statistics</CustomLink>
         <CustomLink to='/about'>About</CustomLink>
       </ul>
