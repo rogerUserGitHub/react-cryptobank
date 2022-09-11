@@ -12,7 +12,7 @@ const DetailsGraph = (props: any) => {
 
   if (!graphDataCategory) {
     return (
-      <Grid item xs={12} md={12} lg={12}>
+      <Grid item xs={12} md={12} lg={8}>
         <div className='grid-container-spinner'>
           <Spinner />
         </div>
@@ -40,7 +40,7 @@ const DetailsGraph = (props: any) => {
 
   return (
     <AreaChart
-      width={1150}
+      width={750}
       height={500}
       data={arrayOfObjects}
       margin={{ top: 30, bottom: 30 }}

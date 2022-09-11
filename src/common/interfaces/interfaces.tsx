@@ -22,8 +22,11 @@ export interface ICryptoData {
     high_24h: number;
     market_cap: number
     total_supply: number;
-    fully_diluted_valuation: number
-    total_volume: number
+    fully_diluted_valuation: number;
+    total_volume: number;
+    ath: number;
+    atl: number;
+    last_updated: string;
 }
 
 export interface INewsData {

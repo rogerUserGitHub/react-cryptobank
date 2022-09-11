@@ -103,7 +103,7 @@
 
 .column-title {
   font-weight: bold;
-  color: darkgrey
+  color: darkgrey;
 }
 
 .grid-container-spinner {
@@ -113,6 +113,15 @@
   padding-bottom: 11em;
   border: 2px solid rgba(0, 0, 0, 0.8);
   border-color:lightgray;
+}
+
+.grid-container-header {
+  display: grid;
+  grid-template-columns: auto ;
+  background-color: #ffffff;
+  padding: 0px;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .grid-container-details {

@@ -8,13 +8,12 @@ import SouthEastIcon from '@mui/icons-material/SouthEast';
 import DetailsGraph from './DetailsGraph';
 import DetailsGraphFilter from './DetailsGraphFilter';
 import DetailsData from './DetailsData';
+import DetailsGraphData from './DetailsGraphData';
 
 export default function Details() {
   let params = useParams();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
-  //const [graphData, setGraphData] = useState<IGraphData[]>([]);
-  //const [graphDays, setGraphDays] = useState<number>(7)
 
   // GET request global info
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${params.id}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
@@ -35,16 +34,22 @@ export default function Details() {
         <Grid container>
           <DetailsData cryptoData={cryptoData} />
 
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid item xs={12} md={12} lg={8}>
             <h2>
               {cryptoData[0]?.name} Price Graph ({cryptoData[0]?.name}/USD)
             </h2>
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid item xs={12} md={12} lg={8}>
             <div>
               <DetailsGraphFilter params={params} />
             </div>
           </Grid>
+          <Grid item xs={12} md={12} lg={4}>
+            <div>
+              <DetailsGraphData cryptoData={cryptoData}/>
+            </div>
+          </Grid>
+
         </Grid>
       </Container>
     </>
