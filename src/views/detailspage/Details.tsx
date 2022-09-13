@@ -1,18 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ICryptoData, IGraphData } from '../../common/interfaces/interfaces';
-import { Chip, Container, Grid, Tooltip } from '@mui/material';
-import InfoSharpIcon from '@mui/icons-material/InfoSharp';
-import CallMissedOutgoingIcon from '@mui/icons-material/CallMissedOutgoing';
-import SouthEastIcon from '@mui/icons-material/SouthEast';
-import DetailsGraph from './DetailsGraph';
+import { ICryptoData } from '../../common/interfaces/interfaces';
+import { Container, Grid } from '@mui/material';
 import DetailsGraphFilter from './DetailsGraphFilter';
 import DetailsData from './DetailsData';
-import DetailsGraphData from './DetailsGraphData';
+import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
 
 export default function Details() {
   let params = useParams();
-  console.log(params.id)
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
 
@@ -47,7 +42,7 @@ export default function Details() {
           </Grid>
           <Grid item xs={12} md={12} lg={4}>
             <div>
-              <DetailsGraphData cryptoData={cryptoData}/>
+              <DetailsGraphAdditionalData cryptoData={cryptoData}/>
             </div>
           </Grid>
 

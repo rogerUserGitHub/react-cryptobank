@@ -102,7 +102,6 @@ export const CryptoCards = (props: IProps) => {
       ) : (
         <Container>
           <Grid container spacing={4}>
-
             <Grid item xs={12} md={6} lg={4}>
               <Skeleton />
             </Grid>
@@ -114,8 +113,17 @@ export const CryptoCards = (props: IProps) => {
             <Grid item xs={12} md={6} lg={4}>
               <Skeleton />
             </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Skeleton />
+            </Grid>
 
+            <Grid item xs={12} md={6} lg={4}>
+              <Skeleton />
+            </Grid>
 
+            <Grid item xs={12} md={6} lg={4}>
+              <Skeleton />
+            </Grid>
           </Grid>
         </Container>
       )}

@@ -1,13 +1,13 @@
 import { Grid } from '@mui/material';
 import { Tooltip } from 'recharts';
 import { IGraphData } from '../../common/interfaces/interfaces';
-import { ICryptoData } from './../../common/interfaces/interfaces';
+import { ICryptoData } from '../../common/interfaces/interfaces';
 
 interface IProps {
   cryptoData: ICryptoData[];
 }
 
-const DetailsGraphData = (props: IProps) => {
+const DetailsGraphAdditionalData = (props: IProps) => {
   const { cryptoData } = props;
   console.log({ cryptoData });
 
@@ -34,12 +34,10 @@ const DetailsGraphData = (props: IProps) => {
           <div className='grid-item-details'>{cryptoData[0]?.atl}</div>
           <div className='grid-item-details'>price change %</div>
           <div className='grid-item-details'>{cryptoData[0]?.price_change_percentage_24h}</div>
-          <div className='grid-item-details'>Last updated</div>
-          <div className='grid-item-details'>{cryptoData[0]?.last_updated}</div>
         </div>
       </Grid>
     </>
   );
 };
 
-export default DetailsGraphData;
+export default DetailsGraphAdditionalData;

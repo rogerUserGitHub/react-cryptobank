@@ -5,12 +5,30 @@ import { IGraphData } from '../../common/interfaces/interfaces';
 
 interface IProps {
   graphData: IGraphData[];
+  graphTypeData: any;
 }
 
 const DetailsGraph = (props: any) => {
-  const graphDataCategory = props?.graphData?.prices;
 
-  if (!graphDataCategory) {
+  const typeOfData = props.graphTypeData
+  let graphDataAfterSwitch = null;
+
+  switch(typeOfData) {
+    case 'prices': {
+      graphDataAfterSwitch = props?.graphData?.prices;
+      break;
+    }
+    case 'market_caps': {
+      graphDataAfterSwitch = props?.graphData?.market_caps;
+      break;
+    }
+    case 'total_volumes': {
+      graphDataAfterSwitch = props?.graphData?.total_volumes;
+      break;
+    }
+  } 
+
+  if (!graphDataAfterSwitch) {
     return (
       <Grid item xs={12} md={12} lg={8}>
         <div className='grid-container-spinner'>
@@ -20,23 +38,15 @@ const DetailsGraph = (props: any) => {
     );
   }
 
-  const arrangedGraphDataCategory = graphDataCategory.map((a: any[]) => a[1]);
+  const graphDataPerDaysAndType = graphDataAfterSwitch.map((a: any[]) => a[1]);
 
   const arrayOfObjects = [];
-  for (var i = 0; i < arrangedGraphDataCategory.length; i++) {
+  for (var i = 0; i < graphDataPerDaysAndType.length; i++) {
     arrayOfObjects.push({
-      pv: arrangedGraphDataCategory[i],
+      pv: graphDataPerDaysAndType[i],
       name: [i],
     });
   }
-
-  console.log(arrayOfObjects);
-
-  let low = Math.min(...arrayOfObjects.map(o => o.pv));
-  low = Math.trunc(low);
-
-  let high = Math.max(...arrayOfObjects.map(o => o.pv));
-  high = Math.trunc(high);
 
   return (
     <AreaChart
