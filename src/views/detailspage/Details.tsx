@@ -12,6 +12,7 @@ import DetailsGraphData from './DetailsGraphData';
 
 export default function Details() {
   let params = useParams();
+  console.log(params.id)
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
 

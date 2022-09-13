@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import Banner from '../../common/components/Banner';
 import CryptoCards from './HomeCryptoCard';
-import { NewsCards } from './HomeNewsCards';
-import CryptoList from './HomeCryptoTable';
-import { ICryptoData, IGlobalData, INewsData } from '../../common/interfaces/interfaces';
+import { HomeNewsCardsHoriz, HomeNewsCardsVert } from './HomeNewsCards';
+import CryptoTable from './HomeCryptoTable';
+import {
+  ICryptoData,
+  IGlobalData,
+  INewsData,
+} from '../../common/interfaces/interfaces';
 import GlobalData from './HomeGlobalData';
 
 export default function Home() {
@@ -61,6 +65,7 @@ export default function Home() {
   const slicedCryptoItems = cryptoData.slice(0 - 6);
   const slicedCardNewsItems = newsItems.slice(0 - 3);
   const slicedTickerNewsItems = newsItems.slice(4 - 9);
+  console.log(slicedTickerNewsItems);
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -79,10 +84,15 @@ export default function Home() {
         handleToggle={handleToggle}
         loading={loading}
       />
-      <br /><br />
-      <CryptoList cryptoData={cryptoData} />
       <br />
-      <NewsCards
+      <br />
+      <CryptoTable cryptoData={cryptoData} />
+      <br />
+      <HomeNewsCardsVert
+        slicedCardNewsItems={slicedCardNewsItems}
+        slicedTickerNewsItems={slicedTickerNewsItems}
+      />
+      <HomeNewsCardsHoriz
         slicedCardNewsItems={slicedCardNewsItems}
         slicedTickerNewsItems={slicedTickerNewsItems}
       />
