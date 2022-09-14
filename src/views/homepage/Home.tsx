@@ -7,15 +7,20 @@ import {
   ICryptoData,
   IGlobalData,
   INewsData,
+  ITrendingCrypto,
 } from '../../common/interfaces/interfaces';
 import GlobalData from './HomeGlobalData';
+import HomeCryptoBarChart from './HomeCryptoBarChart';
+import HomeTrendingCards from './HomeTrendingCards';
 
 export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
+  const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any >();
   const [newsItems, setNewsItems] = useState<INewsData[]>([]);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
   const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
@@ -62,10 +67,24 @@ export default function Home() {
       .catch(err => console.error(err));
   }, []);
 
+  const url4 = 'https://api.coingecko.com/api/v3/search/trending';
+
+  useEffect(() => {
+    fetch(url4)
+      .then(res => res.json())
+      .then(data => {
+        setTrendingCrypto(data);
+        setLoading2(false);
+      })
+      .catch(err => console.error(err));
+  }, [loading2]);
+
+  const { coins } = trendingCrypto || {}
+
   const slicedCryptoItems = cryptoData.slice(0 - 6);
-  const slicedCardNewsItems = newsItems.slice(0 - 3);
-  const slicedTickerNewsItems = newsItems.slice(4 - 9);
-  console.log(slicedTickerNewsItems);
+  const slicedCryptoItems2 = cryptoData.slice(0, 5);
+  const slicedCardNewsVertItems = newsItems.slice(0 - 3);
+  const slicedCardNewsHorizItems = newsItems.slice(4 - 9);
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -88,13 +107,20 @@ export default function Home() {
       <br />
       <CryptoTable cryptoData={cryptoData} />
       <br />
+      <HomeCryptoBarChart 
+        slicedCryptoItems2={slicedCryptoItems2}
+      />
+      <HomeTrendingCards
+        trendingCrypto={coins} 
+        loading2={false}      
+        />
       <HomeNewsCardsVert
-        slicedCardNewsItems={slicedCardNewsItems}
-        slicedTickerNewsItems={slicedTickerNewsItems}
+        slicedCardNewsVertItems={slicedCardNewsVertItems}
+        slicedCardNewsHorizItems={slicedCardNewsHorizItems}
       />
       <HomeNewsCardsHoriz
-        slicedCardNewsItems={slicedCardNewsItems}
-        slicedTickerNewsItems={slicedTickerNewsItems}
+        slicedCardNewsVertItems={slicedCardNewsVertItems}
+        slicedCardNewsHorizItems={slicedCardNewsHorizItems}
       />
     </>
   );

@@ -1,10 +1,12 @@
 import LinearProgress from '@mui/material/LinearProgress';
-import { Box } from '@mui/material';
+import { Box, CircularProgress, Stack } from '@mui/material';
 
 export default function CircularDeterminate() {
   return (
-    <Box sx={{ width: '100%' }}>
-      <LinearProgress />
-    </Box>
+    <Stack sx={{ color: 'grey.500' }} spacing={38} direction="row">
+    <CircularProgress color="secondary" />
+    <CircularProgress color="success" />
+    <CircularProgress color="inherit" />
+  </Stack>
   );
 }

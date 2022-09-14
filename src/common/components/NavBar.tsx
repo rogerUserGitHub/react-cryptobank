@@ -7,7 +7,7 @@ export const NavBar = () => {
       <Grid >
         <nav className='nav'>
           <Link to='/' className='site-title'>
-            Crypto Rates and News
+            DailyCrypto
           </Link>
           <ul>
             <CustomLink to='/pricing'>Crypto statistics</CustomLink>

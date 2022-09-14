@@ -25,7 +25,7 @@ interface Column {
 const columns: readonly Column[] = [
   {
     id: 'market_cap_rank',
-    label: 'market_cap_rank',
+    label: 'market cap rank',
     minWidth: 120,
   },
   {
@@ -40,17 +40,17 @@ const columns: readonly Column[] = [
   },
   {
     id: 'current_price',
-    label: 'current_price',
+    label: 'current price',
     minWidth: 120,
   },
   {
     id: 'low_24h',
-    label: 'low_24h',
+    label: '24h low',
     minWidth: 130,
   },
   {
     id: 'high_24h',
-    label: 'high_24h',
+    label: '24h high',
     minWidth: 130,
   },
   {
@@ -64,7 +64,7 @@ interface IProps {
   cryptoData: ICryptoData[];
 }
 
-const CryptoList = (props: IProps) => {
+const CryptoTable = (props: IProps) => {
   const { cryptoData } = props;
 
   const [page, setPage] = React.useState(0);
@@ -79,8 +79,6 @@ const CryptoList = (props: IProps) => {
     setPage(0);
   };
 
-  console.log(cryptoData);
-
   return (
     <>
       <Container>
@@ -94,7 +92,7 @@ const CryptoList = (props: IProps) => {
 
       <Container >
       <TableContainer sx={{ maxHeight: 2000 }}>
-        <Grid  item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <Table aria-label='sticky table'>
             <TableHead>
               <TableRow >
@@ -152,4 +150,4 @@ const CryptoList = (props: IProps) => {
   );
 };
 
-export default CryptoList;
+export default CryptoTable;

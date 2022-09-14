@@ -25,9 +25,7 @@
   text-shadow: 3px 3px rgb(50, 50, 70, 0.5);
 }
 
-.card-grid {
-  background-color: rgb(236, 250, 236);
-}
+
 
 .global-card-grid {
   background-color: rgb(233, 226, 250);
@@ -81,6 +79,10 @@
 }
 
 /* Homepage -------------------------------------*/
+.card-grid {
+  background-color: rgb(250, 255, 250);
+}
+
 #crypto-list-container{
   background-color: rgb(238, 245, 245);
   padding-top: 3em;
@@ -107,6 +109,7 @@
 }
 
 .grid-container-spinner {
+  width: 47em;
   display: grid;
   background-color: #ffffff;
   padding-top: 11em;

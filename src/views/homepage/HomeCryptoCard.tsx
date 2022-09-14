@@ -24,6 +24,7 @@ interface IProps {
 }
 
 export const CryptoCards = (props: IProps) => {
+
   const { slicedCryptoItems, handleToggle, buttonClicked, loading } = props;
 
   return (
@@ -40,7 +41,7 @@ export const CryptoCards = (props: IProps) => {
           <Grid container spacing={4}>
             {slicedCryptoItems.map(crypto => (
               <Grid id={crypto?.name} item xs={12} md={6} lg={4}>
-                <Card className='card-grid' sx={componentShadowSX}>
+                <Card key={crypto?.name} className='card-grid' sx={componentShadowSX}>
                   <CardActionArea href={`/details/${crypto.id}`}>
                     <CardContent className='card-grid'>
                       <CardMedia
