@@ -8,27 +8,30 @@ import DetailsPage from './views/detailspage/Details';
 import Banner from './common/components/Banner';
 import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
-        <SearchBar dataList={dataList} />
-        <Banner />
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/details/:id' element={<DetailsPage />} />
-          <Route
-            path='*'
-            element={
-              <main style={{ padding: '1rem' }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          />
-        </Routes>
+        <DarkModeProvider>
+          <NavBar />
+          <SearchBar dataList={dataList} />
+          <Banner />
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/details/:id' element={<DetailsPage />} />
+            <Route
+              path='*'
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
+        </DarkModeProvider>
       </BrowserRouter>
     </>
   );

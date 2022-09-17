@@ -1,32 +1,52 @@
 import * as React from 'react';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useEffect, useContext } from 'react';
+import { DarkModeContext } from '../../context/DarkModeContext';
+import { Switch } from '@mui/material';
+
 
 export default function ToggleButtonDarkMode() {
+  const { darkMode, setDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
-  const [alignment, setAlignment] = React.useState('light');
+  console.log(darkMode)
 
-  // useEffect(() => {})
+  const checkOnRender = () => {
 
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string,
-  ) => {
-    setAlignment(newAlignment);
+    if (localStorage.theme === 'dark') {
+      toggleDarkMode('dark');
+    }
+    if (localStorage.theme === 'light') {
+      toggleDarkMode('light')
+    }
+    if (!('theme' in localStorage)) {
+      setThemeInStorage('light');
+      toggleDarkMode('light');
+    }
+  };
+
+  const setThemeInStorage = (theme: string) => {
+    localStorage.setItem('theme', theme);
+  };
+
+  useEffect(() => {
+    checkOnRender();
+  }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDarkMode(event.target.checked)
+    if (event.target.checked === false) {
+      setThemeInStorage('light')
+    } else {
+      setThemeInStorage('dark')
+    }
   };
 
   return (
-    <ToggleButtonGroup
-    sx={{ height: 35, 
-      paddingTop: 3 }}
-      color="primary"
-      value={alignment}
-      exclusive
-      onChange={handleChange}
-      aria-label="Platform"
-    >
-      <ToggleButton value="light">Light</ToggleButton>
-      <ToggleButton value="dark">Dark</ToggleButton>
-    </ToggleButtonGroup>
+    <>
+      <Switch
+        checked={darkMode}
+        onChange={handleChange}
+        inputProps={{ 'aria-label': 'controlled' }}
+      />
+    </>
   );
 }
