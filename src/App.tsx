@@ -8,7 +8,8 @@ import DetailsPage from './views/detailspage/Details';
 import Banner from './common/components/Banner';
 import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
-import { DarkModeProvider } from './context/DarkModeContext';
+import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
+import { useContext } from 'react';
 
 function App() {
   return (

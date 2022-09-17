@@ -1,8 +1,7 @@
 import { Container, Grid, Switch } from '@mui/material';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import LanguageButton from './LanguageButton';
-import ToggleButtonDarkMode from './ToggleButtonDarkMode';
-// import ToggleButtonDarkMode from './ToggleButtonDarkMode';
+import ToggleDarkModeButton from './ToggleDarkMode';
 
 function CustomLink({ to, children, ...props }: any) {
   const resolvedPath = useResolvedPath(to);
@@ -28,7 +27,7 @@ export const NavBar = () => {
           <ul>
             <CustomLink to='/pricing'>Crypto statistics</CustomLink>
             <CustomLink to='/about'>About</CustomLink>
-            <ToggleButtonDarkMode></ToggleButtonDarkMode>
+            <ToggleDarkModeButton></ToggleDarkModeButton>
             <LanguageButton></LanguageButton>
           </ul>
         </nav>
