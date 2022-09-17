@@ -1,23 +1,7 @@
 import { Container, Grid, Switch } from '@mui/material';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
-
-export const NavBar = () => {
-  return (
-    <Container>
-      <Grid >
-        <nav className='nav'>
-          <Link to='/' className='site-title'>
-            DailyCrypto
-          </Link>
-          <ul>
-            <CustomLink to='/pricing'>Crypto statistics</CustomLink>
-            <CustomLink to='/about'>About</CustomLink>
-          </ul>
-        </nav>
-      </Grid>
-    </Container>
-  );
-};
+import LanguageButton from './LanguageButton';
+// import ToggleButtonDarkMode from './ToggleButtonDarkMode';
 
 function CustomLink({ to, children, ...props }: any) {
   const resolvedPath = useResolvedPath(to);
@@ -31,5 +15,25 @@ function CustomLink({ to, children, ...props }: any) {
     </li>
   );
 }
+
+export const NavBar = () => {
+  return (
+    <Container>
+      <Grid >
+        <nav className='nav'>
+          <Link to='/' className='site-title'>
+            DailyCrypto
+          </Link>
+          <ul>
+            <CustomLink to='/pricing'>Crypto statistics</CustomLink>
+            <CustomLink to='/about'>About</CustomLink>
+            {/* <ToggleButtonDarkMode></ToggleButtonDarkMode> */}
+            <LanguageButton></LanguageButton>
+          </ul>
+        </nav>
+      </Grid>
+    </Container>
+  );
+};
 
 export default NavBar;

@@ -3,11 +3,6 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { ProgressBar } from 'react-bootstrap';
 
-interface IProps {
-  now: number;
-  label: number;
-}
-
 const ProgressBarr = (props: any) => {
 
     return (

@@ -1,21 +1,20 @@
 import './App.css';
-import Switch from './common/components/Switch';
 import NavBar from './common/components/NavBar';
 import Homepage from './views/homepage/Home';
 import About from './views/aboutpage/About';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DetailsPage from './views/detailspage/Details';
-import { Details } from '@mui/icons-material';
 import Banner from './common/components/Banner';
+import SearchBar from './common/components/SearchBar';
+import dataList from './common/utils/Datalist';
 
 function App() {
   return (
     <>
-      {/* <Homepage /> */}
       <BrowserRouter>
-        {/* <Route path="/detail/:id" element={<DetailsPage />} /> */}
         <NavBar />
+        <SearchBar dataList={dataList} />
         <Banner />
         <Routes>
           <Route path='/' element={<Homepage />} />

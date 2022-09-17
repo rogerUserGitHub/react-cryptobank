@@ -1,3 +1,4 @@
+import { ForkLeft } from '@mui/icons-material';
 import {
   Button,
   Card,
@@ -7,6 +8,7 @@ import {
   FormGroup,
   Grid,
   Switch,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
@@ -34,17 +36,11 @@ const GlobalData = (props: IProps) => {
     <>
       <Container>
         <Grid container>
-          <Grid item xs={4.5} md={4.5} lg={4.5}>
-            <div className='grid-container'>
-              <div >
-                <h1>Global crypto information</h1>
-                <p>The global cyrptocurrencyt market cap today is xx million</p>
-              </div>
-              <div className='grid-item'></div>
-            </div>
+          <Grid item xs={4} md={4} lg={4.5}>
+            <h1>Global Crypto Information</h1>
           </Grid>
 
-          <Grid item xs={4} md={4} lg={4}>
+          <Grid item xs={4} md={4} lg={7.5}>
             <FormGroup>
               <FormControlLabel
                 control={
@@ -52,13 +48,21 @@ const GlobalData = (props: IProps) => {
                 }
                 label='Show stats'
                 labelPlacement='top'
-                sx={{ textAlign: "bottom" }}
+                sx={{ 
+                  textAlign: 'bottom',
+                  position: "absolute",
+                }}
               />
             </FormGroup>
           </Grid>
-
+        </Grid>
+        <Grid container>
+          <Grid item xs={12} md={12} lg={12}>
+            <p>The global cyrptocurrencyt market cap today is xx million</p>
+          </Grid>
         </Grid>
       </Container>
+
       {radioButton === true ? (
         <Container className='global-info-cards'>
           <Grid container spacing={3}>

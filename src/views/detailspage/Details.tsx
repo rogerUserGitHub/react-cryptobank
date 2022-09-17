@@ -22,7 +22,7 @@ export default function Details() {
       })
       .catch(err => console.error(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [url]);
 
   return (
     <>

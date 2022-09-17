@@ -16,18 +16,22 @@ import HomeTrendingCards from './HomeTrendingCards';
 export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
-  const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any >();
-  const [newsItems, setNewsItems] = useState<INewsData[]>([]);
+  const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any>();
+  const [newsItems, setNewsItems] = useState<INewsData[] | any>([]);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
+  const [loading3, setLoading3] = useState(true);
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
 
   useEffect(() => {
     fetch(url1)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(res.statusText);
+        else return res.json();
+      })
       .then(data => {
         setGlobalData(data);
       })
@@ -40,7 +44,10 @@ export default function Home() {
 
   useEffect(() => {
     fetch(url2)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(res.statusText);
+        else return res.json();
+      })
       .then(data => {
         setCryptoData(data);
         setLoading(false);
@@ -60,18 +67,25 @@ export default function Home() {
 
   useEffect(() => {
     fetch(url3, options)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(res.statusText);
+        else return res.json();
+      })
       .then(data => {
         setNewsItems(data);
+        setLoading3(false);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [loading3]);
 
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
 
   useEffect(() => {
     fetch(url4)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(res.statusText);
+        else return res.json();
+      })
       .then(data => {
         setTrendingCrypto(data);
         setLoading2(false);
@@ -79,12 +93,19 @@ export default function Home() {
       .catch(err => console.error(err));
   }, [loading2]);
 
-  const { coins } = trendingCrypto || {}
+  const { coins } = trendingCrypto || {};
 
-  const slicedCryptoItems = cryptoData.slice(0 - 6);
-  const slicedCryptoItems2 = cryptoData.slice(0, 5);
-  const slicedCardNewsVertItems = newsItems.slice(0 - 3);
-  const slicedCardNewsHorizItems = newsItems.slice(4 - 9);
+  const slicedCryptoItems = cryptoData?.slice(0 - 6);
+  const slicedCryptoItems2 = cryptoData?.slice(0, 5);
+
+  let slicedCardNewsVertItems = [];
+  let slicedCardNewsHorizItems = [];
+  if (typeof newsItems !== 'undefined') {
+    slicedCardNewsVertItems = newsItems?.slice(0 - 3);
+  }
+  if (typeof newsItems !== 'undefined') {
+    slicedCardNewsHorizItems = newsItems?.slice(4 - 9);
+  }
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -107,20 +128,17 @@ export default function Home() {
       <br />
       <CryptoTable cryptoData={cryptoData} />
       <br />
-      <HomeCryptoBarChart 
-        slicedCryptoItems2={slicedCryptoItems2}
-      />
-      <HomeTrendingCards
-        trendingCrypto={coins} 
-        loading2={false}      
-        />
+      <HomeCryptoBarChart slicedCryptoItems2={slicedCryptoItems2} />
+      <HomeTrendingCards trendingCrypto={coins} loading2={false} />
       <HomeNewsCardsVert
         slicedCardNewsVertItems={slicedCardNewsVertItems}
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
+        loading={loading3}
       />
       <HomeNewsCardsHoriz
         slicedCardNewsVertItems={slicedCardNewsVertItems}
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
+        loading={loading3}
       />
     </>
   );
