@@ -32,8 +32,12 @@ const DetailsGraphAdditionalData = (props: IProps) => {
           <div className='grid-item-details'>{cryptoData[0]?.ath}</div>
           <div className='grid-item-details'>All-time low</div>
           <div className='grid-item-details'>{cryptoData[0]?.atl}</div>
-          <div className='grid-item-details'>price change %</div>
+          <div className='grid-item-details'>Price change %</div>
           <div className='grid-item-details'>{cryptoData[0]?.price_change_percentage_24h}</div>
+          <div className='grid-item-details'>Total supply</div>
+          <div className='grid-item-details'>{cryptoData[0]?.total_supply}</div>
+          <div className='grid-item-details'>Total volume</div>
+          <div className='grid-item-details'>{cryptoData[0]?.total_volume}</div>
         </div>
       </Grid>
     </>

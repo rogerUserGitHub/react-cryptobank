@@ -29,34 +29,12 @@ const HomeTrendingGraphs = (props: IProps) => {
 
   const graphDataPerDaysAndType = lineChartData?.prices?.map((a: any[]) => a[1]);
 
-  function setGraphColor (day1: number, day7: number) {
-    if (day1 < day7) {
-        graphColorUpOrDown = '#DC143C'
-    } else {
-        graphColorUpOrDown = '#FAEBD7'
-    }
-  }
-
   const arrayOfObjects = [];
-  let day1;
-  let day7;
-  let graphColorUpOrDown;
   for (var i = 0; i < graphDataPerDaysAndType?.length; i++) {
     arrayOfObjects.push({
       pv: graphDataPerDaysAndType[i],
       name: [i],
-
-      
     })
-    if (i === 0) {
-        day1 = graphDataPerDaysAndType[i];
-    }
-    if (i === 6) {
-        day7 = graphDataPerDaysAndType[i];
-    }
-    
-
-    setGraphColor(day1, day7)
   }
 
   return (
@@ -64,8 +42,8 @@ const HomeTrendingGraphs = (props: IProps) => {
       <AreaChart width={230} height={150} data={arrayOfObjects}>
         <defs>
           <linearGradient id='colorPv' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor={graphColorUpOrDown} />
-            <stop offset='95%' stopColor={graphColorUpOrDown} />
+            <stop offset='10%' stopColor='#7b6df3' />
+            <stop offset='90%' stopColor='#7b6df3' />
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false} />

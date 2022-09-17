@@ -3,6 +3,9 @@ import {
   AreaChart,
   CartesianGrid,
   Area,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
 } from 'recharts';
 
 interface IProps {
@@ -31,9 +34,9 @@ const HomeTrendingGraphs = (props: IProps) => {
 
   function setGraphColor (day1: number, day7: number): string {
     if (day1 < day7) {
-        return graphColorUpOrDown = '#DC143C'
+        return graphColorUpOrDown = '#6495ED'
     } else {
-        return graphColorUpOrDown = '#FAEBD7'
+        return graphColorUpOrDown = '#6495ED'
     }
   }
 
@@ -59,21 +62,35 @@ const HomeTrendingGraphs = (props: IProps) => {
 
   return (
     <>
-      <AreaChart width={230} height={150} data={arrayOfObjects}>
+      {/* <AreaChart width={230} height={150} data={arrayOfObjects}>
         <defs>
           <linearGradient id='colorPv' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor={xx} />
-            <stop offset='95%' stopColor={xx} />
+            <stop offset='5%' stopColor="#8884d8" />
+            <stop offset='95%' stopColor="#8884d8" />
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false} />
-        <Area
-          type='monotone'
-          dataKey='pv'
-          stroke='#82ca9d'
-          fill='url(#colorPv)'
-        />
-      </AreaChart>
+        <Area type="monotone" dataKey="uv" stroke="#82ca9d" fill="#82ca9d" />
+      </AreaChart> */}
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          width={500}
+          height={400}
+          data={arrayOfObjects}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+    
+          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useContext } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
-import { Switch } from '@mui/material';
+import { ButtonGroup, Switch } from '@mui/material';
 
 
 export default function ToggleDarkModeButton() {
@@ -47,15 +47,17 @@ export default function ToggleDarkModeButton() {
 
   return (
     <>
+    <ButtonGroup
+        sx={{ height: 35, paddingTop: 3 }}
+        variant='contained'
+        aria-label='split button'
+      >
       <Switch
-        //  sx={{ 
-        //   textAlign: 'right',
-        //   position: "absolute",
-        // }}
         checked={darkMode}
         onChange={handleChange}
         inputProps={{ 'aria-label': 'controlled' }}
       />
+      </ButtonGroup>
     </>
   );
 }

@@ -9,11 +9,9 @@ function DarkModeProvider(props) {
     const toggleDarkMode = (mode) => {
         if (mode === 'light') {
             setDarkMode(false)
-            console.log('context light')
         }
         if (mode === 'dark')
         setDarkMode(true)
-        console.log('context dark')
     }
     
     return (

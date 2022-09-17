@@ -10,14 +10,10 @@ import {
 import { componentShadowSX } from '../../../common/utils/SxStyles';
 import Skeleton from '../../../common/components/Skeleton';
 import { ITrendingCrypto } from '../../../common/interfaces/interfaces';
-import { AreaChart, XAxis, YAxis, CartesianGrid, Area } from 'recharts';
 import HomeTrendingGraphs from './HomeTrendingGraphs';
-import { useEffect, useState } from 'react';
 
 interface IProps {
   trendingCrypto: ITrendingCrypto[];
-  // handleToggle: any;
-  // buttonClicked: any;
   loading2: boolean;
 }
 

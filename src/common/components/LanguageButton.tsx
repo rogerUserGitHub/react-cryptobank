@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import { Height } from '@mui/icons-material';
 
 const options = ['Dutch', 'English'];
 
@@ -16,7 +15,6 @@ export default function SplitButton() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [selectedLanguage, setSelectedLanguage] = React.useState(1);
-  
 
   const handleClick = () => {
     console.log(`You clicked ${options[selectedLanguage]}`);
@@ -44,20 +42,17 @@ export default function SplitButton() {
 
   return (
     <React.Fragment>
-      <ButtonGroup 
-        sx={{ height: 35, 
-            paddingTop: 3 }}
-        variant='contained' 
-        ref={anchorRef} 
-        aria-label='split button'>
-        <Button 
-          sx={{ background: 'red' }}
-          onClick={handleClick}>
+      <ButtonGroup
+        sx={{ height: 35, paddingTop: 3 }}
+        variant='contained'
+        ref={anchorRef}
+        aria-label='split button'
+      >
+        <Button sx={{ background: 'lightgrey', color: 'darkblue' }} onClick={handleClick}>
           {options[selectedLanguage]}
-
         </Button>
         <Button
-          sx={{ background: 'red' }}
+          sx={{ background: 'lightgrey'}}
           size='small'
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
