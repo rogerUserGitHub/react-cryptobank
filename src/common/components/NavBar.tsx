@@ -25,7 +25,6 @@ export const NavBar = () => {
             DailyCrypto
           </Link>
           <ul>
-            <CustomLink to='/pricing'>Crypto statistics</CustomLink>
             <CustomLink to='/about'>About</CustomLink>
             <ToggleDarkModeButton></ToggleDarkModeButton>
             <LanguageButton></LanguageButton>

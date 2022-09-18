@@ -56,7 +56,7 @@ export default function Home() {
   }, [loading]);
 
   // GET request news info
-  const url3 = 'https://crypto-news14.p.rapidapi.com/news/cointelegraph';
+  const url3 = 'https://crypto-news14.p.rapidapi.com/news/coindesk';
   const options = {
     method: 'GET',
     headers: {

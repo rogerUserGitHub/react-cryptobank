@@ -9,28 +9,29 @@ import Banner from './common/components/Banner';
 import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
 import { DarkModeProvider } from './context/DarkModeContext';
+import NotFound from './views/NotFound';
+import { Translation } from 'react-i18next';
+import { LanguageContext, LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <DarkModeProvider>
-          <NavBar />
+          <LanguageProvider> 
+            <Translation>{t => <LanguageProvider t={t} />}</Translation>
+          <NavBar
+          // language={i18n.language.split('-')[0] as Language}
+          />
           <SearchBar dataList={dataList} />
           <Banner />
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/about' element={<About />} />
             <Route path='/details/:id' element={<DetailsPage />} />
-            <Route
-              path='*'
-              element={
-                <main style={{ padding: '1rem' }}>
-                  <p>There's nothing here!</p>
-                </main>
-              }
-            />
+            <Route path='*' element={<NotFound />} />
           </Routes>
+          </LanguageProvider>
         </DarkModeProvider>
       </BrowserRouter>
     </>

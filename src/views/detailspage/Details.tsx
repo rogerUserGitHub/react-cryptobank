@@ -16,11 +16,21 @@ export default function Details() {
 
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
+      .then(res =>  res.json()
+      )
       .then(data => {
         setCryptoData(data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        console.log('error 400000')
+        if (err.response.status > 400 && err.response.status < 500) {
+   
+          window.location.href = "/About";
+          return;
+        }  
+      });
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 

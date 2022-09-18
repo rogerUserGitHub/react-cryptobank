@@ -8,23 +8,72 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 
 const options = ['Dutch', 'English'];
 
-export default function SplitButton() {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef<HTMLDivElement>(null);
-  const [selectedLanguage, setSelectedLanguage] = React.useState(1);
+export default function LanguageButton() {
 
-  const handleClick = () => {
-    console.log(`You clicked ${options[selectedLanguage]}`);
+  const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
+  console.log(language)
+
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLDivElement>(null);
+//   const [selectedLanguage, setSelectedLanguage] = useState(1);
+
+  const checkOnRender = () => {
+
+    if (localStorage.language === 'English') {
+      changeLanguage('English');
+    }
+    if (localStorage.language === 'Dutch') {
+        changeLanguage('Dutch');
+    }
+    if (!('language' in localStorage)) {
+        setLanguageInStorage('English');
+      changeLanguage('English');
+    }
   };
+
+  const setLanguageInStorage = (lang: string) => {
+    localStorage.setItem('language', lang);
+  };
+
+  useEffect(() => {
+    checkOnRender();
+  }, []);
+
+  const handleClick = (event: any) => {
+    console.log(`You clicked ${options[language]}`);
+  };
+
+//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     setDarkMode(event.target.checked)
+//     if (event.target.checked === false) {
+//       setThemeInStorage('light')
+//       document.body.style.backgroundColor = 'white';
+//       document.body.style.color = 'black';
+//     } else {
+//       setThemeInStorage('dark')
+//       document.body.style.backgroundColor = '#181818';
+//       document.body.style.color = 'white';
+//     }
+//   };
 
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number
   ) => {
-    setSelectedLanguage(index);
+    console.log(index);
+    if (index === 1) {
+        setLanguageInStorage('English');
+        setLanguage('English');
+    }
+    if (index === 0) {
+        setLanguageInStorage('Dutch');
+        setLanguage('Dutch');
+    }
     setOpen(false);
   };
 
@@ -48,11 +97,14 @@ export default function SplitButton() {
         ref={anchorRef}
         aria-label='split button'
       >
-        <Button sx={{ background: 'lightgrey', color: 'darkblue' }} onClick={handleClick}>
-          {options[selectedLanguage]}
+        <Button
+          sx={{ background: 'lightgrey', color: 'darkblue' }}
+          onClick={handleClick}
+        >
+          {language}
         </Button>
         <Button
-          sx={{ background: 'lightgrey'}}
+          sx={{ background: 'lightgrey' }}
           size='small'
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
@@ -87,7 +139,7 @@ export default function SplitButton() {
                     <MenuItem
                       key={option}
                       disabled={index === 2}
-                      selected={index === selectedLanguage}
+                      selected={index === language}
                       onClick={event => handleMenuItemClick(event, index)}
                     >
                       {option}

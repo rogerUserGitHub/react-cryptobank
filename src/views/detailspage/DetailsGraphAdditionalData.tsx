@@ -1,6 +1,4 @@
 import { Grid } from '@mui/material';
-import { Tooltip } from 'recharts';
-import { IGraphData } from '../../common/interfaces/interfaces';
 import { ICryptoData } from '../../common/interfaces/interfaces';
 
 interface IProps {
@@ -9,8 +7,6 @@ interface IProps {
 
 const DetailsGraphAdditionalData = (props: IProps) => {
   const { cryptoData } = props;
-  console.log({ cryptoData });
-
   return (
     <>
       <Grid item xs={12} md={12} lg={12}>
