@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Banner from '../../common/components/Banner';
 import CryptoCards from './HomeCryptoCard';
 import { HomeNewsCardsHoriz, HomeNewsCardsVert } from './HomeNewsCards';
 import CryptoTable from './HomeCryptoTable';
@@ -12,6 +11,7 @@ import {
 import GlobalData from './HomeGlobalData';
 import HomeCryptoBarChart from './HomeCryptoBarChart';
 import HomeTrendingCards from './HomeTrendingCards';
+import { LanguageContext } from '../../context/LanguageContext';
 
 export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
@@ -56,27 +56,28 @@ export default function Home() {
   }, [loading]);
 
   // GET request news info
-  const url3 = 'https://crypto-news14.p.rapidapi.com/news/coindesk';
+  const url3 = 'https://free-news.p.rapidapi.com/v1/search?q=crypto&lang=en&page_size=5';
   const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
-      'X-RapidAPI-Host': 'crypto-news14.p.rapidapi.com',
-    },
+      'X-RapidAPI-Host': 'free-news.p.rapidapi.com'
+    }
   };
 
-  useEffect(() => {
-    fetch(url3, options)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        else return res.json();
-      })
-      .then(data => {
-        setNewsItems(data);
-        setLoading3(false);
-      })
-      .catch(err => console.error(err));
-  }, [loading3]);
+  // useEffect(() => {
+  //   fetch(url3, options)
+  //     .then(res => {
+  //       if (!res.ok) throw new Error(res.statusText);
+  //       else return res.json();
+  //     })
+  //     .then(data => {
+  //       setNewsItems(data);
+  //       setLoading3(false);
+  //       console.log(data)
+  //     })
+  //     .catch(err => console.error(err));
+  // }, [loading3]);
 
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
 

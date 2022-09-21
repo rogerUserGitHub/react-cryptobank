@@ -1,8 +1,46 @@
 {
-    "Crypto": "krypto",
-    "NavBar": {
-      "changeLanguage": "Verander taal",
-      "languageNameEN": "Engels",
-      "languageNameNL": "Nederlands"
-    }
+  "helloworld": "Hi world NL",
+  "Global Crypto Information": "nederlandssss",
+  "NavBar": {
+    "changeLanguage": "Verander taal",
+    "languageNameEN": "Engels",
+    "languageNameNL": "Nederlands",
+    "about": "Over"
+  },
+  "Homepage": {
+      "global": {
+          "header": "Globale Crypto Informatie",
+          "information": "Global info placeholder NL",
+          "card1Title": "# active crypto",
+          "card2Title": "# crypto markten",
+          "card3Title": "aankomende ICOs",
+          "card4Title": "lopende ICOs"
+      },
+      "cryptoCards": {
+          "header": "Cryptocurrencies van de dag",
+          "currentPrice": "huidige prijs: ",
+          "24PriceChange": "24u prijs wijziging: "
+      },
+      "cryptoTable": {
+          "header": "Crypto volgens Market Cap",
+          "paragraph": "placeholder paragraph NL",
+          "marketcapRank": "market cap ranking",
+          "symbol": "symbool",
+          "name": "naam",
+          "currentPrice": "huidige prijs",
+          "24hLow": "24u laag ",
+          "24hHigh": "24u hoog ",
+          "24hhPriceChange": "24u prijs wijziging: "
+      },
+      "cryptoGraph": {
+          "header1": "Top 5 crypto volgens market cap",
+          "header2": "24u prijs wijziging"
+      },
+      "Trending": {
+          "header": "Trending crypto"
+      },
+      "News": {
+          "header": "Laatste crypto nieuws"
+      }
+  }
 }

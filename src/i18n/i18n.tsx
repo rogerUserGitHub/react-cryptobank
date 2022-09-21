@@ -1,7 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-
 import translationNL from './translations/nl.json'
 import translationEN from './translations/en.json'
 
@@ -17,7 +16,7 @@ const resources = {
 export const supportedLanguages = ['nl-NL', 'en-GB']
 export const locales = ['nl', 'en']
 
-export const changeLanguage = (newLang: string): any => {
+export const changeLanguageI18n = (newLang: string): any => {
   if (newLang.length === 2) {
     switch (newLang) {
       case 'en':
@@ -38,7 +37,7 @@ i18n
     resources,
     cache: { enabled: true },
     debug: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
-    fallbackLng: 'nl-NL',
+    fallbackLng: 'en-GB',
     interpolation: {
       escapeValue: false,
       formatSeparator: ',',

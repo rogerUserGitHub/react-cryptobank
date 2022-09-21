@@ -10,6 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
+import i18n from "i18next";
+import { changeLanguageI18n } from './../../i18n/i18n';
 
 const options = ['Dutch', 'English'];
 
@@ -26,13 +28,16 @@ export default function LanguageButton() {
 
     if (localStorage.language === 'English') {
       changeLanguage('English');
+      changeLanguageI18n('en');      
     }
     if (localStorage.language === 'Dutch') {
         changeLanguage('Dutch');
+        changeLanguageI18n('nl');    
     }
     if (!('language' in localStorage)) {
         setLanguageInStorage('English');
-      changeLanguage('English');
+        changeLanguage('English');
+        changeLanguageI18n('en');    
     }
   };
 

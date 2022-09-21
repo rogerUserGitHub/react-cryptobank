@@ -14,15 +14,18 @@ import {
 import { useState } from 'react';
 import { IGlobalData } from '../../common/interfaces/interfaces';
 import { componentShadowSX } from '../../common/utils/SxStyles';
+import i18n from "i18next";
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   globalData: IGlobalData | undefined;
 }
 
-const GlobalData = (props: IProps) => {
+const GlobalData = (props: any) => {
   const { globalData } = props;
 
   const [radioButton, setRadioButton] = useState(false);
+  const [t, i18n] = useTranslation();
 
   const handleToggle = () => {
     if (radioButton === false) {
@@ -34,10 +37,13 @@ const GlobalData = (props: IProps) => {
 
   return (
     <>
+
       <Container>
         <Grid container>
           <Grid item xs={4} md={4} lg={4.5}>
-            <h1>Global Crypto Information</h1>
+            <h1>
+            {t('Homepage.global.header')}
+              </h1>
           </Grid>
 
           <Grid item xs={4} md={4} lg={7.5}>
@@ -58,7 +64,7 @@ const GlobalData = (props: IProps) => {
         </Grid>
         <Grid container>
           <Grid item xs={12} md={12} lg={12}>
-            <p>The global cyrptocurrencyt market cap today is xx million</p>
+            <p>{t('Homepage.global.information')}</p>
           </Grid>
         </Grid>
       </Container>
@@ -70,7 +76,7 @@ const GlobalData = (props: IProps) => {
               <Card className='global-card-grid' sx={componentShadowSX}>
                 <CardContent className='global-card-grid'>
                   <Typography variant='h5' component='div'>
-                    # of active crypto
+                  {t('Homepage.global.card1Title')}
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
                     {globalData?.data?.active_cryptocurrencies}
@@ -82,7 +88,7 @@ const GlobalData = (props: IProps) => {
               <Card className='global-card-grid' sx={componentShadowSX}>
                 <CardContent className='global-card-grid'>
                   <Typography variant='h5' component='div'>
-                    # of crypto markets
+                  {t('Homepage.global.card2Title')}
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
                     {globalData?.data?.markets}
@@ -94,7 +100,7 @@ const GlobalData = (props: IProps) => {
               <Card className='global-card-grid' sx={componentShadowSX}>
                 <CardContent className='global-card-grid'>
                   <Typography variant='h5' component='div'>
-                    upcoming ICOs
+                  {t('Homepage.global.card3Title')}
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
                     {globalData?.data?.upcoming_icos}
@@ -106,7 +112,7 @@ const GlobalData = (props: IProps) => {
               <Card className='global-card-grid' sx={componentShadowSX}>
                 <CardContent className='global-card-grid'>
                   <Typography variant='h5' component='div'>
-                    Ongoing ICOs
+                  {t('Homepage.global.card4Title')}
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color='text.secondary'>
                     {globalData?.data?.ongoing_icos}

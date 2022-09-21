@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <DarkModeProvider>
           <LanguageProvider> 
-            <Translation>{t => <LanguageProvider t={t} />}</Translation>
+            {/* <Translation {(t: any) => <LanguageProvider t={t} />}>  */}
           <NavBar
           // language={i18n.language.split('-')[0] as Language}
           />
@@ -31,6 +31,7 @@ function App() {
             <Route path='/details/:id' element={<DetailsPage />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
+          {/* </Translation> */}
           </LanguageProvider>
         </DarkModeProvider>
       </BrowserRouter>

@@ -37,7 +37,7 @@ export const HomeNewsCardsVert = (props: IProps) => {
                     <CardMedia
                       component='img'
                       height='170'
-                      image={newsItem?.image}
+                      image={newsItem?.media}
                       alt='image'
                     />
                     <CardContent>
@@ -45,11 +45,11 @@ export const HomeNewsCardsVert = (props: IProps) => {
                         {newsItem.title}
                       </Typography>
                       <Typography variant='body2' color='text.secondary'>
-                        {newsItem.desc}
+                        {newsItem.summary}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size='small' href={newsItem.url}>
+                      <Button size='small' href={newsItem.link}>
                         Learn More
                       </Button>
                     </CardActions>
@@ -85,7 +85,7 @@ export const HomeNewsCardsHoriz = (props: IProps) => {
                     component='img'
                     height='80'
                     sx={{ width: 1200 }}
-                    image={newsItem?.image}
+                    image={newsItem?.media}
                     alt='image'
                   />
                   <CardContent>
@@ -93,11 +93,11 @@ export const HomeNewsCardsHoriz = (props: IProps) => {
                       {newsItem.title}
                     </Typography>
                     <Typography variant='body2' color='text.secondary'>
-                      {newsItem.desc}
+                      {newsItem.summary}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size='small' href={newsItem.url}>
+                    <Button size='small' href={newsItem.link}>
                       Learn More
                     </Button>
                   </CardActions>

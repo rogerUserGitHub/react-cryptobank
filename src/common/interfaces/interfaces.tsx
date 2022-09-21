@@ -31,10 +31,9 @@ export interface ICryptoData {
 
 export interface INewsData {
   title: string;
-  desc: string;
-  image: string;
-  url: string;
-  date: string;
+  summary: string;
+  media: string;
+  link: string;
 }
 
 export interface IGlobalData {

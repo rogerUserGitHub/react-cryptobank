@@ -1,19 +1,21 @@
 import React, {createContext, useState} from 'react';
+import { changeLanguageI18n } from '../i18n/i18n';
+
 
 const LanguageContext = createContext();
 
 function LanguageProvider(props) {
-
-    const { t } = props;
 
     const [language, setLanguage] = useState('English');
 
     const changeLanguage = (language) => {
         if (language === 'English') {
             setLanguage('English')
+            changeLanguageI18n('en')
         }
         if (language === 'Dutch')
         setLanguage('Dutch')
+        changeLanguageI18n('nl')
     }
     
     return (
