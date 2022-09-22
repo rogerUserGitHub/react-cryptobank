@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { ICryptoData } from '../../common/interfaces/interfaces';
 import { Table } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 interface Column {
   id: string;
@@ -66,6 +67,7 @@ interface IProps {
 
 const CryptoTable = (props: IProps) => {
   const { cryptoData } = props;
+  const [t, i18n] = useTranslation();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -84,8 +86,12 @@ const CryptoTable = (props: IProps) => {
       <Container>
         <Grid>
           <Typography>
-            <h1>Cryptocurrencies by Market Cap</h1>
-            <p>testtest</p>
+            <h1>
+            {t('Homepage.cryptoTable.header')}
+            </h1>
+            <p>
+            {t('Homepage.cryptoTable.paragraph')}
+              </p>
           </Typography>
         </Grid>
       </Container>

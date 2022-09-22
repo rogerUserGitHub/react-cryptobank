@@ -42,8 +42,8 @@ const HomeTrendingGraphs = (props: IProps) => {
       <AreaChart width={230} height={150} data={arrayOfObjects}>
         <defs>
           <linearGradient id='colorPv' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='10%' stopColor='#7b6df3' />
-            <stop offset='90%' stopColor='#7b6df3' />
+            <stop offset='05%' stopColor='#ffe6e6' />
+            <stop offset='95%' stopColor='#ffe6e6' />
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false} />

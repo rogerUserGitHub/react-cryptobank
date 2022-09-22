@@ -1,5 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React, { PureComponent } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Bar,
   BarChart,
@@ -18,18 +19,21 @@ interface IProps {
 const HomeCryptoBarChart = (props: IProps) => {
   
   const { slicedCryptoItems2 } = props;
+  const [t, i18n] = useTranslation();
 
   return (
     <Container>
       <Grid container>
         <Grid item xs={6} md={6} lg={6}>
           <Typography>
-            <h1>Top 5 crypto by market cap</h1>
+            <h1>
+            {t('Homepage.cryptoGraph.header1')}
+              </h1>
           </Typography>
         </Grid>
         <Grid item xs={6} md={6} lg={6}>
           <Typography>
-            <h1>24h price change</h1>
+            <h1>{t('Homepage.cryptoGraph.header1')}</h1>
           </Typography>
         </Grid>
       </Grid>
@@ -42,8 +46,8 @@ const HomeCryptoBarChart = (props: IProps) => {
             {/* <YAxis /> */}
             <Tooltip />
             <Legend />
-            <Bar dataKey='market_cap' fill='#8884d8' />
-            <Bar dataKey='total_volume' fill='#82ca9d' />
+            <Bar dataKey='market_cap' fill='#80dfff' />
+            <Bar dataKey='total_volume' fill='#b800e6' />
           </BarChart>
         </Grid>
 
@@ -54,7 +58,7 @@ const HomeCryptoBarChart = (props: IProps) => {
             <Tooltip />
             <Legend />
             <ReferenceLine y={0} stroke='#000' />
-            <Bar dataKey='price_change_percentage_24h' fill='#8884d8' />
+            <Bar dataKey='price_change_percentage_24h' fill='#80dfff' />
           </BarChart>
         </Grid>
       </Grid>

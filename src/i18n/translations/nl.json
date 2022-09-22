@@ -1,6 +1,4 @@
 {
-  "helloworld": "Hi world NL",
-  "Global Crypto Information": "nederlandssss",
   "NavBar": {
     "changeLanguage": "Verander taal",
     "languageNameEN": "Engels",
@@ -23,7 +21,8 @@
       },
       "cryptoTable": {
           "header": "Crypto volgens Market Cap",
-          "paragraph": "placeholder paragraph NL",
+          "paragraph": 
+          "De marktkapitalisatie van een cryptocurrency is de totale waarde van alle munten van een bepaalde cryptocurrency die gemined of in omloop zijn. De marktkapitalisatie wordt gebruikt om de positie van cryptocurrencies te bepalen. Hoe hoger de marktkapitalisatie van een bepaalde cryptomunt, hoe hoger de positie en het marktaandeel van die munt. De marktkapitalisatie van crypto's wordt berekend door het totale aantal munten in omloop te vermenigvuldigen met de huidige prijs. Als je bijvoorbeeld de marktkapitalisatie van Ethereum wilt berekenen, hoef je alleen maar het totale aantal Ethereum in omloop te vermenigvuldigen met de huidige prijs van één Ethereum.",
           "marketcapRank": "market cap ranking",
           "symbol": "symbool",
           "name": "naam",
@@ -42,5 +41,27 @@
       "News": {
           "header": "Laatste crypto nieuws"
       }
-  }
+  },
+  "Details": {
+    "data": {
+        "marketCap": "Market cap",
+        "totalVolume": "Totaal Volume",
+        "fdv": "Fully Diluted Value",
+        "low24": "24u hoog",
+        "high24": "24u laag",
+        "24PriceChange": "24h prijs wijziging"
+    },
+    "graph": {
+        "currentPrice": "huidige prijs",
+        "rank": "market cap ranking",
+        "circulatingSupply": "Aanbod in omloop",
+        "low24": "24u laag ",
+        "high24": "24u hoog ",
+        "ath": "All-time high",
+        "atl": "All-time low",
+        "priceChangePerc": "Prijs wijziging %",
+        "totalSupply": "Totaal aanbod",
+        "totalVolume": "Totaal volume"
+    }
+}
 }

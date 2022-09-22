@@ -12,10 +12,12 @@ function LanguageProvider(props) {
         if (language === 'English') {
             setLanguage('English')
             changeLanguageI18n('en')
+            console.log(language)
         }
         if (language === 'Dutch')
         setLanguage('Dutch')
         changeLanguageI18n('nl')
+        console.log(language)
     }
     
     return (

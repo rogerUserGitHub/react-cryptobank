@@ -53,19 +53,6 @@ export default function LanguageButton() {
     console.log(`You clicked ${options[language]}`);
   };
 
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setDarkMode(event.target.checked)
-//     if (event.target.checked === false) {
-//       setThemeInStorage('light')
-//       document.body.style.backgroundColor = 'white';
-//       document.body.style.color = 'black';
-//     } else {
-//       setThemeInStorage('dark')
-//       document.body.style.backgroundColor = '#181818';
-//       document.body.style.color = 'white';
-//     }
-//   };
-
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number

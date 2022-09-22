@@ -4,11 +4,13 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import DetailsGraph from './DetailsGraph';
 import { useEffect, useState } from 'react';
 import { IGraphData } from '../../common/interfaces/interfaces';
+import { useTranslation } from 'react-i18next';
 
 const DetailsGraphFilter = (props: any) => {
   const [graphData, setGraphData] = useState<IGraphData[]>([]);
   const [graphDays, setGraphDays] = useState<string>('7');
   const [graphTypeData, setGraphTypeData] = useState<string>('prices');
+  const [t, i18n] = useTranslation();
 
   // GET request for graph data
   const url = `https://api.coingecko.com/api/v3/coins/${props.params.id}/market_chart?vs_currency=usd&days=${graphDays}&interval=daily`;

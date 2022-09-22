@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CryptoCards from './HomeCryptoCard';
 import { HomeNewsCardsHoriz, HomeNewsCardsVert } from './HomeNewsCards';
 import CryptoTable from './HomeCryptoTable';
@@ -14,6 +14,7 @@ import HomeTrendingCards from './HomeTrendingCards';
 import { LanguageContext } from '../../context/LanguageContext';
 
 export default function Home() {
+
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any>();
@@ -22,6 +23,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
+  const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
+
+  console.log(loading2)
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
@@ -36,7 +40,7 @@ export default function Home() {
         setGlobalData(data);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [language]);
 
   // GET request crypto info
   const url2 =
@@ -53,7 +57,7 @@ export default function Home() {
         setLoading(false);
       })
       .catch(err => console.error(err));
-  }, [loading]);
+  }, [loading, language]);
 
   // GET request news info
   const url3 = 'https://free-news.p.rapidapi.com/v1/search?q=crypto&lang=en&page_size=5';
@@ -79,6 +83,7 @@ export default function Home() {
   //     .catch(err => console.error(err));
   // }, [loading3]);
 
+  // GET request trending data
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
 
   useEffect(() => {
@@ -92,7 +97,7 @@ export default function Home() {
         setLoading2(false);
       })
       .catch(err => console.error(err));
-  }, [loading2]);
+  }, [loading2, language]);
 
   const { coins } = trendingCrypto || {};
 

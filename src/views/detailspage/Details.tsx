@@ -5,11 +5,13 @@ import { Container, Grid } from '@mui/material';
 import DetailsGraphFilter from './DetailsGraphFilter';
 import DetailsData from './DetailsData';
 import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
+import { useTranslation } from 'react-i18next';
 
 export default function Details() {
   let params = useParams();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
+  const [t, i18n] = useTranslation();
 
   // GET request global info
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${params.id}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;

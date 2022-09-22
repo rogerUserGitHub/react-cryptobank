@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Button,
   Card,
@@ -8,13 +7,12 @@ import {
   CardMedia,
   Container,
   Grid,
-  IconButton,
   Typography,
 } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ICryptoData } from '../../common/interfaces/interfaces';
 import { componentShadowSX } from '../../common/utils/SxStyles';
 import Skeleton from '../../common/components/Skeleton';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   slicedCryptoItems: ICryptoData[];
@@ -26,13 +24,17 @@ interface IProps {
 export const CryptoCards = (props: IProps) => {
 
   const { slicedCryptoItems, handleToggle, buttonClicked, loading } = props;
+  const [t, i18n] = useTranslation();
+
 
   return (
     <>
       <Container>
         <Grid>
           <Typography>
-            <h1>Cryptocurrencies of the day</h1>
+            <h1>
+            {t('Homepage.cryptoCards.header')}
+            </h1>
           </Typography>
         </Grid>
       </Container>
@@ -61,12 +63,14 @@ export const CryptoCards = (props: IProps) => {
                         {crypto?.name}
                       </Typography>
                       <Typography variant='h6' color='text.secondary'>
-                        current price:
+                      {t('Homepage.cryptoCards.currentPrice')}
                       </Typography>
                       <Typography variant='h6' sx={{ mb: 1.5 }} color='text.secondary'>
                         {crypto?.current_price}
                       </Typography>
-                      <Typography variant='h6'>24h price change:</Typography>
+                      <Typography variant='h6'>
+                      {t('Homepage.cryptoCards.24PriceChange')}
+                        </Typography>
                       <Typography
                         variant='h6'
                         color={
@@ -83,16 +87,7 @@ export const CryptoCards = (props: IProps) => {
                         >
                           Learn more
                         </Button>
-                        <IconButton
-                          id={crypto.id}
-                          aria-label='add to favorites'
-                          disabled={false}
-                          onClick={handleToggle}
-                          color={buttonClicked}
-                        >
-                          <FavoriteIcon />
-                        </IconButton>
-                      </CardActions>
+                       </CardActions>
                     </CardContent>
                   </CardActionArea>
                 </Card>

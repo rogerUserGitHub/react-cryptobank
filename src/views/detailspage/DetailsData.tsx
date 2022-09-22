@@ -4,8 +4,12 @@ import { Chip, Container, Grid, Tooltip } from '@mui/material';
 import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
+import { useTranslation } from 'react-i18next';
 
 const DetailsData = (props: any) => {
+
+  const [t, i18n] = useTranslation();
+
   return (
     <>
       <Grid item xs={12} md={12} lg={12}>
@@ -34,7 +38,7 @@ const DetailsData = (props: any) => {
 
       <Grid item xs={3} md={2} lg={2}>
         <p className='column-title'>
-          Market cap
+        {t('Details.data.marketCap')}
           <Tooltip
             title='Market Cap = Current Price x Circulating Supply'
             color='primary'
@@ -43,13 +47,13 @@ const DetailsData = (props: any) => {
           </Tooltip>
         </p>
         <p className='column-title'>
-          Total volume
+        {t('Details.data.totalVolume')}
           <Tooltip title='Total volume of the crypto' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p className='column-title'>
-          Fully Diluted Val.
+        {t('Details.data.fdv')}
           <Tooltip title='FDV = Current Price x Max Supply' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
@@ -62,19 +66,19 @@ const DetailsData = (props: any) => {
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p className='column-title'>
-          Low 24
+        {t('Details.data.low24')}
           <Tooltip title='Lowest pricepoint in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p className='column-title'>
-          High 24
+        {t('Details.data.high24')}
           <Tooltip title='Highest price point in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p className='column-title'>
-          24h price change
+        {t('Details.data.24PriceChange')}
           <Tooltip title='Price change in %' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>

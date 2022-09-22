@@ -23,7 +23,7 @@ export const HomeTrendingCards = (props: IProps) => {
 
   return (
     <>
-      <Container>
+      {/* <Container>
         <Grid>
           <Typography>
             <h1>Trending crypto</h1>
@@ -82,7 +82,7 @@ export const HomeTrendingCards = (props: IProps) => {
             </Grid>
           </Grid>
         </Container>
-      )}
+      )} */}
     </>
   );
 };

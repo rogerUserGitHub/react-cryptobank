@@ -8,6 +8,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { INewsData } from '../../common/interfaces/interfaces';
 import { componentShadowSX } from '../../common/utils/SxStyles';
 
@@ -19,13 +20,14 @@ interface IProps {
 
 export const HomeNewsCardsVert = (props: IProps) => {
   const { slicedCardNewsVertItems, slicedCardNewsHorizItems, loading } = props;
+  const [t, i18n] = useTranslation();
 
   return (
     <>
       <Container>
         <Grid>
           <Typography>
-            <h1>Latest crypto news</h1>
+            <h1>{t('Homepage.News.header')}</h1>
           </Typography>
         </Grid>
         {!loading ? (

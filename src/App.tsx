@@ -10,8 +10,7 @@ import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
 import { DarkModeProvider } from './context/DarkModeContext';
 import NotFound from './views/NotFound';
-import { Translation } from 'react-i18next';
-import { LanguageContext, LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
@@ -19,10 +18,7 @@ function App() {
       <BrowserRouter>
         <DarkModeProvider>
           <LanguageProvider> 
-            {/* <Translation {(t: any) => <LanguageProvider t={t} />}>  */}
-          <NavBar
-          // language={i18n.language.split('-')[0] as Language}
-          />
+          <NavBar />
           <SearchBar dataList={dataList} />
           <Banner />
           <Routes>

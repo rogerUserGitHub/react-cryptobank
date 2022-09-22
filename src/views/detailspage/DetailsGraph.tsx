@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { XAxis, YAxis, CartesianGrid, Tooltip, Area, AreaChart } from 'recharts';
 import Spinner from '../../common/components/Spinner';
 import { IGraphData } from '../../common/interfaces/interfaces';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
   graphData: IGraphData[];
@@ -9,6 +10,8 @@ interface IProps {
 }
 
 const DetailsGraph = (props: any) => {
+
+  const [t, i18n] = useTranslation();
 
   const typeOfData = props.graphTypeData
   let graphDataAfterSwitch = null;
