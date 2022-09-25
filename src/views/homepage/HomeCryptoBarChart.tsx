@@ -33,7 +33,7 @@ const HomeCryptoBarChart = (props: IProps) => {
         </Grid>
         <Grid item xs={6} md={6} lg={6}>
           <Typography>
-            <h1>{t('Homepage.cryptoGraph.header1')}</h1>
+            <h1>{t('Homepage.cryptoGraph.header2')}</h1>
           </Typography>
         </Grid>
       </Grid>

@@ -25,8 +25,6 @@ export default function Home() {
   const [loading3, setLoading3] = useState(true);
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
 
-  console.log(loading2)
-
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
 
@@ -60,28 +58,29 @@ export default function Home() {
   }, [loading, language]);
 
   // GET request news info
-  const url3 = 'https://free-news.p.rapidapi.com/v1/search?q=crypto&lang=en&page_size=5';
+  const url3 = 'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
   const options = {
     method: 'GET',
     headers: {
+      'X-BingApis-SDK': 'true',
       'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
-      'X-RapidAPI-Host': 'free-news.p.rapidapi.com'
+      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
     }
   };
 
-  // useEffect(() => {
-  //   fetch(url3, options)
-  //     .then(res => {
-  //       if (!res.ok) throw new Error(res.statusText);
-  //       else return res.json();
-  //     })
-  //     .then(data => {
-  //       setNewsItems(data);
-  //       setLoading3(false);
-  //       console.log(data)
-  //     })
-  //     .catch(err => console.error(err));
-  // }, [loading3]);
+  useEffect(() => {
+    fetch(url3, options)
+      .then(res => {
+        if (!res.ok) throw new Error(res.statusText);
+        else return res.json();
+      })
+      .then(data => {
+        setNewsItems(data);
+        setLoading3(false);
+        console.log(newsItems)
+      })
+      .catch(err => console.error(err));
+  }, [loading3]);
 
   // GET request trending data
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
@@ -106,12 +105,12 @@ export default function Home() {
 
   let slicedCardNewsVertItems = [];
   let slicedCardNewsHorizItems = [];
-  if (typeof newsItems !== 'undefined') {
-    slicedCardNewsVertItems = newsItems?.slice(0 - 3);
-  }
-  if (typeof newsItems !== 'undefined') {
-    slicedCardNewsHorizItems = newsItems?.slice(4 - 9);
-  }
+  // if (typeof newsItems !== 'undefined') {
+    slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
+  // }
+  // if (typeof newsItems !== 'undefined') {
+    slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
+  // }
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -141,11 +140,11 @@ export default function Home() {
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
         loading={loading3}
       />
-      <HomeNewsCardsHoriz
+      {/* <HomeNewsCardsHoriz
         slicedCardNewsVertItems={slicedCardNewsVertItems}
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
         loading={loading3}
-      />
+      /> */}
     </>
   );
 }

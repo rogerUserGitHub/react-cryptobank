@@ -29,11 +29,39 @@ export interface ICryptoData {
   last_updated: string;
 }
 
+export interface IExchangeData {
+  rates?: {
+    name?: {
+      name?: string;
+      unit?: string;
+      value?: number;
+      type?: string;
+    }
+  }
+}
+
+export interface IExchangeData2 {
+  name?: string;
+  unit?: string;
+  value?: number;
+  type?: string;
+}
+
 export interface INewsData {
-  title: string;
-  summary: string;
-  media: string;
-  link: string;
+  // articles: {
+  //   title: string;
+  //   summary: string;
+  //   media: string;
+  //   link: string;
+  // }
+  name: string,
+  url: string,
+  image: {
+    thumbnail: {
+      contentUrl: string
+    }
+  }
+  description: string
 }
 
 export interface IGlobalData {

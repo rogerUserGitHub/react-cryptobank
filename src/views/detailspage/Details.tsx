@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ICryptoData } from '../../common/interfaces/interfaces';
+import { ICryptoData, IExchangeData } from '../../common/interfaces/interfaces';
 import { Container, Grid } from '@mui/material';
 import DetailsGraphFilter from './DetailsGraphFilter';
 import DetailsData from './DetailsData';
 import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
 import { useTranslation } from 'react-i18next';
+import CryptoConverter from './CryptoConverter';
 
 export default function Details() {
   let params = useParams();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
+  const [exchangeData, setExchangeData] = useState<IExchangeData>({});
   const [t, i18n] = useTranslation();
 
   // GET request global info
@@ -18,46 +20,61 @@ export default function Details() {
 
   useEffect(() => {
     fetch(url)
-      .then(res =>  res.json()
-      )
+      .then(res => res.json())
       .then(data => {
         setCryptoData(data);
       })
       .catch(err => {
         console.error(err);
-        console.log('error 400000')
         if (err.response.status > 400 && err.response.status < 500) {
-   
-          window.location.href = "/About";
+          window.location.href = '/About';
           return;
-        }  
+        }
       });
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
+
+  const url2 = `https://api.coingecko.com/api/v3/exchange_rates`;
+
+  useEffect(() => {
+    fetch(url2)
+      .then(res => res.json())
+      .then(data => {
+        setExchangeData(data);
+      })
+      .catch(err => {
+        console.error(err);
+        if (err.response.status > 400 && err.response.status < 500) {
+          window.location.href = '/About';
+          return;
+        }
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log(exchangeData)
 
   return (
     <>
       <Container>
         <Grid container>
           <DetailsData cryptoData={cryptoData} />
-
           <Grid item xs={12} md={12} lg={8}>
             <h2>
               {cryptoData[0]?.name} Price Graph ({cryptoData[0]?.name}/USD)
             </h2>
           </Grid>
           <Grid item xs={12} md={12} lg={8}>
-            <div>
-              <DetailsGraphFilter params={params} />
-            </div>
+            <DetailsGraphFilter params={params} />
           </Grid>
           <Grid item xs={12} md={12} lg={4}>
-            <div>
-              <DetailsGraphAdditionalData cryptoData={cryptoData}/>
-            </div>
+            <DetailsGraphAdditionalData cryptoData={cryptoData} />
           </Grid>
-
+          <Grid item xs={12} md={12} lg={8}>
+          <CryptoConverter exchangeData={exchangeData}/>
+          </Grid>
         </Grid>
       </Container>
     </>

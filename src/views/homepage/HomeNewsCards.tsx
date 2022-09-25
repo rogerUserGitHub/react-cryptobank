@@ -32,26 +32,27 @@ export const HomeNewsCardsVert = (props: IProps) => {
         </Grid>
         {!loading ? (
           <Grid container spacing={3}>
-            {slicedCardNewsVertItems.map(newsItem => (
-              <Grid key={newsItem?.title} item xs={12} md={4} lg={4}>
+            {slicedCardNewsVertItems?.map(newsItem => (
+              <Grid key={newsItem?.name} item xs={12} md={4} lg={4}>
                 <Card sx={{ maxWidth: 345, height: 500, componentShadowSX }}>
                   <CardContent id='global-info-cards'>
                     <CardMedia
                       component='img'
-                      height='170'
-                      image={newsItem?.media}
+                      height='150'
+                      image=
+                        {newsItem?.image?.thumbnail?.contentUrl} 
                       alt='image'
                     />
                     <CardContent>
                       <Typography gutterBottom variant='h5' component='div'>
-                        {newsItem.title}
+                        {newsItem?.name}
                       </Typography>
                       <Typography variant='body2' color='text.secondary'>
-                        {newsItem.summary}
+                        {newsItem?.description}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size='small' href={newsItem.link}>
+                      <Button size='small' href={newsItem?.url}>
                         Learn More
                       </Button>
                     </CardActions>
@@ -76,10 +77,10 @@ export const HomeNewsCardsHoriz = (props: IProps) => {
     <>
       <Container>
         <Grid container>
-          {slicedCardNewsHorizItems.map(newsItem => (
+          {slicedCardNewsHorizItems?.map(newsItem => (
             <Grid item xs={12} md={12} lg={12}>
               <Card
-                key={newsItem?.title}
+                key={newsItem?.name}
                 sx={{ maxWidth: 2000, height: 250, componentShadowSX }}
               >
                 <CardContent id='global-info-cards'>
@@ -87,19 +88,19 @@ export const HomeNewsCardsHoriz = (props: IProps) => {
                     component='img'
                     height='80'
                     sx={{ width: 1200 }}
-                    image={newsItem?.media}
+                    image={newsItem?.image?.thumbnail?.contentUrl}
                     alt='image'
                   />
                   <CardContent>
                     <Typography align='left' variant='h5' component='div'>
-                      {newsItem.title}
+                      {newsItem?.name}
                     </Typography>
                     <Typography variant='body2' color='text.secondary'>
-                      {newsItem.summary}
+                      {newsItem?.description}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size='small' href={newsItem.link}>
+                    <Button size='small' href={newsItem?.url}>
                       Learn More
                     </Button>
                   </CardActions>

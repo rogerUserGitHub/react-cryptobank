@@ -14,6 +14,7 @@ import {
 import { ICryptoData } from '../../common/interfaces/interfaces';
 import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { fontSize } from '@mui/system';
 
 interface Column {
   id: string;
@@ -101,13 +102,19 @@ const CryptoTable = (props: IProps) => {
         <Grid item xs={12} md={6} lg={4}>
           <Table aria-label='sticky table'>
             <TableHead>
-              <TableRow >
+              <TableRow 
+              >
                 {columns
                 .map((column) => (
                   <TableCell
                     key={column.id}
                     align={column.align}
                     style={{ minWidth: column.minWidth }}
+                    sx={{ 
+                      fontWeight: 'bold',
+                      fontSize: 18, 
+                      color: 'darkblue'
+                    }}
                   >
                     {column.label}
                   </TableCell>

@@ -27,8 +27,6 @@ interface IProps {
 export const HomeTrendingCards = (props: IProps) => {
   const { trendingCrypto, loading2 } = props;
 
-  console.log(loading2);
-
   return (
     <>
       <Container>

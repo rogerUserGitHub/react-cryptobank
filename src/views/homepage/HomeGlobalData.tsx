@@ -62,11 +62,6 @@ const GlobalData = (props: any) => {
             </FormGroup>
           </Grid>
         </Grid>
-        <Grid container>
-          <Grid item xs={12} md={12} lg={12}>
-            <p>{t('Homepage.global.information')}</p>
-          </Grid>
-        </Grid>
       </Container>
 
       {radioButton === true ? (
