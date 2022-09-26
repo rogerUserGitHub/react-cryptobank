@@ -112,7 +112,7 @@ const CryptoTable = (props: IProps) => {
                     style={{ minWidth: column.minWidth }}
                     sx={{ 
                       fontWeight: 'bold',
-                      fontSize: 18, 
+                      fontSize: 20, 
                       color: 'darkblue'
                     }}
                   >
@@ -135,7 +135,12 @@ const CryptoTable = (props: IProps) => {
                     {columns.map(column => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} >
+                        <TableCell 
+                        key={column.id} 
+                        sx={{ 
+                          fontWeight: 'normal',
+                          fontSize: 24, 
+                        }} >
                           {column.format && typeof value === 'number'
                             ? column.format(value)
                             : value}

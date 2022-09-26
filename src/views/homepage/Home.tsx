@@ -10,8 +10,9 @@ import {
 } from '../../common/interfaces/interfaces';
 import GlobalData from './HomeGlobalData';
 import HomeCryptoBarChart from './HomeCryptoBarChart';
-import HomeTrendingCards from './HomeTrendingCards';
 import { LanguageContext } from '../../context/LanguageContext';
+import HomeTrendingCards from './trending/HomeTrendingCards';
+import { useSnackbar } from 'material-ui-snackbar-provider'
 
 export default function Home() {
 
@@ -24,6 +25,7 @@ export default function Home() {
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
+  const snackbar = useSnackbar()
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
@@ -36,8 +38,12 @@ export default function Home() {
       })
       .then(data => {
         setGlobalData(data);
+        snackbar.showMessage('Updated data');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        snackbar.showMessage(err);
+      })
   }, [language]);
 
   // GET request crypto info
@@ -53,8 +59,12 @@ export default function Home() {
       .then(data => {
         setCryptoData(data);
         setLoading(false);
+        snackbar.showMessage('Updated data');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err)
+        snackbar.showMessage(err);
+      });
   }, [loading, language]);
 
   // GET request news info
@@ -77,9 +87,12 @@ export default function Home() {
       .then(data => {
         setNewsItems(data);
         setLoading3(false);
-        console.log(newsItems)
+        snackbar.showMessage('Updated data');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err)
+        snackbar.showMessage(err);
+      });
   }, [loading3]);
 
   // GET request trending data
@@ -94,8 +107,12 @@ export default function Home() {
       .then(data => {
         setTrendingCrypto(data);
         setLoading2(false);
+        snackbar.showMessage('Updated data');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err)
+        snackbar.showMessage(err);
+      });
   }, [loading2, language]);
 
   const { coins } = trendingCrypto || {};

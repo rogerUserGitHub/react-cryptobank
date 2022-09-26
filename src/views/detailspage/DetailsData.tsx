@@ -60,9 +60,9 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p>{props.cryptoData[0]?.market_cap}</p>
-        <p>{props.cryptoData[0]?.total_volume}</p>
-        <p>{props.cryptoData[0]?.fully_diluted_valuation}</p>
+        <p className='column-information'>{props.cryptoData[0]?.market_cap}</p>
+        <p className='column-information'>{props.cryptoData[0]?.total_volume}</p>
+        <p className='column-information'>{props.cryptoData[0]?.fully_diluted_valuation}</p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p className='column-title'>
@@ -85,9 +85,9 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p>{props.cryptoData[0]?.low_24h}</p>
-        <p>{props.cryptoData[0]?.high_24h}</p>
-        <p>{props.cryptoData[0]?.price_change_percentage_24h}</p>
+        <p className='column-information'>{props.cryptoData[0]?.low_24h}</p>
+        <p className='column-information'>{props.cryptoData[0]?.high_24h}</p>
+        <p className='column-information'>{props.cryptoData[0]?.price_change_percentage_24h}</p>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <div className='grid-container-details'>

@@ -1,5 +1,3 @@
-// import { Grid } from "@mui/material";
-// import { Tooltip } from "recharts";
 import {
   Box,
   FormControl,
@@ -37,7 +35,6 @@ const CryptoConverter = (props: IProps) => {
 
   const [menuItem, setMenuItem] = useState('');
   const [number, setNumber] = useState(0);
-  const [value, setValue] = useState(0);
 
   const arrayOfValues = Object.values(exchangeData);
 
@@ -121,16 +118,13 @@ const CryptoConverter = (props: IProps) => {
   return (
     <>
       <Box sx={{ flexGrow: 1, paddingTop: 3 }}>
-        <h1>BTC Converter</h1>
+        <h1>BTC-To-Curreny Converter</h1>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
             <Item>
               <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
                 <InputLabel htmlFor='grouped-select'>Asset</InputLabel>
                 <Select defaultValue='' id='grouped-select' label='Asset'>
-                  <MenuItem value=''>
-                    <em>None</em>
-                  </MenuItem>
                   <ListSubheader>Crypto</ListSubheader>
                   {menuItemsCrypto}
                   <ListSubheader>Fiat</ListSubheader>

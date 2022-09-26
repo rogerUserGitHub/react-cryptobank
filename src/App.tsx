@@ -11,14 +11,17 @@ import dataList from './common/utils/Datalist';
 import { DarkModeProvider } from './context/DarkModeContext';
 import NotFound from './views/NotFound';
 import { LanguageProvider } from './context/LanguageContext';
+import { SnackbarProvider } from 'material-ui-snackbar-provider'
+
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+    <SnackbarProvider SnackbarProps={{ autoHideDuration: 3000 }}>
+    <BrowserRouter>
         <DarkModeProvider>
           <LanguageProvider> 
-          <NavBar />
+          <NavBar /> 
           <SearchBar dataList={dataList} />
           <Banner />
           <Routes>
@@ -31,6 +34,8 @@ function App() {
           </LanguageProvider>
         </DarkModeProvider>
       </BrowserRouter>
+    </SnackbarProvider>
+
     </>
   );
 }

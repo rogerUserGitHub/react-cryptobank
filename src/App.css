@@ -120,6 +120,12 @@
 .column-title {
   font-weight: bold;
   color: darkgrey;
+  background-color: #F0FFFF;
+}
+
+.column-information {
+  font-weight: bold;
+  background-color: #F0FFFF;
 }
 
 .grid-container-spinner {
@@ -135,7 +141,7 @@
 .grid-container-header {
   display: grid;
   grid-template-columns: auto ;
-  background-color: #ffffff;
+  background-color: #F0FFFF;
   padding: 0px;
   font-size: 50px;
   font-weight: bold;
@@ -144,7 +150,7 @@
 .grid-container-details {
   display: grid;
   grid-template-columns: auto auto ;
-  background-color: #ffffff;
+  background-color: #F0FFFF;
   padding: 0px;
 }
 
@@ -156,7 +162,7 @@
 }
 
 .grid-item-details {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #F0FFFF;
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
   border-color:lightgray;
   padding: 7px;

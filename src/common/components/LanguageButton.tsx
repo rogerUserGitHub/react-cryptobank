@@ -12,12 +12,14 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import i18n from "i18next";
 import { changeLanguageI18n } from './../../i18n/i18n';
+import { useSnackbar } from 'material-ui-snackbar-provider'
 
 const options = ['Dutch', 'English'];
 
 export default function LanguageButton() {
 
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
+  const snackbar = useSnackbar()
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -49,7 +51,9 @@ export default function LanguageButton() {
   }, []);
 
   const handleClick = (event: any) => {
-    //console.log(`You clicked ${options[language]}`);
+    snackbar.showMessage(
+      'You changed your language',
+    )
   };
 
   const handleMenuItemClick = (

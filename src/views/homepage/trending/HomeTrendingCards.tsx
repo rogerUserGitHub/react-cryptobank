@@ -5,25 +5,29 @@ import {
   CardMedia,
   Container,
   Grid,
+  Skeleton,
   Typography,
 } from '@mui/material';
-import { componentShadowSX } from '../../../common/utils/SxStyles';
-import Skeleton from '../../../common/components/Skeleton';
 import { ITrendingCrypto } from '../../../common/interfaces/interfaces';
+import { componentShadowSX } from '../../../common/utils/SxStyles';
 import HomeTrendingGraphs from './HomeTrendingGraphs';
+
 
 interface IProps {
   trendingCrypto: ITrendingCrypto[];
   loading2: boolean;
 }
 
-export const HomeTrendingCards = (props: IProps) => {
+// function handleBackClick() {
+//   titleRef.current.scrollIntoView({ behavior: 'smooth' })
+// }
 
+export const HomeTrendingCards = (props: IProps) => {
   const { trendingCrypto, loading2 } = props;
 
   return (
     <>
-      {/* <Container>
+      <Container>
         <Grid>
           <Typography>
             <h1>Trending crypto</h1>
@@ -35,12 +39,16 @@ export const HomeTrendingCards = (props: IProps) => {
           <Grid container spacing={3}>
             {trendingCrypto?.map(crypto => (
               <Grid id={crypto?.item?.id} item xs={6} md={3} lg={3}>
-                <Card key={crypto?.item?.id} className='card-grid' sx={componentShadowSX}>
+                <Card
+                  key={crypto?.item?.id}
+                  className='card-grid'
+                  sx={componentShadowSX}
+                >
                   <CardActionArea href={`/details/${crypto?.item?.id}`}>
                     <CardContent className='card-grid'>
                       <CardMedia
                         component='img'
-                        height='40'
+                        height='45'
                         image={crypto?.item?.large}
                         alt='crypto image'
                       />
@@ -57,6 +65,33 @@ export const HomeTrendingCards = (props: IProps) => {
                 </Card>
               </Grid>
             ))}
+            <Grid id='eightCard' item xs={6} md={3} lg={3}>
+              <Card key='eightCard' className='card-grid' sx={componentShadowSX}>
+                <CardActionArea 
+                    onClick={() => 
+                      window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'
+                      })
+                    }>
+                  <CardContent className='card-grid' >
+                    <Typography sx={{ fontSize: 20, fontWeight: 'bold'}} color='text.primary' >
+                      Search for crypto
+                    </Typography>
+                    <CardMedia
+                      component='img'
+                      height='202'
+                      image='coin.jpg'
+                      alt='crypto image'
+                    />
+                    {/* <Typography sx={{ fontSize: 20 }} color='text.primary' gutterBottom>
+                      {crypto?.item?.name}
+                    </Typography> */}
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           </Grid>
         </Container>
       ) : (
@@ -82,7 +117,7 @@ export const HomeTrendingCards = (props: IProps) => {
             </Grid>
           </Grid>
         </Container>
-      )} */}
+      )}
     </>
   );
 };
