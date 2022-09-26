@@ -14,7 +14,6 @@ import {
 } from '@mui/material';
 import { IExchangeData } from '../../common/interfaces/interfaces';
 import { useState } from 'react';
-import { csCZ } from '@mui/material/locale';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -25,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   paddingTop: 10,
   fontWeight: 'bold',
   fontSize: 18,
-  background: 'darkgrey',
+  background: 'lightgrey',
   height: 52,
 }));
 
@@ -36,61 +35,89 @@ interface IProps {
 const CryptoConverter = (props: IProps) => {
   const { exchangeData } = props;
 
-  const arrayOfValues = Object.values(exchangeData);
   const [menuItem, setMenuItem] = useState('');
+  const [number, setNumber] = useState(0);
+  const [value, setValue] = useState(0);
 
-  const handleClick = (event: any, item: any) => {
-    setMenuItem(item)
-    console.log(menuItem)
+  const arrayOfValues = Object.values(exchangeData);
+
+  const handleValueClick = (event: any, item: any) => {
+    setMenuItem(item);
   };
 
-//   const handleChange = (event: any) => {
-//     const { myValue } = event.currentTarget.value;
-//     console.log(myValue);
-//   };
+  const handleNumberClick = (e: any) => {
+    const number = e.target.value;
+    setNumber(number);
+  };
 
-  var dataArray = [];
+  var dataArray: any[] = [];
   for (var obj in arrayOfValues[0]) {
-    dataArray.push(arrayOfValues[0][obj]);
+    dataArray?.push(arrayOfValues[0][obj]);
   }
 
+  // object with name of asset and asset price
+  var mapNameAndValue = dataArray.reduce(function (map, obj) {
+    map[obj.name] = obj.value;
+    return map;
+  }, {});
+
+  // returns menu items with names of assets in crypto category
   var ArrayPerCrypto = dataArray.filter(function (el) {
     return el.type === 'crypto';
   });
-  console.log(ArrayPerCrypto)
   let result = ArrayPerCrypto?.map(a => a.name);
   const menuItemsCrypto = result?.map(item => {
     return (
-      <MenuItem key={item} value={item} 
-        onClick={(e) => handleClick(e, item)}>
+      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
   });
 
+    // returns menu items with names of assets in fiat category
   var arrayPerFiat = dataArray.filter(function (el) {
     return el.type === 'fiat';
   });
   let result2 = arrayPerFiat?.map(a => a.name);
   const menuItemsFiat = result2?.map(item => {
     return (
-      <MenuItem key={item} value={item}>
+      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
   });
 
+    // returns menu items with names of assets in commodity category
   var arrayPerCommodity = dataArray.filter(function (el) {
     return el.type === 'commodity';
   });
   let result3 = arrayPerCommodity?.map(a => a.name);
   const menuItemsCommodity = result3?.map(item => {
     return (
-      <MenuItem key={item} value={item}>
+      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
   });
+
+  const calculateTotalAmount = (hashMap: any) => {
+    const multiplyNumber = { number };
+    const menuItemSelected = { menuItem };
+    const multiplyNumber2 = Object.values(multiplyNumber)[0];
+    const menuItemSelected2 = Object.values(menuItemSelected)[0];
+
+    let assetAmount: any;
+
+    for (const [assetName, value] of Object.entries(hashMap)) {
+      if (assetName === menuItemSelected2) {
+        assetAmount = value;
+      }
+    }
+
+    const totalAmount = assetAmount * multiplyNumber2;
+    return totalAmount;
+
+  };
 
   return (
     <>
@@ -99,10 +126,10 @@ const CryptoConverter = (props: IProps) => {
           <Grid item xs={12} md={12} lg={12}>
             <Item>BTC Converter</Item>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={4} md={4} lg={4}>
             <Item>BTC</Item>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={8} md={8} lg={8}>
             <Item>
               <TextField
                 id='filled-number'
@@ -112,40 +139,31 @@ const CryptoConverter = (props: IProps) => {
                   shrink: true,
                 }}
                 variant='filled'
+                defaultValue={0}
+                onClick={handleNumberClick}
               />
             </Item>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={4} md={4} lg={4}>
             <Item>
               <FormControl sx={{ minWidth: 107, minHeight: 40 }}>
-                <InputLabel htmlFor='grouped-select'>Grouping</InputLabel>
-                <Select
-                  defaultValue=''
-                  id='grouped-select'
-                  label='Grouping'
-                  value='wewfef'
-                >
-                  <>
-                    <MenuItem value=''>
-                      <em>None</em>
-                    </MenuItem>
-                    <ListSubheader>Crypto</ListSubheader>
-                    {menuItemsCrypto}
-                    <ListSubheader>Fiat</ListSubheader>
-                    {menuItemsFiat}
-                    <ListSubheader>Commodity</ListSubheader>
-                    {menuItemsCommodity}
-                  </>
+                <InputLabel htmlFor='grouped-select'>Value</InputLabel>
+                <Select defaultValue='' id='grouped-select' label='Value'>
+                  <MenuItem value=''>
+                    <em>None</em>
+                  </MenuItem>
+                  <ListSubheader>Crypto</ListSubheader>
+                  {menuItemsCrypto}
+                  <ListSubheader>Fiat</ListSubheader>
+                  {menuItemsFiat}
+                  <ListSubheader>Commodity</ListSubheader>
+                  {menuItemsCommodity}
                 </Select>
               </FormControl>
             </Item>
           </Grid>
-          <Grid item xs={10}>
-            <Item>xs=8</Item>
-          </Grid>
-          <Grid item xs={12} md={12} lg={12}>
-            <Item>1 BTC = </Item>
-            <Item>{menuItem}</Item>
+          <Grid item xs={8} md={8} lg={8}>
+            <Item>{calculateTotalAmount(mapNameAndValue)}</Item>
           </Grid>
         </Grid>
       </Box>

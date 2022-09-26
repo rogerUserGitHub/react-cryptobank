@@ -18,7 +18,6 @@ const options = ['Dutch', 'English'];
 export default function LanguageButton() {
 
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
-  console.log(language)
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -50,14 +49,13 @@ export default function LanguageButton() {
   }, []);
 
   const handleClick = (event: any) => {
-    console.log(`You clicked ${options[language]}`);
+    //console.log(`You clicked ${options[language]}`);
   };
 
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number
   ) => {
-    console.log(index);
     if (index === 1) {
         setLanguageInStorage('English');
         setLanguage('English');
