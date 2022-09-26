@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   paddingTop: 10,
   fontWeight: 'bold',
   fontSize: 18,
-  background: 'lightgrey',
+  background: '#F0FFFF',
   height: 52,
 }));
 
@@ -74,7 +74,7 @@ const CryptoConverter = (props: IProps) => {
     );
   });
 
-    // returns menu items with names of assets in fiat category
+  // returns menu items with names of assets in fiat category
   var arrayPerFiat = dataArray.filter(function (el) {
     return el.type === 'fiat';
   });
@@ -87,7 +87,7 @@ const CryptoConverter = (props: IProps) => {
     );
   });
 
-    // returns menu items with names of assets in commodity category
+  // returns menu items with names of assets in commodity category
   var arrayPerCommodity = dataArray.filter(function (el) {
     return el.type === 'commodity';
   });
@@ -116,39 +116,18 @@ const CryptoConverter = (props: IProps) => {
 
     const totalAmount = assetAmount * multiplyNumber2;
     return totalAmount;
-
   };
 
   return (
     <>
       <Box sx={{ flexGrow: 1, paddingTop: 3 }}>
+        <h1>BTC Converter</h1>
         <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
-            <Item>BTC Converter</Item>
-          </Grid>
-          <Grid item xs={4} md={4} lg={4}>
-            <Item>BTC</Item>
-          </Grid>
-          <Grid item xs={8} md={8} lg={8}>
             <Item>
-              <TextField
-                id='filled-number'
-                label='Number'
-                type='number'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant='filled'
-                defaultValue={0}
-                onClick={handleNumberClick}
-              />
-            </Item>
-          </Grid>
-          <Grid item xs={4} md={4} lg={4}>
-            <Item>
-              <FormControl sx={{ minWidth: 107, minHeight: 40 }}>
-                <InputLabel htmlFor='grouped-select'>Value</InputLabel>
-                <Select defaultValue='' id='grouped-select' label='Value'>
+              <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
+                <InputLabel htmlFor='grouped-select'>Asset</InputLabel>
+                <Select defaultValue='' id='grouped-select' label='Asset'>
                   <MenuItem value=''>
                     <em>None</em>
                   </MenuItem>
@@ -162,7 +141,23 @@ const CryptoConverter = (props: IProps) => {
               </FormControl>
             </Item>
           </Grid>
-          <Grid item xs={8} md={8} lg={8}>
+          <Grid item xs={4.5} md={4.5} lg={4.5}>
+            <Item>
+              <TextField
+                id='filled-number'
+                label='Amount in Bitcoin'
+                type='number'
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                variant='filled'
+                defaultValue={0}
+                onClick={handleNumberClick}
+              />
+            </Item>
+          </Grid>
+          <Grid item xs={7.5} md={7.5} lg={7.5}>
             <Item>{calculateTotalAmount(mapNameAndValue)}</Item>
           </Grid>
         </Grid>
