@@ -46,8 +46,8 @@ const HomeCryptoBarChart = (props: IProps) => {
             {/* <YAxis /> */}
             <Tooltip />
             <Legend />
-            <Bar dataKey='market_cap' fill='#80dfff' />
-            <Bar dataKey='total_volume' fill='#b800e6' />
+            <Bar dataKey='market_cap' fill='lightseagreen' />
+            <Bar dataKey='total_volume' fill='lightpink' />
           </BarChart>
         </Grid>
 
@@ -58,7 +58,7 @@ const HomeCryptoBarChart = (props: IProps) => {
             <Tooltip />
             <Legend />
             <ReferenceLine y={0} stroke='#000' />
-            <Bar dataKey='price_change_percentage_24h' fill='#80dfff' />
+            <Bar dataKey='price_change_percentage_24h' fill='lightseagreen' />
           </BarChart>
         </Grid>
       </Grid>

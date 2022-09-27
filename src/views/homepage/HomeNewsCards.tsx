@@ -34,7 +34,7 @@ export const HomeNewsCardsVert = (props: IProps) => {
           <Grid container spacing={3}>
             {slicedCardNewsVertItems?.map(newsItem => (
               <Grid key={newsItem?.name} item xs={12} md={4} lg={4}>
-                <Card sx={{ maxWidth: 345, height: 500, componentShadowSX }}>
+                <Card sx={{ maxWidth: 345, height: 510, componentShadowSX }}>
                   <CardContent id='global-info-cards'>
                     <CardMedia
                       component='img'

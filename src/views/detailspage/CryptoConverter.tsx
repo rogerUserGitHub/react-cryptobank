@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
   paddingTop: 10,
   fontWeight: 'bold',
   fontSize: 18,
-  background: '#F0FFFF',
+  background: '#f5fafa;',
   height: 52,
 }));
 
@@ -145,6 +145,11 @@ const CryptoConverter = (props: IProps) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
+                InputProps={{
+                  inputProps: { 
+                      min: 10 
+                  }
+              }}
                 variant='filled'
                 defaultValue={0}
                 onClick={handleNumberClick}

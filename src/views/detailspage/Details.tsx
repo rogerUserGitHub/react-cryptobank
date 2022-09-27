@@ -60,9 +60,9 @@ export default function Details() {
         <Grid container>
           <DetailsData cryptoData={cryptoData} />
           <Grid item xs={12} md={12} lg={8}>
-            <h2>
+            <h1>
               {cryptoData[0]?.name} Price Graph ({cryptoData[0]?.name}/USD)
-            </h2>
+            </h1>
           </Grid>
           <Grid item xs={12} md={12} lg={8}>
             <DetailsGraphFilter params={params} />

@@ -90,11 +90,11 @@
 }
 
 .global-card-grid {
-  background-color: rgb(239, 237, 250);
+  background-image: linear-gradient( #caf7f7, #ffffff);
 }
 
 .card-grid {
-  background-color: rgb(250, 255, 250);
+  background-color: #f5fafa;
 }
 
 #crypto-list-container{
@@ -141,33 +141,42 @@
 .grid-container-header {
   display: grid;
   grid-template-columns: auto ;
-  background-color: #F0FFFF;
+  background-color: #f5fafa;;
   padding: 0px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
 }
 
 .grid-container-details {
   display: grid;
   grid-template-columns: auto auto ;
-  background-color: #F0FFFF;
-  padding: 0px;
+  background-color: #f5fafa;;
 }
 
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.grid-item-details {
+  background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
   padding: 7px;
   font-size: 20px;
   text-align: left;
 }
 
-.grid-item-details {
-  background-color: #F0FFFF;
+.grid-item-details-title {
+  background-color: #f5fafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-  border-color:lightgray;
+  border-color: #f5fafa;
   padding: 7px;
   font-size: 20px;
   text-align: left;
+  font-weight: bold;
 }
 
 .rounded-corners {

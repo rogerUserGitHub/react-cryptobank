@@ -57,11 +57,11 @@
             "sourceCode": "# of active crypto"
         },
         "graph": {
-            "currentPrice": "current price",
+            "currentPrice": "Current price",
             "rank": "market cap rank",
             "circulatingSupply": "Circulating supply",
-            "24hLow": "24h low ",
-            "24hHigh": "24h high ",
+            "low24": "24h low ",
+            "high24": "24h high ",
             "ath": "All-time high",
             "atl": "All-time low",
             "priceChangePerc": "Price change %",

@@ -37,7 +37,7 @@ const DetailsData = (props: any) => {
       </Grid>
 
       <Grid item xs={3} md={2} lg={2}>
-        <p className='column-title'>
+        <p>
         {t('Details.data.marketCap')}
           <Tooltip
             title='Market Cap = Current Price x Circulating Supply'
@@ -46,13 +46,13 @@ const DetailsData = (props: any) => {
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
-        <p className='column-title'>
+        <p >
         {t('Details.data.totalVolume')}
           <Tooltip title='Total volume of the crypto' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
-        <p className='column-title'>
+        <p>
         {t('Details.data.fdv')}
           <Tooltip title='FDV = Current Price x Max Supply' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
@@ -60,24 +60,24 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p className='column-information'>{props.cryptoData[0]?.market_cap}</p>
-        <p className='column-information'>{props.cryptoData[0]?.total_volume}</p>
-        <p className='column-information'>{props.cryptoData[0]?.fully_diluted_valuation}</p>
+        <p>{props.cryptoData[0]?.market_cap}</p>
+        <p>{props.cryptoData[0]?.total_volume}</p>
+        <p>{props.cryptoData[0]?.fully_diluted_valuation}</p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p className='column-title'>
+        <p>
         {t('Details.data.low24')}
           <Tooltip title='Lowest pricepoint in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
-        <p className='column-title'>
+        <p>
         {t('Details.data.high24')}
           <Tooltip title='Highest price point in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
-        <p className='column-title'>
+        <p>
         {t('Details.data.24PriceChange')}
           <Tooltip title='Price change in %' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
@@ -85,9 +85,9 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p className='column-information'>{props.cryptoData[0]?.low_24h}</p>
-        <p className='column-information'>{props.cryptoData[0]?.high_24h}</p>
-        <p className='column-information'>{props.cryptoData[0]?.price_change_percentage_24h}</p>
+        <p>{props.cryptoData[0]?.low_24h}</p>
+        <p>{props.cryptoData[0]?.high_24h}</p>
+        <p>{props.cryptoData[0]?.price_change_percentage_24h}</p>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <div className='grid-container-details'>
