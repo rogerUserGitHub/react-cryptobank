@@ -1,33 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Button from '@mui/material/Button';
-import RadioButton from './common/components/RadioButton';
-import Switch from './common/components/Switch';
-import Datagrid from './common/components/Datagrid';
-import GetCardByName from './common/services/client';
+import NavBar from './common/components/NavBar';
+import Homepage from './views/homepage/Home';
+import About from './views/aboutpage/About';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DetailsPage from './views/detailspage/Details';
+import Banner from './common/components/Banner';
+import SearchBar from './common/components/SearchBar';
+import dataList from './common/utils/Datalist';
+import { DarkModeProvider } from './context/DarkModeContext';
+import NotFound from './views/NotFound';
+import { LanguageProvider } from './context/LanguageContext';
+import { SnackbarProvider } from 'material-ui-snackbar-provider'
+
 
 function App() {
-  function toggleDarkMode(event: any) {
-    let colour = document.body.style.backgroundColor;
-    if (colour === 'black') {
-      document.body.style.backgroundColor = 'white';
-    } else {
-      document.body.style.backgroundColor = 'black';
-    }
-  }
-
   return (
     <>
-      <div className='App'>
-        <Button variant='contained' color='success' size='large'>
-          Hello World
-        </Button>
-      </div>
-        <Switch />
-      <br />
-      <Datagrid />
-      <GetCardByName />
+    <SnackbarProvider SnackbarProps={{ autoHideDuration: 3000 }}>
+    <BrowserRouter>
+        <DarkModeProvider>
+          <LanguageProvider> 
+          <NavBar /> 
+          <SearchBar dataList={dataList} />
+          <Banner />
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/details/:id' element={<DetailsPage />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+          {/* </Translation> */}
+          </LanguageProvider>
+        </DarkModeProvider>
+      </BrowserRouter>
+    </SnackbarProvider>
+
     </>
   );
 }

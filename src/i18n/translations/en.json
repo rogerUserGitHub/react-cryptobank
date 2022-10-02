@@ -1,0 +1,72 @@
+{
+    "Global Crypto Information": "nederlandssss",
+    "NavBar": {
+      "changeLanguage": "Change language",
+      "languageNameEN": "English",
+      "languageNameNL": "Dutch",
+      "about": "About"
+    },
+    "Homepage": {
+        "global": {
+            "header": "Global Crypto Information",
+            "information": "Global info placeholder EN",
+            "card1Title": "# of active crypto",
+            "card2Title": "# of crypto markets",
+            "card3Title": "upcoming ICOs",
+            "card4Title": "ongoing ICOs"
+        },
+        "cryptoCards": {
+            "header": "Cryptocurrencies of the day",
+            "currentPrice": "current price: ",
+            "24PriceChange": "24h price change: "
+        },
+        "cryptoTable": {
+            "header": "Cryptocurrencies by Market Cap",
+            "paragraph": "Crypto market cap is the total value of all the coins of a particular cryptocurrency that have been mined or are in circulation. Market capitalization is used to determine the ranking of cryptocurrencies. The higher the market cap of a particular crypto coin, the higher its ranking and share of the market. Crypto market cap is calculated by multiplying the total number of coins in circulation by its current price. For instance, to calculate the market cap of Ethereum, all you need to do is multiply the total number of Ethereum in circulation by the current price of one Ethereum and you will get its market cap.",
+            "marketcapRank": "market cap rank",
+            "symbol": "symbol",
+            "name": "name",
+            "currentPrice": "current price",
+            "24hLow": "24h low ",
+            "24hHigh": "24h high ",
+            "24hhPriceChange": "24h price change: "
+        },
+        "cryptoGraph": {
+            "header1": "Top 5 crypto by market cap",
+            "header2": "24h price change"
+        },
+        "Trending": {
+            "header": "Trending crypto"
+        },
+        "News": {
+            "header": "Latest cyrpto news"
+        }
+    },
+    "Details": {
+        "data": {
+            "marketCap": "Market cap",
+            "totalVolume": "Total Volume",
+            "fdv": "Fully Diluted Value",
+            "low24": "24h low",
+            "high24": "24h high",
+            "24PriceChange": "24h price change"
+        },
+        "additionalData": {
+            "website": "Global Crypto Information",
+            "socialMedia": "Global info placeholder EN",
+            "sourceCode": "# of active crypto"
+        },
+        "graph": {
+            "currentPrice": "Current price",
+            "rank": "market cap rank",
+            "circulatingSupply": "Circulating supply",
+            "low24": "24h low ",
+            "high24": "24h high ",
+            "ath": "All-time high",
+            "atl": "All-time low",
+            "priceChangePerc": "Price change %",
+            "totalSupply": "Total supply ",
+            "totalVolume": "Total volume"
+        }
+    }
+}

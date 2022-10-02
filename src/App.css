@@ -1,5 +1,21 @@
 .App {
   text-align: center;
+  color: var(--text-primary);
+  background-color: var(--background);
+}
+
+:root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: royalblue;
+  --accent: purple;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --text-primary: white;
+  --text-secondary: grey;
+  --accent: darkred;
 }
 
 .App-header {
@@ -25,4 +41,177 @@
   text-shadow: 3px 3px rgb(50, 50, 70, 0.5);
 }
 
+#bannerimage {
+  width: 100%;
+  background-image: url(https://www.startmetinvesteren.nl/wp-content/uploads/2021/09/Geld-verdienen-met-cryptocurrency.jpg);
+  height: 150px;
+  background-color: purple;
+  background-position: center;
+}
+
+/* Homepage -------------------------------------*/
+.nav {
+  background-color: rgb(123, 109, 243);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 0 2rem;
+}
+
+.site-title {
+  font-size: 3rem;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+
+.nav li.active {
+  background-color: #555;
+}
+
+.nav li:hover {
+  background-color: #777;
+}
+
+.global-card-grid {
+  background-image: linear-gradient( #caf7f7, #ffffff);
+}
+
+.card-grid {
+  background-color: #f5fafa;
+}
+
+#crypto-list-container{
+  background-color: rgb(238, 245, 245);
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-left: 4em;
+}
+
+#news-container{
+  background-color: rgb(238, 248, 248);
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/* Detailspage -------------------------------------*/
+
+.current-price {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.column-title {
+  font-weight: bold;
+  color: darkgrey;
+  background-color: #F0FFFF;
+}
+
+.column-information {
+  font-weight: bold;
+  background-color: #F0FFFF;
+}
+
+.grid-container-spinner {
+  width: 47em;
+  display: grid;
+  background-color: #ffffff;
+  padding-top: 11em;
+  padding-bottom: 11em;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  border-color:lightgray;
+}
+
+.grid-container-header {
+  display: grid;
+  grid-template-columns: auto ;
+  background-color: #f5fafa;;
+  padding: 0px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.grid-container-details {
+  display: grid;
+  grid-template-columns: auto auto ;
+  background-color: #f5fafa;;
+}
+
+.grid-item {
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.grid-item-details {
+  background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.grid-item-details-title {
+  background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.progress-bar {
+  /* background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px; */
+  text-align: center;
+  font-weight: bold;
+}
+
+.progress-bar-right {
+  /* background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px; */
+  text-align: right;
+  font-weight: bold;
+}
+
+.rounded-corners {
+  background-color: rgb(223, 224, 251); 
+  width:75px;
+  height:35px;
+  overflow: hidden;
+  border-radius:0.5em;
+  padding: 7px;
+  text-align: center;
+}
+
+/* .border-line {
+  grid-column: 1/6;
+  height: 2px;
+  border-bottom: 1px solid black;
+} */
 
