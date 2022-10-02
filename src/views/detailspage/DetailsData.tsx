@@ -1,6 +1,4 @@
-// import { Grid } from "@mui/material";
-// import { Tooltip } from "recharts";
-import { Chip, Container, Grid, Tooltip } from '@mui/material';
+import { Grid, LinearProgress, linearProgressClasses, styled, Tooltip } from '@mui/material';
 import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
@@ -8,16 +6,29 @@ import { useTranslation } from 'react-i18next';
 import { ICryptoData } from './../../common/interfaces/interfaces';
 
 interface IProps {
-  cryptoData: ICryptoData[]
+  cryptoData: ICryptoData[];
 }
 
 const DetailsData = (props: IProps) => {
-
   const { cryptoData } = props;
 
   const [t, i18n] = useTranslation();
 
-  const progressBarPercentage = (cryptoData[0].)
+  const progressBarPercentage =
+    ((cryptoData[0]?.current_price - cryptoData[0]?.atl) * 100) /
+    (cryptoData[0]?.ath - cryptoData[0]?.atl);
+
+  const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    height: 12,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 5,
+      backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
+    },
+  }));
 
   return (
     <>
@@ -30,10 +41,7 @@ const DetailsData = (props: IProps) => {
           <div className='grid-item'>
             {cryptoData[0]?.price_change_percentage_24h}%
             {cryptoData[0]?.price_change_percentage_24h > 0 ? (
-              <NorthEastIcon
-                fontSize='small'
-                color='secondary'
-              ></NorthEastIcon>
+              <NorthEastIcon fontSize='small' color='secondary'></NorthEastIcon>
             ) : (
               <SouthEastIcon fontSize='small' color='error'></SouthEastIcon>
             )}
@@ -44,10 +52,21 @@ const DetailsData = (props: IProps) => {
         <img height='30' width='30' src={cryptoData[0]?.image} alt='' />
         {cryptoData[0]?.name} ({cryptoData[0]?.symbol})
       </Grid>
-
+      <Grid item xs={4} md={4} lg={4}>
+        <p><b>{cryptoData[0]?.atl}</b></p>
+      </Grid>
+      <Grid item xs={4} md={4} lg={4}>
+      <p className='progress-bar'> 24h range</p>
+      </Grid>
+      <Grid item xs={4} md={4} lg={4} >
+        <p className='progress-bar-right'> {cryptoData[0]?.ath}</p>
+      </Grid>
+      <Grid item xs={12} md={12} lg={12} paddingBottom={1}>
+          <BorderLinearProgress variant='determinate' color='secondary' value={progressBarPercentage} />
+      </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p>
-        {t('Details.data.marketCap')}
+          {t('Details.data.marketCap')}
           <Tooltip
             title='Market Cap = Current Price x Circulating Supply'
             color='primary'
@@ -55,14 +74,14 @@ const DetailsData = (props: IProps) => {
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
-        <p >
-        {t('Details.data.totalVolume')}
+        <p>
+          {t('Details.data.totalVolume')}
           <Tooltip title='Total volume of the crypto' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p>
-        {t('Details.data.fdv')}
+          {t('Details.data.fdv')}
           <Tooltip title='FDV = Current Price x Max Supply' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
@@ -75,19 +94,19 @@ const DetailsData = (props: IProps) => {
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p>
-        {t('Details.data.low24')}
+          {t('Details.data.low24')}
           <Tooltip title='Lowest pricepoint in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p>
-        {t('Details.data.high24')}
+          {t('Details.data.high24')}
           <Tooltip title='Highest price point in last 24h' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
         </p>
         <p>
-        {t('Details.data.24PriceChange')}
+          {t('Details.data.24PriceChange')}
           <Tooltip title='Price change in %' color='primary'>
             <InfoSharpIcon fontSize='small'></InfoSharpIcon>
           </Tooltip>
@@ -102,9 +121,7 @@ const DetailsData = (props: IProps) => {
         <div className='grid-container-details'>
           <div className='grid-item-details'>Website</div>
           <div className='grid-item-details'>
-            <a
-              href={`https://coinmarketcap.com/nl/currencies/${cryptoData[0]?.name}`}
-            >
+            <a href={`https://coinmarketcap.com/nl/currencies/${cryptoData[0]?.name}`}>
               coinmarketcap.com
             </a>
           </div>
@@ -120,9 +137,7 @@ const DetailsData = (props: IProps) => {
           </div>
           <div></div>
           <div className='rounded-corners'>
-            <a
-              href={`https://www.instagram.com/explore/tags/${cryptoData[0]?.name}`}
-            >
+            <a href={`https://www.instagram.com/explore/tags/${cryptoData[0]?.name}`}>
               Instagram
             </a>
           </div>

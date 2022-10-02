@@ -179,6 +179,26 @@
   font-weight: bold;
 }
 
+.progress-bar {
+  /* background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px; */
+  text-align: center;
+  font-weight: bold;
+}
+
+.progress-bar-right {
+  /* background-color: #f5fafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-color: #f5fafa;
+  padding: 7px;
+  font-size: 20px; */
+  text-align: right;
+  font-weight: bold;
+}
+
 .rounded-corners {
   background-color: rgb(223, 224, 251); 
   width:75px;
