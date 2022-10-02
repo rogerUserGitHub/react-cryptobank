@@ -5,22 +5,31 @@ import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import { useTranslation } from 'react-i18next';
+import { ICryptoData } from './../../common/interfaces/interfaces';
 
-const DetailsData = (props: any) => {
+interface IProps {
+  cryptoData: ICryptoData[]
+}
+
+const DetailsData = (props: IProps) => {
+
+  const { cryptoData } = props;
 
   const [t, i18n] = useTranslation();
+
+  const progressBarPercentage = (cryptoData[0].)
 
   return (
     <>
       <Grid item xs={12} md={12} lg={12}>
-        <p className='rounded-corners'>Rank#: {props.cryptoData[0]?.market_cap_rank}</p>
+        <p className='rounded-corners'>Rank#: {cryptoData[0]?.market_cap_rank}</p>
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
         <div className='grid-container'>
-          <div className='current-price'>${props.cryptoData[0]?.current_price}</div>
+          <div className='current-price'>${cryptoData[0]?.current_price}</div>
           <div className='grid-item'>
-            {props.cryptoData[0]?.price_change_percentage_24h}%
-            {props.cryptoData[0]?.price_change_percentage_24h > 0 ? (
+            {cryptoData[0]?.price_change_percentage_24h}%
+            {cryptoData[0]?.price_change_percentage_24h > 0 ? (
               <NorthEastIcon
                 fontSize='small'
                 color='secondary'
@@ -32,8 +41,8 @@ const DetailsData = (props: any) => {
         </div>
       </Grid>
       <Grid item xs={12} md={12} lg={12}>
-        <img height='30' width='30' src={props.cryptoData[0]?.image} alt='' />
-        {props.cryptoData[0]?.name} ({props.cryptoData[0]?.symbol})
+        <img height='30' width='30' src={cryptoData[0]?.image} alt='' />
+        {cryptoData[0]?.name} ({cryptoData[0]?.symbol})
       </Grid>
 
       <Grid item xs={3} md={2} lg={2}>
@@ -60,9 +69,9 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p>{props.cryptoData[0]?.market_cap}</p>
-        <p>{props.cryptoData[0]?.total_volume}</p>
-        <p>{props.cryptoData[0]?.fully_diluted_valuation}</p>
+        <p>{cryptoData[0]?.market_cap}</p>
+        <p>{cryptoData[0]?.total_volume}</p>
+        <p>{cryptoData[0]?.fully_diluted_valuation}</p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p>
@@ -85,41 +94,41 @@ const DetailsData = (props: any) => {
         </p>
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
-        <p>{props.cryptoData[0]?.low_24h}</p>
-        <p>{props.cryptoData[0]?.high_24h}</p>
-        <p>{props.cryptoData[0]?.price_change_percentage_24h}</p>
+        <p>{cryptoData[0]?.low_24h}</p>
+        <p>{cryptoData[0]?.high_24h}</p>
+        <p>{cryptoData[0]?.price_change_percentage_24h}</p>
       </Grid>
       <Grid item xs={12} md={4} lg={4}>
         <div className='grid-container-details'>
           <div className='grid-item-details'>Website</div>
           <div className='grid-item-details'>
             <a
-              href={`https://coinmarketcap.com/nl/currencies/${props.cryptoData[0]?.name}`}
+              href={`https://coinmarketcap.com/nl/currencies/${cryptoData[0]?.name}`}
             >
               coinmarketcap.com
             </a>
           </div>
           <div className='grid-item-details'>Social media</div>
           <div className='rounded-corners'>
-            <a href={`https://www.reddit.com/r/${props.cryptoData[0]?.name}`}>Reddit</a>
+            <a href={`https://www.reddit.com/r/${cryptoData[0]?.name}`}>Reddit</a>
           </div>
           <div></div>
           <div className='rounded-corners'>
-            <a href={`https://twitter.com/search?q=%23/${props.cryptoData[0]?.name}`}>
+            <a href={`https://twitter.com/search?q=%23/${cryptoData[0]?.name}`}>
               Twitter
             </a>
           </div>
           <div></div>
           <div className='rounded-corners'>
             <a
-              href={`https://www.instagram.com/explore/tags/${props.cryptoData[0]?.name}`}
+              href={`https://www.instagram.com/explore/tags/${cryptoData[0]?.name}`}
             >
               Instagram
             </a>
           </div>
           <div className='grid-item-details'>Source code</div>
           <div className='grid-item-details'>
-            <a href={`https://github.com/${props.cryptoData[0]?.name}`}>Github</a>
+            <a href={`https://github.com/${cryptoData[0]?.name}`}>Github</a>
           </div>
         </div>
       </Grid>
