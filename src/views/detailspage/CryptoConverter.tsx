@@ -117,9 +117,8 @@ const CryptoConverter = (props: IProps) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, paddingTop: 3 }}>
+        <Grid container spacing={1} paddingBottom={5}>
         <h1>BTC-To-Curreny Converter</h1>
-        <Grid container spacing={1}>
           <Grid item xs={12} md={12} lg={12}>
             <Item>
               <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
@@ -160,7 +159,6 @@ const CryptoConverter = (props: IProps) => {
             <Item>{calculateTotalAmount(mapNameAndValue)}</Item>
           </Grid>
         </Grid>
-      </Box>
     </>
   );
 };
