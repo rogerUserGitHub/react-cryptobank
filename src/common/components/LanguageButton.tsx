@@ -10,35 +10,32 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
-import i18n from "i18next";
 import { changeLanguageI18n } from './../../i18n/i18n';
-import { useSnackbar } from 'material-ui-snackbar-provider'
+import { useSnackbar } from 'material-ui-snackbar-provider';
 
 const options = ['Dutch', 'English'];
 
 export default function LanguageButton() {
-
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
-  const snackbar = useSnackbar()
+  const snackbar = useSnackbar();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
-//   const [selectedLanguage, setSelectedLanguage] = useState(1);
+  //   const [selectedLanguage, setSelectedLanguage] = useState(1);
 
   const checkOnRender = () => {
-
     if (localStorage.language === 'English') {
       changeLanguage('English');
-      changeLanguageI18n('en');      
+      changeLanguageI18n('en');
     }
     if (localStorage.language === 'Dutch') {
-        changeLanguage('Dutch');
-        changeLanguageI18n('nl');    
+      changeLanguage('Dutch');
+      changeLanguageI18n('nl');
     }
     if (!('language' in localStorage)) {
-        setLanguageInStorage('English');
-        changeLanguage('English');
-        changeLanguageI18n('en');    
+      setLanguageInStorage('English');
+      changeLanguage('English');
+      changeLanguageI18n('en');
     }
   };
 
@@ -51,9 +48,7 @@ export default function LanguageButton() {
   }, []);
 
   const handleClick = (event: any) => {
-    snackbar.showMessage(
-      'You changed your language',
-    )
+    snackbar.showMessage('You changed your language');
   };
 
   const handleMenuItemClick = (
@@ -61,12 +56,12 @@ export default function LanguageButton() {
     index: number
   ) => {
     if (index === 1) {
-        setLanguageInStorage('English');
-        setLanguage('English');
+      setLanguageInStorage('English');
+      setLanguage('English');
     }
     if (index === 0) {
-        setLanguageInStorage('Dutch');
-        setLanguage('Dutch');
+      setLanguageInStorage('Dutch');
+      setLanguage('Dutch');
     }
     setOpen(false);
   };

@@ -14,7 +14,6 @@ import {
 import { ICryptoData } from '../../common/interfaces/interfaces';
 import { Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { fontSize } from '@mui/system';
 
 interface Column {
   id: string;
@@ -87,82 +86,78 @@ const CryptoTable = (props: IProps) => {
       <Container>
         <Grid>
           <Typography>
-            <h1>
-            {t('Homepage.cryptoTable.header')}
-            </h1>
-            <p>
-            {t('Homepage.cryptoTable.paragraph')}
-              </p>
+            <h1>{t('Homepage.cryptoTable.header')}</h1>
+            <p>{t('Homepage.cryptoTable.paragraph')}</p>
           </Typography>
         </Grid>
       </Container>
 
-      <Container >
-      <TableContainer sx={{ maxHeight: 2000 }}>
-        <Grid item xs={12} md={6} lg={4}>
-          <Table aria-label='sticky table'>
-            <TableHead>
-              <TableRow 
-              >
-                {columns
-                .map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                    sx={{ 
-                      fontWeight: 'bold',
-                      fontSize: 23, 
-                      color: 'darkgreen'
-                    }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {cryptoData?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row: any) => {
-                return (
-                  <TableRow
-                    component={Link}
-                    href={`/details/${row.id}` }
-                    hover
-                    tabIndex={-1}
-                    id={row.id}
-                  >
-                    {columns.map(column => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell 
-                        key={column.id} 
-                        sx={{ 
-                          fontWeight: 'normal',
-                          fontSize: 22,
-                        }} >
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+      <Container>
+        <TableContainer sx={{ maxHeight: 2000 }}>
+          <Grid item xs={12} md={6} lg={4}>
+            <Table aria-label='sticky table'>
+              <TableHead>
+                <TableRow>
+                  {columns.map(column => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
+                      sx={{
+                        fontWeight: 'bold',
+                        fontSize: 23,
+                        color: 'darkgreen',
+                      }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {cryptoData
+                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row: any) => {
+                    return (
+                      <TableRow
+                        component={Link}
+                        href={`/details/${row.id}`}
+                        hover
+                        tabIndex={-1}
+                        id={row.id}
+                      >
+                        {columns.map(column => {
+                          const value = row[column.id];
+                          return (
+                            <TableCell
+                              key={column.id}
+                              sx={{
+                                fontWeight: 'normal',
+                                fontSize: 22,
+                              }}
+                            >
+                              {column.format && typeof value === 'number'
+                                ? column.format(value)
+                                : value}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
           </Grid>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 50]}
-            component='div'
-            count={cryptoData.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 50]}
+          component='div'
+          count={cryptoData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Container>
     </>
   );

@@ -1,18 +1,14 @@
-import { Container, Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-
+import { Container } from '@mui/material';
 
 export const Banner = () => {
+  return (
+    <>
+      <br />
+      <Container>
+        <div id='bannerimage'></div>
+      </Container>
+    </>
+  );
+};
 
-    return(
-        <>
-        <br />
-        <Container>
-            <div id="bannerimage"></div>
-        </Container>
-        </>
-
-    )
-}   
-
-export default Banner
+export default Banner;

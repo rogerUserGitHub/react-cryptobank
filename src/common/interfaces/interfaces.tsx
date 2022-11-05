@@ -36,8 +36,8 @@ export interface IExchangeData {
       unit?: string;
       value?: number;
       type?: string;
-    }
-  }
+    };
+  };
 }
 
 export interface IExchangeData2 {
@@ -48,20 +48,14 @@ export interface IExchangeData2 {
 }
 
 export interface INewsData {
-  // articles: {
-  //   title: string;
-  //   summary: string;
-  //   media: string;
-  //   link: string;
-  // }
-  name: string,
-  url: string,
+  name: string;
+  url: string;
   image: {
     thumbnail: {
-      contentUrl: string
-    }
-  }
-  description: string
+      contentUrl: string;
+    };
+  };
+  description: string;
 }
 
 export interface IGlobalData {
@@ -80,17 +74,17 @@ export interface IGraphData {
 }
 
 export interface ITrendingCrypto {
-        item?: {
-            id: string;
-            coin_id: number;
-            name: string;
-            symbol: string;
-            market_cap_rank: number;
-            thumb: string;
-            small: string;
-            large: string;
-            slug: string;
-            price_btc: number;
-            score: number;
-        }
+  item?: {
+    id: string;
+    coin_id: number;
+    name: string;
+    symbol: string;
+    market_cap_rank: number;
+    thumb: string;
+    small: string;
+    large: string;
+    slug: string;
+    price_btc: number;
+    score: number;
+  };
 }

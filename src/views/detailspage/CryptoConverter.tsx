@@ -1,5 +1,4 @@
 import {
-  Box,
   FormControl,
   Grid,
   InputLabel,
@@ -117,48 +116,48 @@ const CryptoConverter = (props: IProps) => {
 
   return (
     <>
-        <Grid container spacing={1} paddingBottom={5}>
+      <Grid container spacing={1} paddingBottom={5}>
         <h1>BTC-To-Curreny Converter</h1>
-          <Grid item xs={12} md={12} lg={12}>
-            <Item>
-              <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
-                <InputLabel htmlFor='grouped-select'>Asset</InputLabel>
-                <Select defaultValue='' id='grouped-select' label='Asset'>
-                  <ListSubheader>Crypto</ListSubheader>
-                  {menuItemsCrypto}
-                  <ListSubheader>Fiat</ListSubheader>
-                  {menuItemsFiat}
-                  <ListSubheader>Commodity</ListSubheader>
-                  {menuItemsCommodity}
-                </Select>
-              </FormControl>
-            </Item>
-          </Grid>
-          <Grid item xs={4.5} md={4.5} lg={4.5}>
-            <Item>
-              <TextField
-                id='filled-number'
-                label='Amount in Bitcoin'
-                type='number'
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                InputProps={{
-                  inputProps: { 
-                      min: 10 
-                  }
-              }}
-                variant='filled'
-                defaultValue={0}
-                onClick={handleNumberClick}
-              />
-            </Item>
-          </Grid>
-          <Grid item xs={7.5} md={7.5} lg={7.5}>
-            <Item>{calculateTotalAmount(mapNameAndValue)}</Item>
-          </Grid>
+        <Grid item xs={12} md={12} lg={12}>
+          <Item>
+            <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
+              <InputLabel htmlFor='grouped-select'>Asset</InputLabel>
+              <Select defaultValue='' id='grouped-select' label='Asset'>
+                <ListSubheader>Crypto</ListSubheader>
+                {menuItemsCrypto}
+                <ListSubheader>Fiat</ListSubheader>
+                {menuItemsFiat}
+                <ListSubheader>Commodity</ListSubheader>
+                {menuItemsCommodity}
+              </Select>
+            </FormControl>
+          </Item>
         </Grid>
+        <Grid item xs={4.5} md={4.5} lg={4.5}>
+          <Item>
+            <TextField
+              id='filled-number'
+              label='Amount in Bitcoin'
+              type='number'
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+              InputProps={{
+                inputProps: {
+                  min: 10,
+                },
+              }}
+              variant='filled'
+              defaultValue={0}
+              onClick={handleNumberClick}
+            />
+          </Item>
+        </Grid>
+        <Grid item xs={7.5} md={7.5} lg={7.5}>
+          <Item>{calculateTotalAmount(mapNameAndValue)}</Item>
+        </Grid>
+      </Grid>
     </>
   );
 };

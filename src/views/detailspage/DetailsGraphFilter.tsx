@@ -10,7 +10,6 @@ const DetailsGraphFilter = (props: any) => {
   const [graphData, setGraphData] = useState<IGraphData[]>([]);
   const [graphDays, setGraphDays] = useState<string>('7');
   const [graphTypeData, setGraphTypeData] = useState<string>('prices');
-  const [t, i18n] = useTranslation();
 
   // GET request for graph data
   const url = `https://api.coingecko.com/api/v3/coins/${props.params.id}/market_chart?vs_currency=usd&days=${graphDays}&interval=daily`;
@@ -52,8 +51,8 @@ const DetailsGraphFilter = (props: any) => {
         <ToggleButton value='7'>7 days</ToggleButton>
         <ToggleButton value='14'>14 days</ToggleButton>
         <ToggleButton value='30'>30 days</ToggleButton>
-      </ToggleButtonGroup> <br></br>
-
+      </ToggleButtonGroup>{' '}
+      <br></br>
       <ToggleButtonGroup
         color='secondary'
         value={graphTypeData}
@@ -65,7 +64,6 @@ const DetailsGraphFilter = (props: any) => {
         <ToggleButton value='market_caps'>Market cap</ToggleButton>
         <ToggleButton value='total_volumes'>Total volume</ToggleButton>
       </ToggleButtonGroup>
-
       <DetailsGraph graphData={graphData} graphTypeData={graphTypeData} />
     </>
   );

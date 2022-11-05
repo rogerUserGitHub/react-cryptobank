@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from '@mui/material';
-import React, { PureComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Bar,
@@ -17,7 +16,6 @@ interface IProps {
 }
 
 const HomeCryptoBarChart = (props: IProps) => {
-  
   const { slicedCryptoItems2 } = props;
   const [t, i18n] = useTranslation();
 
@@ -26,9 +24,7 @@ const HomeCryptoBarChart = (props: IProps) => {
       <Grid container>
         <Grid item xs={6} md={6} lg={6}>
           <Typography>
-            <h1>
-            {t('Homepage.cryptoGraph.header1')}
-              </h1>
+            <h1>{t('Homepage.cryptoGraph.header1')}</h1>
           </Typography>
         </Grid>
         <Grid item xs={6} md={6} lg={6}>

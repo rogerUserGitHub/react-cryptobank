@@ -7,13 +7,13 @@ import DetailsData from './DetailsData';
 import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
 import { useTranslation } from 'react-i18next';
 import CryptoConverter from './CryptoConverter';
+import Footer from '../../common/components/Footer';
 
 export default function Details() {
   let params = useParams();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [exchangeData, setExchangeData] = useState<IExchangeData>({});
-  const [t, i18n] = useTranslation();
 
   // GET request global info
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${params.id}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
@@ -71,10 +71,11 @@ export default function Details() {
             <DetailsGraphAdditionalData cryptoData={cryptoData} />
           </Grid>
           <Grid item xs={12} md={12} lg={8}>
-          <CryptoConverter exchangeData={exchangeData}/>
+            <CryptoConverter exchangeData={exchangeData} />
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </>
   );
 }

@@ -39,8 +39,7 @@ export const HomeNewsCardsVert = (props: IProps) => {
                     <CardMedia
                       component='img'
                       height='150'
-                      image=
-                        {newsItem?.image?.thumbnail?.contentUrl} 
+                      image={newsItem?.image?.thumbnail?.contentUrl}
                       alt='image'
                     />
                     <CardContent>

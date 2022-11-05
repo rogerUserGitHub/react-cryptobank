@@ -1,4 +1,10 @@
-import { Grid, LinearProgress, linearProgressClasses, styled, Tooltip } from '@mui/material';
+import {
+  Grid,
+  LinearProgress,
+  linearProgressClasses,
+  styled,
+  Tooltip,
+} from '@mui/material';
 import InfoSharpIcon from '@mui/icons-material/InfoSharp';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
@@ -53,16 +59,22 @@ const DetailsData = (props: IProps) => {
         {cryptoData[0]?.name} ({cryptoData[0]?.symbol})
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
-        <p><b>{cryptoData[0]?.low_24h}</b></p>
+        <p>
+          <b>{cryptoData[0]?.low_24h}</b>
+        </p>
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
-      <p className='progress-bar'> 24h range</p>
+        <p className='progress-bar'> 24h range</p>
       </Grid>
-      <Grid item xs={4} md={4} lg={4} >
+      <Grid item xs={4} md={4} lg={4}>
         <p className='progress-bar-right'> {cryptoData[0]?.high_24h}</p>
       </Grid>
       <Grid item xs={12} md={12} lg={12} paddingBottom={1}>
-          <BorderLinearProgress variant='determinate' color='secondary' value={progressBarPercentage} />
+        <BorderLinearProgress
+          variant='determinate'
+          color='secondary'
+          value={progressBarPercentage}
+        />
       </Grid>
       <Grid item xs={3} md={2} lg={2}>
         <p>

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { Container, Grid } from '@mui/material';
-import { computeHeadingLevel } from '@testing-library/react';
+import Footer from '../../common/components/Footer';
 
 const steps = [
   {
@@ -98,17 +98,18 @@ export default function Aboutpage() {
             <img src='coding.jpg' alt={'coding'} width={570}></img>
             <Grid item xs={12} md={6} lg={6} paddingTop={3}>
               <a href='https://www.linkedin.com/in/rogerdirkx/'>
-              <img  src='linkedin.png' alt={'linkedin'} width={200}></img>
+                <img src='linkedin.png' alt={'linkedin'} width={200}></img>
               </a>
             </Grid>
             <Grid item xs={12} md={6} lg={6} paddingTop={3}>
               <a href='https://github.com/rogerUserGitHub'>
-              <img src='github.png' alt={'github'} width={200}></img>
+                <img src='github.png' alt={'github'} width={200}></img>
               </a>
             </Grid>
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </>
   );
 }

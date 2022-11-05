@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import CryptoCards from './HomeCryptoCard';
-import { HomeNewsCardsHoriz, HomeNewsCardsVert } from './HomeNewsCards';
+import { HomeNewsCardsVert } from './HomeNewsCards';
 import CryptoTable from './HomeCryptoTable';
 import {
   ICryptoData,
@@ -12,10 +12,10 @@ import GlobalData from './HomeGlobalData';
 import HomeCryptoBarChart from './HomeCryptoBarChart';
 import { LanguageContext } from '../../context/LanguageContext';
 import HomeTrendingCards from './trending/HomeTrendingCards';
-import { useSnackbar } from 'material-ui-snackbar-provider'
+import { useSnackbar } from 'material-ui-snackbar-provider';
+import Footer from '../../common/components/Footer';
 
 export default function Home() {
-
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any>();
@@ -24,8 +24,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
-  const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
-  const snackbar = useSnackbar()
+  const { language } = useContext(LanguageContext);
+  const snackbar = useSnackbar();
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
@@ -43,7 +43,7 @@ export default function Home() {
       .catch(err => {
         console.error(err);
         snackbar.showMessage(err);
-      })
+      });
   }, [language]);
 
   // GET request crypto info
@@ -62,20 +62,21 @@ export default function Home() {
         snackbar.showMessage('Updated data');
       })
       .catch(err => {
-        console.error(err)
+        console.error(err);
         snackbar.showMessage(err);
       });
   }, [loading, language]);
 
   // GET request news info
-  const url3 = 'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
+  const url3 =
+    'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
   const options = {
     method: 'GET',
     headers: {
       'X-BingApis-SDK': 'true',
       'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
-      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
-    }
+      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
+    },
   };
 
   useEffect(() => {
@@ -90,7 +91,7 @@ export default function Home() {
         snackbar.showMessage('Updated data');
       })
       .catch(err => {
-        console.error(err)
+        console.error(err);
         snackbar.showMessage(err);
       });
   }, [loading3]);
@@ -110,7 +111,7 @@ export default function Home() {
         snackbar.showMessage('Updated data');
       })
       .catch(err => {
-        console.error(err)
+        console.error(err);
         snackbar.showMessage(err);
       });
   }, [loading2, language]);
@@ -122,12 +123,8 @@ export default function Home() {
 
   let slicedCardNewsVertItems = [];
   let slicedCardNewsHorizItems = [];
-  // if (typeof newsItems !== 'undefined') {
-    slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
-  // }
-  // if (typeof newsItems !== 'undefined') {
-    slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
-  // }
+  slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
+  slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -157,6 +154,7 @@ export default function Home() {
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
         loading={loading3}
       />
+      <Footer />
     </>
   );
 }

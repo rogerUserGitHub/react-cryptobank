@@ -180,21 +180,11 @@
 }
 
 .progress-bar {
-  /* background-color: #f5fafa;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-  border-color: #f5fafa;
-  padding: 7px;
-  font-size: 20px; */
   text-align: center;
   font-weight: bold;
 }
 
 .progress-bar-right {
-  /* background-color: #f5fafa;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-  border-color: #f5fafa;
-  padding: 7px;
-  font-size: 20px; */
   text-align: right;
   font-weight: bold;
 }
@@ -209,9 +199,25 @@
   text-align: center;
 }
 
-/* .border-line {
-  grid-column: 1/6;
-  height: 2px;
-  border-bottom: 1px solid black;
-} */
+.right {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.left {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-p {
+  text-align: center
+}
 
