@@ -157,11 +157,6 @@ export default function Home() {
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
         loading={loading3}
       />
-      {/* <HomeNewsCardsHoriz
-        slicedCardNewsVertItems={slicedCardNewsVertItems}
-        slicedCardNewsHorizItems={slicedCardNewsHorizItems}
-        loading={loading3}
-      /> */}
     </>
   );
 }

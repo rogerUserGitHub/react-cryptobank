@@ -15,8 +15,8 @@ const DetailsData = (props: IProps) => {
   const [t, i18n] = useTranslation();
 
   const progressBarPercentage =
-    ((cryptoData[0]?.current_price - cryptoData[0]?.atl) * 100) /
-    (cryptoData[0]?.ath - cryptoData[0]?.atl);
+    ((cryptoData[0]?.current_price - cryptoData[0]?.low_24h) * 100) /
+    (cryptoData[0]?.high_24h - cryptoData[0]?.low_24h);
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 12,
@@ -53,13 +53,13 @@ const DetailsData = (props: IProps) => {
         {cryptoData[0]?.name} ({cryptoData[0]?.symbol})
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
-        <p><b>{cryptoData[0]?.atl}</b></p>
+        <p><b>{cryptoData[0]?.low_24h}</b></p>
       </Grid>
       <Grid item xs={4} md={4} lg={4}>
       <p className='progress-bar'> 24h range</p>
       </Grid>
       <Grid item xs={4} md={4} lg={4} >
-        <p className='progress-bar-right'> {cryptoData[0]?.ath}</p>
+        <p className='progress-bar-right'> {cryptoData[0]?.high_24h}</p>
       </Grid>
       <Grid item xs={12} md={12} lg={12} paddingBottom={1}>
           <BorderLinearProgress variant='determinate' color='secondary' value={progressBarPercentage} />

@@ -139,7 +139,7 @@ const CryptoTable = (props: IProps) => {
                         key={column.id} 
                         sx={{ 
                           fontWeight: 'normal',
-                          fontSize: 22, 
+                          fontSize: 22,
                         }} >
                           {column.format && typeof value === 'number'
                             ? column.format(value)
