@@ -2,6 +2,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## General info
+
+This project is a React crypto application that provides the user with up-to-date cryto information,
+including the latest cryptocurrency rates and related news. Data is fetched using the CoinGecko API
+and news articles are updated using the Bing News API.
+
+## Technologies
+
+Project is created with:
+
+- npm
+- typescript
+- MUI
+- Bootstrap
+- chartJS
+- recharts
+- i18n
+
 ## Available Scripts
 
 In the project directory, you can run:
