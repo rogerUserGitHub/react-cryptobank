@@ -1,4 +1,5 @@
 import { Container, Grid } from '@mui/material';
+import logo from '../static/logo.png';
 
 export default function Footer() {
   return (
