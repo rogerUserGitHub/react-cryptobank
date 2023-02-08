@@ -68,33 +68,33 @@ export default function Home() {
   }, [loading, language]);
 
   // GET request news info
-  const url3 =
-    'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-BingApis-SDK': 'true',
-      'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
-      'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
-    },
-  };
+  // const url3 =
+  //   'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-BingApis-SDK': 'true',
+  //     'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
+  //     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
+  //   },
+  // };
 
-  useEffect(() => {
-    fetch(url3, options)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        else return res.json();
-      })
-      .then(data => {
-        setNewsItems(data);
-        setLoading3(false);
-        snackbar.showMessage('Updated data');
-      })
-      .catch(err => {
-        console.error(err);
-        snackbar.showMessage(err);
-      });
-  }, [loading3]);
+  // useEffect(() => {
+  //   fetch(url3, options)
+  //     .then(res => {
+  //       if (!res.ok) throw new Error(res.statusText);
+  //       else return res.json();
+  //     })
+  //     .then(data => {
+  //       setNewsItems(data);
+  //       setLoading3(false);
+  //       snackbar.showMessage('Updated data');
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //       snackbar.showMessage(err);
+  //     });
+  // }, [loading3]);
 
   // GET request trending data
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
@@ -121,10 +121,10 @@ export default function Home() {
   const slicedCryptoItems = cryptoData?.slice(0 - 6);
   const slicedCryptoItems2 = cryptoData?.slice(0, 5);
 
-  let slicedCardNewsVertItems = [];
-  let slicedCardNewsHorizItems = [];
-  slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
-  slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
+  // let slicedCardNewsVertItems = [];
+  // let slicedCardNewsHorizItems = [];
+  // slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
+  // slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
 
   const handleToggle = () => {
     if (buttonClicked) {
@@ -149,11 +149,11 @@ export default function Home() {
       <br />
       <HomeCryptoBarChart slicedCryptoItems2={slicedCryptoItems2} />
       <HomeTrendingCards trendingCrypto={coins} loading2={false} />
-      <HomeNewsCardsVert
+      {/* <HomeNewsCardsVert
         slicedCardNewsVertItems={slicedCardNewsVertItems}
         slicedCardNewsHorizItems={slicedCardNewsHorizItems}
         loading={loading3}
-      />
+      /> */}
       <Footer />
     </>
   );
