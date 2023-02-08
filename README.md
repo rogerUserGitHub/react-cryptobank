@@ -8,6 +8,10 @@ This project is a React crypto application that provides the user with up-to-dat
 including the latest cryptocurrency rates and related news. Data is fetched using the CoinGecko API
 and news articles are updated using the Bing News API.
 
+This is one of the first React apps I created with Typescript, and does not have tutorial code.
+
+Check out the live version here: https://dailycrypto-react.netlify.app/
+
 ## Technologies
 
 Project is created with:
