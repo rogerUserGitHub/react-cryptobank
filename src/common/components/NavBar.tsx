@@ -25,7 +25,6 @@ export const NavBar = () => {
           </Link>
           <ul>
             <CustomLink to='/about'>About</CustomLink>
-            {/* <ToggleDarkModeButton></ToggleDarkModeButton> */}
             <LanguageButton></LanguageButton>
           </ul>
         </nav>

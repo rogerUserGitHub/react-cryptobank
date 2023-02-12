@@ -109,7 +109,6 @@ export default function Aboutpage() {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
     </>
   );
 }

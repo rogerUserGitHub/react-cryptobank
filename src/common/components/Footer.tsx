@@ -1,5 +1,4 @@
 import { Container, Grid } from '@mui/material';
-import logo from '../static/logo.png';
 
 export default function Footer() {
   return (
@@ -11,7 +10,7 @@ export default function Footer() {
           <Grid item xs={4} md={4} lg={4}>
             <a href='https://www.linkedin.com/in/rogerdirkx/'>
               <img
-                src={'linkedin.png'}
+                src={process.env.PUBLIC_URL + '/linkedin.png'}
                 alt={'Linkedin'}
                 width={60}
                 className='right'
@@ -20,7 +19,12 @@ export default function Footer() {
           </Grid>
           <Grid item xs={4} md={4} lg={4}>
             <a href='https://github.com/rogerUserGitHub'>
-              <img src='github.png' alt={'Github'} width={60} className='center'></img>
+              <img
+                src={process.env.PUBLIC_URL + '/github.png'}
+                alt={'Github'}
+                width={60}
+                className='center'
+              ></img>
             </a>
             <p className='center-p'>
               <b>All rights reserved @Roger Dirkx, 2022</b>
@@ -28,7 +32,12 @@ export default function Footer() {
           </Grid>
           <Grid item xs={4} md={4} lg={4}>
             <a href='https://reactjs.org/'>
-              <img src='react.png' alt={'React'} width={60} className='left'></img>
+              <img
+                src={process.env.PUBLIC_URL + '/react.png'}
+                alt={'React'}
+                width={60}
+                className='left'
+              ></img>
             </a>
           </Grid>
         </Grid>
