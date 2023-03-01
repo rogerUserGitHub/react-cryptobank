@@ -59,17 +59,13 @@ export default function Details() {
   };
 
   useEffect(() => {
-    setLoading2(true);
-    console.log('Before ()');
+    setLoading(true);
     fetchGlobalInfo();
-    console.log('After ()');
   }, [url]);
 
   useEffect(() => {
     setLoading2(true);
-    console.log('Before ()');
     fetchExchangeRates();
-    console.log('After ()');
   }, []);
 
   return (

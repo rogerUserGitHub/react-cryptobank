@@ -8,11 +8,9 @@ import DetailsPage from './views/detailspage/Details';
 import Banner from './common/components/Banner';
 import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
-import { DarkModeProvider } from './context/DarkModeContext';
 import NotFound from './views/NotFound';
 import { LanguageProvider } from './context/LanguageContext';
 import { SnackbarProvider } from 'material-ui-snackbar-provider';
-import Footer from './common/components/Footer';
 
 function App() {
   return (
