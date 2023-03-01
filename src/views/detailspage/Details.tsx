@@ -8,50 +8,68 @@ import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
 import { useTranslation } from 'react-i18next';
 import CryptoConverter from './CryptoConverter';
 import Footer from '../../common/components/Footer';
+import { useSnackbar } from 'material-ui-snackbar-provider';
 
 export default function Details() {
   let params = useParams();
+  const snackbar = useSnackbar();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [exchangeData, setExchangeData] = useState<IExchangeData>({});
+  const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
 
   // GET request global info
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${params.id}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${params?.id}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
 
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setCryptoData(data);
-      })
-      .catch(err => {
-        console.error(err);
-        if (err.response.status > 400 && err.response.status < 500) {
-          window.location.href = '/About';
-          return;
-        }
-      });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
+  const fetchGlobalInfo = async () => {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setCryptoData(data);
+      snackbar.showMessage('Updated data');
+    } catch (err: any) {
+      console.error(err);
+      snackbar.showMessage(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const url2 = `https://api.coingecko.com/api/v3/exchange_rates`;
 
-  useEffect(() => {
-    fetch(url2)
-      .then(res => res.json())
-      .then(data => {
-        setExchangeData(data);
-      })
-      .catch(err => {
-        console.error(err);
-        if (err.response.status > 400 && err.response.status < 500) {
-          window.location.href = '/About';
-          return;
-        }
-      });
+  const fetchExchangeRates = async () => {
+    try {
+      const res = await fetch(url2);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setExchangeData(data);
+      snackbar.showMessage('Updated data');
+    } catch (err: any) {
+      console.error(err);
+      snackbar.showMessage(err);
+    } finally {
+      setLoading2(false);
+    }
+  };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    setLoading2(true);
+    console.log('Before ()');
+    fetchGlobalInfo();
+    console.log('After ()');
+  }, [url]);
+
+  useEffect(() => {
+    setLoading2(true);
+    console.log('Before ()');
+    fetchExchangeRates();
+    console.log('After ()');
   }, []);
 
   return (

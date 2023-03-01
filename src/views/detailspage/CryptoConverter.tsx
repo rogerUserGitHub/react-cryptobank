@@ -52,14 +52,14 @@ const CryptoConverter = (props: IProps) => {
   }
 
   // object with name of asset and asset price
-  var mapNameAndValue = dataArray.reduce(function (map, obj) {
-    map[obj.name] = obj.value;
+  var mapNameAndValue = dataArray?.reduce(function (map, obj) {
+    map[obj?.name] = obj?.value;
     return map;
   }, {});
 
   // returns menu items with names of assets in crypto category
-  var ArrayPerCrypto = dataArray.filter(function (el) {
-    return el.type === 'crypto';
+  var ArrayPerCrypto = dataArray?.filter(function (el) {
+    return el?.type === 'crypto';
   });
   let result = ArrayPerCrypto?.map(a => a.name);
   const menuItemsCrypto = result?.map(item => {
@@ -71,8 +71,8 @@ const CryptoConverter = (props: IProps) => {
   });
 
   // returns menu items with names of assets in fiat category
-  var arrayPerFiat = dataArray.filter(function (el) {
-    return el.type === 'fiat';
+  var arrayPerFiat = dataArray?.filter(function (el) {
+    return el?.type === 'fiat';
   });
   let result2 = arrayPerFiat?.map(a => a.name);
   const menuItemsFiat = result2?.map(item => {
@@ -84,8 +84,8 @@ const CryptoConverter = (props: IProps) => {
   });
 
   // returns menu items with names of assets in commodity category
-  var arrayPerCommodity = dataArray.filter(function (el) {
-    return el.type === 'commodity';
+  var arrayPerCommodity = dataArray?.filter(function (el) {
+    return el?.type === 'commodity';
   });
   let result3 = arrayPerCommodity?.map(a => a.name);
   const menuItemsCommodity = result3?.map(item => {
