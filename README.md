@@ -10,7 +10,7 @@ and news articles are updated using the Bing News API.
 
 This is one of the first React apps I created with Typescript, and does not have tutorial code.
 
-Check out the live version here: https://dailycrypto-react.netlify.app/ (in case max. cap of thirdparty api is not exceeded)
+Check out the live version here: https://dailycrypto-react.netlify.app/ (NOTE: coingecko has implemented paid plans for api calls, so 429 errors are possible. I am working on it :))
 
 ## Technologies
 
