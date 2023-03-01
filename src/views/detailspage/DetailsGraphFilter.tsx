@@ -10,18 +10,40 @@ const DetailsGraphFilter = (props: any) => {
   const [graphData, setGraphData] = useState<IGraphData[]>([]);
   const [graphDays, setGraphDays] = useState<string>('7');
   const [graphTypeData, setGraphTypeData] = useState<string>('prices');
+  const [loading, setLoading] = useState(true);
 
   // GET request for graph data
   const url = `https://api.coingecko.com/api/v3/coins/${props.params.id}/market_chart?vs_currency=usd&days=${graphDays}&interval=daily`;
 
+  const fetchGraphData = async () => {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setGraphData(data);
+    } catch (err: any) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setGraphData(data);
-      })
-      .catch(err => console.error(err));
+    setLoading(true);
+    fetchGraphData();
   }, [graphDays, url]);
+
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setGraphData(data);
+  //       console.log(graphData);
+  //     })
+  //     .catch(err => console.error(err));
+  // }, [graphDays, url]);
 
   const handleChangeNumberDays = (
     event: React.MouseEvent<HTMLElement>,

@@ -19,19 +19,17 @@ function App() {
     <>
       <SnackbarProvider SnackbarProps={{ autoHideDuration: 3000 }}>
         <BrowserRouter>
-          <DarkModeProvider>
-            <LanguageProvider>
-              <NavBar />
-              <SearchBar dataList={dataList} />
-              <Banner />
-              <Routes>
-                <Route path='/' element={<Homepage />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/details/:id' element={<DetailsPage />} />
-                <Route path='*' element={<NotFound />} />
-              </Routes>
-            </LanguageProvider>
-          </DarkModeProvider>
+          <LanguageProvider>
+            <NavBar />
+            <SearchBar dataList={dataList} />
+            <Banner />
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/details/:id' element={<DetailsPage />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </LanguageProvider>
         </BrowserRouter>
       </SnackbarProvider>
     </>

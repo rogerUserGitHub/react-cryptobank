@@ -24,97 +24,76 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
+  const [inProgress1, setInProgress1] = useState(false);
+  const [inProgress2, setInProgress2] = useState(false);
+  const [inProgress3, setInProgress3] = useState(false);
   const { language } = useContext(LanguageContext);
+
   const snackbar = useSnackbar();
+
+  // console.log(cryptoData);
 
   // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
 
-  useEffect(() => {
-    fetch(url1)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        else return res.json();
-      })
-      .then(data => {
-        setGlobalData(data);
-        snackbar.showMessage('Updated data');
-      })
-      .catch(err => {
-        console.error(err);
-        snackbar.showMessage(err);
-      });
-  }, [language]);
+  const fetchGlobalData = async () => {
+    try {
+      const res = await fetch(url1);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setGlobalData(data);
+      snackbar.showMessage('Updated data');
+    } catch (err: any) {
+      console.error(err);
+      snackbar.showMessage(err);
+    } finally {
+      setLoading2(false);
+    }
+  };
 
   // GET request crypto info
   const url2 =
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
 
-  useEffect(() => {
-    fetch(url2)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        else return res.json();
-      })
-      .then(data => {
-        setCryptoData(data);
-        setLoading(false);
-        snackbar.showMessage('Updated data');
-      })
-      .catch(err => {
-        console.error(err);
-        snackbar.showMessage(err);
-      });
-  }, [loading, language]);
-
-  // GET request news info
-  // const url3 =
-  //   'https://bing-news-search1.p.rapidapi.com/news/search?q=crypto&freshness=Day&textFormat=Raw&safeSearch=Off';
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-BingApis-SDK': 'true',
-  //     'X-RapidAPI-Key': '6945d9a517msh8b1d924b670b723p1fc407jsn96e412329fb7',
-  //     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
-  //   },
-  // };
-
-  // useEffect(() => {
-  //   fetch(url3, options)
-  //     .then(res => {
-  //       if (!res.ok) throw new Error(res.statusText);
-  //       else return res.json();
-  //     })
-  //     .then(data => {
-  //       setNewsItems(data);
-  //       setLoading3(false);
-  //       snackbar.showMessage('Updated data');
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       snackbar.showMessage(err);
-  //     });
-  // }, [loading3]);
+  const fetchCryptoData = async () => {
+    try {
+      const res = await fetch(url2);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setCryptoData(data);
+      console.log(cryptoData);
+      snackbar.showMessage('Updated data');
+    } catch (err: any) {
+      console.error(err);
+      snackbar.showMessage(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // GET request trending data
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
 
-  useEffect(() => {
-    fetch(url4)
-      .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
-        else return res.json();
-      })
-      .then(data => {
-        setTrendingCrypto(data);
-        setLoading2(false);
-        snackbar.showMessage('Updated data');
-      })
-      .catch(err => {
-        console.error(err);
-        snackbar.showMessage(err);
-      });
-  }, [loading2, language]);
+  const fetchTrendingData = async () => {
+    try {
+      const res = await fetch(url4);
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      setTrendingCrypto(data);
+      snackbar.showMessage('Updated data');
+    } catch (err: any) {
+      console.error(err);
+      snackbar.showMessage(err);
+    } finally {
+      setLoading3(false);
+    }
+  };
 
   const { coins } = trendingCrypto || {};
 
@@ -133,6 +112,27 @@ export default function Home() {
       setButtonClicked('default');
     }
   };
+
+  useEffect(() => {
+    setLoading2(true);
+    console.log('Before fetchGlobalData()');
+    fetchGlobalData();
+    console.log('After fetchGlobalData()');
+  }, [language]);
+
+  useEffect(() => {
+    setLoading(true);
+    console.log('Before fetchCryptoData()');
+    fetchCryptoData();
+    console.log('After fetchCryptoData()');
+  }, [language]);
+
+  useEffect(() => {
+    setLoading3(true);
+    console.log('Before fetchTrendingoData()');
+    fetchTrendingData();
+    console.log('After fetchTrendingoData()');
+  }, [language]);
 
   return (
     <>
