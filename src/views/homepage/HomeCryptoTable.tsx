@@ -105,7 +105,7 @@ const CryptoTable = (props: IProps) => {
                       style={{ minWidth: column.minWidth }}
                       sx={{
                         fontWeight: 'bold',
-                        fontSize: 23,
+                        fontSize: 20,
                         color: 'darkgreen',
                       }}
                     >
@@ -133,7 +133,7 @@ const CryptoTable = (props: IProps) => {
                               key={column.id}
                               sx={{
                                 fontWeight: 'normal',
-                                fontSize: 22,
+                                fontSize: 19,
                               }}
                             >
                               {column.format && typeof value === 'number'

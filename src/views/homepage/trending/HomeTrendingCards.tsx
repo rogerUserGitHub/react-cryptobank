@@ -14,11 +14,11 @@ import HomeTrendingGraphs from './HomeTrendingGraphs';
 
 interface IProps {
   trendingCrypto: ITrendingCrypto[];
-  loading2: boolean;
+  isLoading: boolean;
 }
 
 export const HomeTrendingCards = (props: IProps) => {
-  const { trendingCrypto, loading2 } = props;
+  const { trendingCrypto, isLoading } = props;
 
   return (
     <>
@@ -29,10 +29,10 @@ export const HomeTrendingCards = (props: IProps) => {
           </Typography>
         </Grid>
       </Container>
-      {!loading2 ? (
+      {!isLoading && trendingCrypto.length > 0 ? (
         <Container>
           <Grid container spacing={3}>
-            {trendingCrypto?.map(crypto => (
+            {trendingCrypto?.slice(0, 3).map(crypto => (
               <Grid id={crypto?.item?.id} item xs={6} md={3} lg={3}>
                 <Card
                   key={crypto?.item?.id}
@@ -91,28 +91,7 @@ export const HomeTrendingCards = (props: IProps) => {
           </Grid>
         </Container>
       ) : (
-        <Container>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Skeleton />
-            </Grid>
-          </Grid>
-        </Container>
+       null
       )}
     </>
   );

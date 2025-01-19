@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import CryptoCards from './HomeCryptoCard';
-import { HomeNewsCardsVert } from './HomeNewsCards';
 import CryptoTable from './HomeCryptoTable';
 import {
   ICryptoData,
   IGlobalData,
-  INewsData,
   ITrendingCrypto,
 } from '../../common/interfaces/interfaces';
 import GlobalData from './HomeGlobalData';
@@ -14,146 +12,128 @@ import { LanguageContext } from '../../context/LanguageContext';
 import HomeTrendingCards from './trending/HomeTrendingCards';
 import { useSnackbar } from 'material-ui-snackbar-provider';
 import Footer from '../../common/components/Footer';
+import { Container, Grid } from '@mui/material';
 
 export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [trendingCrypto, setTrendingCrypto] = useState<ITrendingCrypto | any>();
-  const [newsItems, setNewsItems] = useState<INewsData[] | any>([]);
-  const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
-  const [loading, setLoading] = useState(true);
-  const [loading2, setLoading2] = useState(true);
-  const [loading3, setLoading3] = useState(true);
-  const [inProgress1, setInProgress1] = useState(false);
-  const [inProgress2, setInProgress2] = useState(false);
-  const [inProgress3, setInProgress3] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const { language } = useContext(LanguageContext);
-
+  const slicedCryptoItems = useMemo(() => cryptoData?.slice(-8), [cryptoData]);
+  const slicedCryptoItems2 = useMemo(
+    () => cryptoData?.slice(0, 5),
+    [cryptoData]
+  );
+  const coins = useMemo(() => trendingCrypto?.coins || [], [trendingCrypto]);
+  const [buttonClicked, setButtonClicked] = useState<string | undefined>(
+    'default'
+  );
   const snackbar = useSnackbar();
+  const handleToggle = useCallback(() => {
+    setButtonClicked((prev) => (prev === 'default' ? 'primary' : 'default'));
+  }, []);
 
-  // console.log(cryptoData);
-
-  // GET request global info
   const url1 = 'https://api.coingecko.com/api/v3/global';
-
-  const fetchGlobalData = async () => {
-    try {
-      const res = await fetch(url1);
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      const data = await res.json();
-      setGlobalData(data);
-      snackbar.showMessage('Updated data');
-    } catch (err: any) {
-      console.error(err);
-      snackbar.showMessage(err);
-    } finally {
-      setLoading2(false);
-    }
-  };
-
-  // GET request crypto info
   const url2 =
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
-
-  const fetchCryptoData = async () => {
-    try {
-      const res = await fetch(url2);
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      const data = await res.json();
-      setCryptoData(data);
-      console.log(cryptoData);
-      snackbar.showMessage('Updated data');
-    } catch (err: any) {
-      console.error(err);
-      snackbar.showMessage(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // GET request trending data
   const url4 = 'https://api.coingecko.com/api/v3/search/trending';
 
-  const fetchTrendingData = async () => {
+  const fetchAllData = async () => {
+    setIsLoading(true);
+    setHasError(false);
     try {
-      const res = await fetch(url4);
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      const data = await res.json();
-      setTrendingCrypto(data);
-      snackbar.showMessage('Updated data');
-    } catch (err: any) {
-      console.error(err);
-      snackbar.showMessage(err);
+      const [globalDataRes, cryptoDataRes, trendingDataRes] = await Promise.all(
+        [handleApiRequest(url1), handleApiRequest(url2), handleApiRequest(url4)]
+      );
+
+      setGlobalData(globalDataRes);
+      setCryptoData(cryptoDataRes);
+      setTrendingCrypto(trendingDataRes);
+      snackbar.showMessage('Data updated successfully');
+    } catch (err) {
+      setHasError(true);
     } finally {
-      setLoading3(false);
+      setIsLoading(false);
     }
   };
 
-  const { coins } = trendingCrypto || {};
+  const handleApiRequest = async (url: string) => {
+    try {
+      const res = await fetch(url);
 
-  const slicedCryptoItems = cryptoData?.slice(0 - 6);
-  const slicedCryptoItems2 = cryptoData?.slice(0, 5);
+      if (!res.ok) {
+        let errorMessage = `Error fetching data from ${url}: ${res.statusText} (Status: ${res.status})`;
 
-  // let slicedCardNewsVertItems = [];
-  // let slicedCardNewsHorizItems = [];
-  // slicedCardNewsVertItems = newsItems?.value?.slice(0 - 3);
-  // slicedCardNewsHorizItems = newsItems?.value?.slice(4 - 9);
+        if (res.status === 429) {
+          errorMessage =
+            'Too many requests - I am using a free plan to query CoinGecko :) Please try again shortly.';
+        } else if (res.status === 404) {
+          errorMessage = 'Resource not found.';
+        } else if (res.status === 500) {
+          errorMessage = 'Server error. Please try again later.';
+        }
+        throw new Error(errorMessage);
+      }
 
-  const handleToggle = () => {
-    if (buttonClicked) {
-      setButtonClicked('primary');
-    } else {
-      setButtonClicked('default');
+      return await res.json();
+    } catch (err: any) {
+      if (err instanceof TypeError) {
+        snackbar.showMessage(
+          'Too many requests - I am using a free plan to query CoinGecko :) Please try again shortly.'
+        );
+      } else {
+        snackbar.showMessage(err.message || 'An error occurred.');
+      }
+      throw err;
     }
   };
 
   useEffect(() => {
-    setLoading2(true);
-    console.log('Before fetchGlobalData()');
-    fetchGlobalData();
-    console.log('After fetchGlobalData()');
+    fetchAllData();
   }, [language]);
 
-  useEffect(() => {
-    setLoading(true);
-    console.log('Before fetchCryptoData()');
-    fetchCryptoData();
-    console.log('After fetchCryptoData()');
-  }, [language]);
-
-  useEffect(() => {
-    setLoading3(true);
-    console.log('Before fetchTrendingoData()');
-    fetchTrendingData();
-    console.log('After fetchTrendingoData()');
-  }, [language]);
+  if (hasError) {
+    return (
+      <>
+        <Container>
+          <Grid item xs={12} md={6} lg={12} marginBottom={1}>
+            <img
+              src={process.env.PUBLIC_URL + '/toomanyrequests.jpg'}
+              alt={'toomanyrequests'}
+              className="center"
+            ></img>
+          </Grid>
+        </Container>
+      </>
+    );
+  }
 
   return (
     <>
-      <GlobalData globalData={globalData} />
+      <GlobalData
+        globalData={globalData}
+        isLoading={isLoading}
+        hasError={hasError}
+      />
       <CryptoCards
         slicedCryptoItems={slicedCryptoItems}
         buttonClicked={buttonClicked}
         handleToggle={handleToggle}
-        loading={loading}
+        isLoading={isLoading}
+        hasError={hasError}
       />
-      <br />
-      <br />
-      <CryptoTable cryptoData={cryptoData} />
-      <br />
-      <HomeCryptoBarChart slicedCryptoItems2={slicedCryptoItems2} />
-      <HomeTrendingCards trendingCrypto={coins} loading2={false} />
-      {/* <HomeNewsCardsVert
-        slicedCardNewsVertItems={slicedCardNewsVertItems}
-        slicedCardNewsHorizItems={slicedCardNewsHorizItems}
-        loading={loading3}
-      /> */}
+      <CryptoTable
+        cryptoData={cryptoData}
+      />
+      <HomeCryptoBarChart
+        slicedCryptoItems2={slicedCryptoItems2}
+      />
+      <HomeTrendingCards
+        trendingCrypto={coins}
+                isLoading={isLoading}
+      />
       <Footer />
     </>
   );

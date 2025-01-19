@@ -8,12 +8,15 @@
     },
     "Homepage": {
         "global": {
-            "header": "Global Crypto Information",
-            "information": "Global info placeholder EN",
-            "card1Title": "# of active crypto",
-            "card2Title": "# of crypto markets",
-            "card3Title": "upcoming ICOs",
-            "card4Title": "ongoing ICOs"
+            "loading": "Loading global data...",
+            "error": "An error occurred",
+            "errorDescription": "We couldn't load the global data at this time. Please try again later.",
+            "header": "Global Crypto Statistics",
+            "showStats": "Show stats",
+            "card1Title": "Active Cryptocurrencies",
+            "card2Title": "Markets",
+            "card3Title": "Upcoming ICOs",
+            "card4Title": "Ongoing ICOs"
         },
         "cryptoCards": {
             "header": "Cryptocurrencies of the day",
