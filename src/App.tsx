@@ -12,6 +12,7 @@ import NotFound from './views/NotFound';
 import { LanguageProvider } from './context/LanguageContext';
 import { SnackbarProvider } from 'material-ui-snackbar-provider';
 import { Container, Grid } from '@mui/material';
+import ClickBar from './common/components/ClickBar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <SnackbarProvider SnackbarProps={{ autoHideDuration: 3000 }}>
         <BrowserRouter>
           <LanguageProvider>
+            <ClickBar />
             <NavBar />
             <SearchBar dataList={dataList} />
             <Banner />

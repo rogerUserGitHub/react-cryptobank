@@ -86,5 +86,8 @@ export interface ITrendingCrypto {
     slug: string;
     price_btc: number;
     score: number;
+    data?: {
+      price?: number;
+    };
   };
 }

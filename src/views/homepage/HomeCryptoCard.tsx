@@ -23,13 +23,7 @@ interface IProps {
 }
 
 export const CryptoCards = (props: IProps) => {
-  const {
-    slicedCryptoItems,
-    handleToggle,
-    buttonClicked,
-    isLoading,
-    hasError,
-  } = props;
+  const { slicedCryptoItems, handleToggle, buttonClicked, isLoading, hasError } = props;
   const [t, i18n] = useTranslation();
 
   if (isLoading) {
@@ -53,9 +47,7 @@ export const CryptoCards = (props: IProps) => {
     return (
       <Container>
         <Grid item xs={12} md={6} marginBottom={1}>
-          <Typography variant="h4">
-            {t('Homepage.cryptoCards.header')}
-          </Typography>
+          <Typography variant="h4">{t('Homepage.cryptoCards.header')}</Typography>
         </Grid>
         <Typography variant="body1" color="text.secondary">
           {t('Homepage.global.errorDescription')}
@@ -68,7 +60,7 @@ export const CryptoCards = (props: IProps) => {
     <>
       <Container>
         <Grid>
-          <Typography variant="h4" marginBottom={1}>
+          <Typography variant="h4" paddingTop={1} marginBottom={1}>
             {t('Homepage.cryptoCards.header')}
           </Typography>
         </Grid>
@@ -78,11 +70,7 @@ export const CryptoCards = (props: IProps) => {
           <Grid container spacing={3}>
             {slicedCryptoItems.map((crypto) => (
               <Grid id={crypto?.name} item xs={12} md={6} lg={3}>
-                <Card
-                  key={crypto?.name}
-                  className="card-grid"
-                  sx={componentShadowSX}
-                >
+                <Card key={crypto?.name} className="card-grid" sx={componentShadowSX}>
                   <CardActionArea href={`/details/${crypto.id}`}>
                     <CardContent className="card-grid">
                       <CardMedia
@@ -91,11 +79,7 @@ export const CryptoCards = (props: IProps) => {
                         image={crypto?.image}
                         alt="crypto image"
                       />
-                      <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom
-                      >
+                      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {crypto?.symbol}
                       </Typography>
                       <Typography variant="h5" component="div">
@@ -104,11 +88,7 @@ export const CryptoCards = (props: IProps) => {
                       <Typography variant="h6" color="text.secondary">
                         {t('Homepage.cryptoCards.currentPrice')}
                       </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{ mb: 1.5 }}
-                        color="text.secondary"
-                      >
+                      <Typography variant="h6" sx={{ mb: 1.5 }} color="text.secondary">
                         {crypto?.current_price}
                       </Typography>
                       <Typography variant="h6">
@@ -116,20 +96,13 @@ export const CryptoCards = (props: IProps) => {
                       </Typography>
                       <Typography
                         variant="h6"
-                        color={
-                          crypto?.price_change_percentage_24h < 0
-                            ? 'red'
-                            : 'green'
-                        }
+                        color={crypto?.price_change_percentage_24h < 0 ? 'red' : 'green'}
                       >
                         {crypto?.price_change_percentage_24h}
                         <br />
                       </Typography>
                       <CardActions>
-                        <Button
-                          size="small"
-                          href={`https://www.coinbase.com/price/${crypto.id}`}
-                        >
+                        <Button size="small" href={`https://www.coinbase.com/price/${crypto.id}`}>
                           Learn more
                         </Button>
                       </CardActions>
@@ -140,9 +113,7 @@ export const CryptoCards = (props: IProps) => {
             ))}
           </Grid>
         </Container>
-      ) : (
-        null
-      )}
+      ) : null}
     </>
   );
 };

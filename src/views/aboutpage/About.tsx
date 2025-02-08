@@ -1,114 +1,93 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { Container, Grid } from '@mui/material';
-import Footer from '../../common/components/Footer';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, Grid, Container } from "@mui/material";
+import Button from "@mui/material/Button";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const steps = [
   {
-    label: 'Start of my coding journey',
-    description: `In October 2021 I started coding as a hobby. After creating a few console 
-    applications in Java, I realized I quite enjoyed programming, and continued
-    my learning journey with the help of online courses.`,
-  },
-  {
-    label: 'Retraining with the University of Amsterdam',
+    year: "2021",
+    title: "Start of my coding journey",
     description:
-      'At the start of 2022 I decided to take the jump. I quit my job, and started a full-time retraining course in Software Engineering at the University of Amsterdam. Technologies I learned included Java, Spring Boot, SQL, design patterns and algorithms.',
+      "In October 2021, I started coding as a hobby. After creating a few console applications in Java, I realized I quite enjoyed programming and continued my learning journey with online courses.",
   },
   {
-    label: 'Junior .NET Developer at Conclusion',
-    description: `In July 2022 I started as a junior developer at Conclusion Enablement in Amsterdam, where I work as a full-stack developer (React, .NET, C#, AWS).`,
+    year: "2022",
+    title: "Retraining with the University of Amsterdam",
+    description:
+      "At the start of 2022, I took the jump. I quit my job and started a full-time retraining course in Software Engineering at the University of Amsterdam. Technologies I learned included Java, Spring Boot, SQL, design patterns, and algorithms.",
   },
   {
-    label: 'Hobby projects',
-    description: `DailyCrypto is the first React application that I have built without following a step-by-step tutorial. It makes use of the CoinGecko Api to fetch up-to-date information, and the UI is built using external libraries such as MUI, Rechart and i18n.`,
+    year: "2022",
+    title: "Junior .NET Developer at Conclusion",
+    description:
+      "In July 2022, I started as a junior developer at Conclusion Enablement in Amsterdam, where I work as a full-stack developer (React, .NET, C#, AWS).",
+  },
+  {
+    year: "2023",
+    title: "Hobby projects",
+    description:
+      "DailyCrypto is the first React application that I built without following a step-by-step tutorial. It fetches real-time crypto data using the CoinGecko API and features a UI built with external libraries such as MUI, Recharts, and i18n.",
   },
 ];
 
-export default function Aboutpage() {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
+export default function AboutPage() {
   return (
-    <>
-      <Container>
-        <Grid container xs={12} md={12} lg={12}>
-          <Grid item xs={12} md={6} lg={6} paddingTop={3}>
-            <Stepper activeStep={activeStep} orientation='vertical'>
-              {steps.map((step, index) => (
-                <Step key={step.label}>
-                  <StepLabel
-                    optional={
-                      index === 2 ? <Typography variant='caption'></Typography> : null
-                    }
-                  >
-                    {step.label}
-                  </StepLabel>
-                  <StepContent>
-                    <Typography>{step.description}</Typography>
-                    <Box sx={{ mb: 2 }}>
-                      <div>
-                        <Button
-                          variant='contained'
-                          onClick={handleNext}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          {index === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-                        <Button
-                          disabled={index === 0}
-                          onClick={handleBack}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          Back
-                        </Button>
-                      </div>
-                    </Box>
-                  </StepContent>
-                </Step>
-              ))}
-            </Stepper>
-            {activeStep === steps.length && (
-              <Paper square elevation={0} sx={{ p: 3 }}>
-                <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                  Reset
-                </Button>
-              </Paper>
-            )}
+    <Container>
+      <Grid container spacing={4} justifyContent="center" padding={4}>
+        <Grid item xs={12} textAlign="center">
+          <h1 className="text-4xl font-bold">About Me</h1>
+        </Grid>
+        <Grid container spacing={4} paddingTop={4}>
+          <Grid item xs={12} md={6}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05, boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card sx={{ mb: 2, borderLeft: "4px solid #1976d2", padding: 2 }}>
+                  <CardContent>
+                    <h3>{step.year} - {step.title}</h3>
+                    <p>{step.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
           </Grid>
-          <Grid container xs={12} md={6} lg={6} paddingTop={3}>
-            <img src='coding.jpg' alt={'coding'} width={570}></img>
-            <Grid item xs={12} md={6} lg={6} paddingTop={3}>
-              <a href='https://www.linkedin.com/in/rogerdirkx/'>
-                <img src='linkedin.png' alt={'linkedin'} width={200}></img>
-              </a>
-            </Grid>
-            <Grid item xs={12} md={6} lg={6} paddingTop={3}>
-              <a href='https://github.com/rogerUserGitHub'>
-                <img src='github.png' alt={'github'} width={200}></img>
-              </a>
+          <Grid item xs={12} md={6} textAlign="center">
+            <Grid container spacing={2} justifyContent="center" mt={2}>
+              <Grid item>
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button variant="contained" color="primary" href="https://www.linkedin.com/in/rogerdirkx" target="_blank" startIcon={<LinkedInIcon />}>
+                    LinkedIn
+                  </Button>
+                </motion.div>
+              </Grid>
+              <Grid item>
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button variant="contained" color="secondary" href="https://github.com/rogerUserGitHub" target="_blank" startIcon={<GitHubIcon />}>
+                    GitHub
+                  </Button>
+                </motion.div>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Container>
-    </>
+      </Grid>
+    </Container>
   );
 }

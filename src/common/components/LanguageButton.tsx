@@ -21,7 +21,6 @@ export default function LanguageButton() {
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
-  //   const [selectedLanguage, setSelectedLanguage] = useState(1);
 
   const checkOnRender = () => {
     if (localStorage.language === 'English') {
