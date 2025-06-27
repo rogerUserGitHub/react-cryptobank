@@ -8,11 +8,11 @@ import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
 import { useTranslation } from 'react-i18next';
 import CryptoConverter from './CryptoConverter';
 import Footer from '../../common/components/Footer';
-import { useSnackbar } from 'material-ui-snackbar-provider';
+import { useSnackbar } from 'notistack';
 
 export default function Details() {
   let params = useParams();
-  const snackbar = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [cryptoData, setCryptoData] = useState<ICryptoData[]>([]);
   const [exchangeData, setExchangeData] = useState<IExchangeData>({});
@@ -30,10 +30,10 @@ export default function Details() {
       }
       const data = await res.json();
       setCryptoData(data);
-      snackbar.showMessage('Updated data');
+      enqueueSnackbar('Updated data', { variant: 'success' });
     } catch (err: any) {
       console.error(err);
-      snackbar.showMessage(err);
+      enqueueSnackbar(err, { variant: 'error' });
     } finally {
       setLoading(false);
     }
@@ -49,10 +49,10 @@ export default function Details() {
       }
       const data = await res.json();
       setExchangeData(data);
-      snackbar.showMessage('Updated data');
+      enqueueSnackbar('Updated data', { variant: 'success' });
     } catch (err: any) {
       console.error(err);
-      snackbar.showMessage(err);
+      enqueueSnackbar(err, { variant: 'error' });
     } finally {
       setLoading2(false);
     }

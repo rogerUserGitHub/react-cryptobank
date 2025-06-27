@@ -11,13 +11,13 @@ import MenuList from '@mui/material/MenuList';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
 import { changeLanguageI18n } from './../../i18n/i18n';
-import { useSnackbar } from 'material-ui-snackbar-provider';
+import { useSnackbar } from 'notistack';
 
 const options = ['Dutch', 'English'];
 
 export default function LanguageButton() {
   const { language, setLanguage, changeLanguage } = useContext(LanguageContext);
-  const snackbar = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ export default function LanguageButton() {
   }, []);
 
   const handleClick = (event: any) => {
-    snackbar.showMessage('You changed your language');
+    enqueueSnackbar('You changed your language', { variant: 'success' });
   };
 
   const handleMenuItemClick = (
@@ -66,7 +66,7 @@ export default function LanguageButton() {
   };
 
   const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen);
+    setOpen((prevOpen) => !prevOpen);
   };
 
   const handleClose = (event: Event) => {
@@ -81,23 +81,20 @@ export default function LanguageButton() {
     <React.Fragment>
       <ButtonGroup
         sx={{ height: 35, paddingTop: 3 }}
-        variant='contained'
+        variant="contained"
         ref={anchorRef}
-        aria-label='split button'
+        aria-label="split button"
       >
-        <Button
-          sx={{ background: 'lightgrey', color: 'darkblue' }}
-          onClick={handleClick}
-        >
+        <Button sx={{ background: 'lightgrey', color: 'darkblue' }} onClick={handleClick}>
           {language}
         </Button>
         <Button
           sx={{ background: 'lightgrey' }}
-          size='small'
+          size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
-          aria-label='select merge strategy'
-          aria-haspopup='menu'
+          aria-label="select merge strategy"
+          aria-haspopup="menu"
           onClick={handleToggle}
         >
           <ArrowDropDownIcon />
@@ -122,13 +119,13 @@ export default function LanguageButton() {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id='split-button-menu' autoFocusItem>
+                <MenuList id="split-button-menu" autoFocusItem>
                   {options.map((option, index) => (
                     <MenuItem
                       key={option}
                       disabled={index === 2}
                       selected={index === language}
-                      onClick={event => handleMenuItemClick(event, index)}
+                      onClick={(event) => handleMenuItemClick(event, index)}
                     >
                       {option}
                     </MenuItem>

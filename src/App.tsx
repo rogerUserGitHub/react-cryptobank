@@ -10,14 +10,14 @@ import SearchBar from './common/components/SearchBar';
 import dataList from './common/utils/Datalist';
 import NotFound from './views/NotFound';
 import { LanguageProvider } from './context/LanguageContext';
-import { SnackbarProvider } from 'material-ui-snackbar-provider';
+import { SnackbarProvider } from 'notistack';
 import { Container, Grid } from '@mui/material';
 import ClickBar from './common/components/ClickBar';
 
 function App() {
   return (
     <>
-      <SnackbarProvider SnackbarProps={{ autoHideDuration: 3000 }}>
+      <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
         <BrowserRouter>
           <LanguageProvider>
             <ClickBar />

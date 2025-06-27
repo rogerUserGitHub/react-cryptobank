@@ -6,7 +6,7 @@ import GlobalData from './HomeGlobalData';
 import HomeCryptoBarChart from './HomeCryptoBarChart';
 import { LanguageContext } from '../../context/LanguageContext';
 import HomeTrendingCards from './trending/HomeTrendingCards';
-import { useSnackbar } from 'material-ui-snackbar-provider';
+import { useSnackbar } from 'notistack';
 import Footer from '../../common/components/Footer';
 import { Container, Grid } from '@mui/material';
 import AnimatedBar from '../../common/components/AnimatedBar';
@@ -22,7 +22,7 @@ export default function Home() {
   const slicedCryptoItems2 = useMemo(() => cryptoData?.slice(0, 5), [cryptoData]);
   const coins = useMemo(() => trendingCrypto?.coins || [], [trendingCrypto]);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
-  const snackbar = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleToggle = useCallback(() => {
     setButtonClicked((prev) => (prev === 'default' ? 'primary' : 'default'));
@@ -46,7 +46,7 @@ export default function Home() {
       setGlobalData(globalDataRes);
       setCryptoData(cryptoDataRes);
       setTrendingCrypto(trendingDataRes);
-      snackbar.showMessage('Data updated successfully');
+      enqueueSnackbar('Data updated successfully');
     } catch (err) {
       setHasError(true);
     } finally {
@@ -75,11 +75,12 @@ export default function Home() {
       return await res.json();
     } catch (err: any) {
       if (err instanceof TypeError) {
-        snackbar.showMessage(
-          'Too many requests - I am using a free plan to query CoinGecko :) Please try again shortly.'
+        enqueueSnackbar(
+          'Too many requests - I am using a free plan to query CoinGecko :) Please try again shortly.',
+          { variant: 'error' }
         );
       } else {
-        snackbar.showMessage(err.message || 'An error occurred.');
+        enqueueSnackbar(err.message || 'An error occurred.', { variant: 'error' });
       }
       throw err;
     }
