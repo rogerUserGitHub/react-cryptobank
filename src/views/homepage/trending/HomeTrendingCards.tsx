@@ -31,7 +31,7 @@ export const HomeTrendingCards = (props: IProps) => {
         <Container>
           <Grid container spacing={3}>
             {trendingCrypto?.slice(0, 3).map((crypto) => (
-              <Grid id={crypto?.item?.id} item xs={6} md={3} lg={3}>
+              <Grid id={crypto?.item?.id} item xs={6} md={3} lg={3} key={crypto?.item?.id}>
                 <Card key={crypto?.item?.id} className="card-grid" sx={componentShadowSX}>
                   <CardActionArea href={`/details/${crypto?.item?.id}`}>
                     <CardContent className="card-grid">

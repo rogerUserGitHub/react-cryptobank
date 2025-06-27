@@ -5,7 +5,7 @@ export const Banner = () => {
     <>
       <br />
       <Container>
-        <div id='bannerimage'></div>
+        <div id="bannerimage"></div>
       </Container>
     </>
   );

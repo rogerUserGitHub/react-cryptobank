@@ -10,13 +10,12 @@ interface IProps {
 }
 
 const DetailsGraph = (props: any) => {
-
   const [t, i18n] = useTranslation();
 
-  const typeOfData = props.graphTypeData
+  const typeOfData = props.graphTypeData;
   let graphDataAfterSwitch = null;
 
-  switch(typeOfData) {
+  switch (typeOfData) {
     case 'prices': {
       graphDataAfterSwitch = props?.graphData?.prices;
       break;
@@ -29,12 +28,12 @@ const DetailsGraph = (props: any) => {
       graphDataAfterSwitch = props?.graphData?.total_volumes;
       break;
     }
-  } 
+  }
 
   if (!graphDataAfterSwitch) {
     return (
       <Grid item xs={12} md={12} lg={8}>
-        <div className='grid-container-spinner'>
+        <div className="grid-container-spinner">
           <Spinner />
         </div>
       </Grid>
@@ -52,29 +51,18 @@ const DetailsGraph = (props: any) => {
   }
 
   return (
-    <AreaChart
-      width={750}
-      height={500}
-      data={arrayOfObjects}
-      margin={{ top: 30, bottom: 30 }}
-    >
+    <AreaChart width={750} height={500} data={arrayOfObjects} margin={{ top: 30, bottom: 30 }}>
       <defs>
-        <linearGradient id='colorPv' x1='0' y1='0' x2='0' y2='1'>
-          <stop offset='5%' stopColor='#40E0D0' stopOpacity={0.8} />
-          <stop offset='95%' stopColor='#82ca9d' stopOpacity={0} />
+        <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="5%" stopColor="#40E0D0" stopOpacity={0.8} />
+          <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
         </linearGradient>
       </defs>
-      <XAxis dataKey='name' />
-      <YAxis type='number' domain={['auto', 'auto']} />
-      <CartesianGrid strokeDasharray='3 3' />
+      <XAxis dataKey="name" />
+      <YAxis type="number" domain={['auto', 'auto']} />
+      <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
-      <Area
-        type='monotone'
-        dataKey='pv'
-        stroke='#82ca9d'
-        fillOpacity={1}
-        fill='url(#colorPv)'
-      />
+      <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
     </AreaChart>
   );
 };

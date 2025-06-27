@@ -3,18 +3,16 @@ import { useEffect, useContext } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { ButtonGroup, Switch } from '@mui/material';
 
-
 export default function ToggleDarkModeButton() {
   const { darkMode, setDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const checkOnRender = () => {
-
     if (localStorage.theme === 'dark') {
       toggleDarkMode('dark');
       document.body.style.backgroundColor = 'black';
     }
     if (localStorage.theme === 'light') {
-      toggleDarkMode('light')
+      toggleDarkMode('light');
       document.body.style.backgroundColor = 'white';
     }
     if (!('theme' in localStorage)) {
@@ -33,13 +31,13 @@ export default function ToggleDarkModeButton() {
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkMode(event.target.checked)
+    setDarkMode(event.target.checked);
     if (event.target.checked === false) {
-      setThemeInStorage('light')
+      setThemeInStorage('light');
       document.body.style.backgroundColor = 'white';
       document.body.style.color = 'black';
     } else {
-      setThemeInStorage('dark')
+      setThemeInStorage('dark');
       document.body.style.backgroundColor = '#181818';
       document.body.style.color = 'white';
     }
@@ -47,16 +45,12 @@ export default function ToggleDarkModeButton() {
 
   return (
     <>
-    <ButtonGroup
-        sx={{ height: 35, paddingTop: 3 }}
-        variant='contained'
-        aria-label='split button'
-      >
-      <Switch
-        checked={darkMode}
-        onChange={handleChange}
-        inputProps={{ 'aria-label': 'controlled' }}
-      />
+      <ButtonGroup sx={{ height: 35, paddingTop: 3 }} variant="contained" aria-label="split button">
+        <Switch
+          checked={darkMode}
+          onChange={handleChange}
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
       </ButtonGroup>
     </>
   );

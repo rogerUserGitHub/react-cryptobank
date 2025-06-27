@@ -45,46 +45,40 @@ const DetailsGraphFilter = (props: any) => {
   //     .catch(err => console.error(err));
   // }, [graphDays, url]);
 
-  const handleChangeNumberDays = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
-  ) => {
+  const handleChangeNumberDays = (event: React.MouseEvent<HTMLElement>, newAlignment: string) => {
     setGraphDays(newAlignment);
   };
 
-  const handleChangeTypeData = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment2: string
-  ) => {
+  const handleChangeTypeData = (event: React.MouseEvent<HTMLElement>, newAlignment2: string) => {
     setGraphTypeData(newAlignment2);
   };
 
   return (
     <>
       <ToggleButtonGroup
-        color='primary'
+        color="primary"
         value={graphDays}
         exclusive
         onChange={handleChangeNumberDays}
-        aria-label='Platform'
+        aria-label="Platform"
       >
-        <ToggleButton value='1'>24h</ToggleButton>
-        <ToggleButton value='3'>3 days</ToggleButton>
-        <ToggleButton value='7'>7 days</ToggleButton>
-        <ToggleButton value='14'>14 days</ToggleButton>
-        <ToggleButton value='30'>30 days</ToggleButton>
+        <ToggleButton value="1">24h</ToggleButton>
+        <ToggleButton value="3">3 days</ToggleButton>
+        <ToggleButton value="7">7 days</ToggleButton>
+        <ToggleButton value="14">14 days</ToggleButton>
+        <ToggleButton value="30">30 days</ToggleButton>
       </ToggleButtonGroup>{' '}
       <br></br>
       <ToggleButtonGroup
-        color='secondary'
+        color="secondary"
         value={graphTypeData}
         exclusive
         onChange={handleChangeTypeData}
-        aria-label='Platform'
+        aria-label="Platform"
       >
-        <ToggleButton value='prices'>prices</ToggleButton>
-        <ToggleButton value='market_caps'>Market cap</ToggleButton>
-        <ToggleButton value='total_volumes'>Total volume</ToggleButton>
+        <ToggleButton value="prices">prices</ToggleButton>
+        <ToggleButton value="market_caps">Market cap</ToggleButton>
+        <ToggleButton value="total_volumes">Total volume</ToggleButton>
       </ToggleButtonGroup>
       <DetailsGraph graphData={graphData} graphTypeData={graphTypeData} />
     </>

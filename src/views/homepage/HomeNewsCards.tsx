@@ -32,26 +32,26 @@ export const HomeNewsCardsVert = (props: IProps) => {
         </Grid>
         {!loading ? (
           <Grid container spacing={3}>
-            {slicedCardNewsVertItems?.map(newsItem => (
+            {slicedCardNewsVertItems?.map((newsItem) => (
               <Grid key={newsItem?.name} item xs={12} md={4} lg={4}>
                 <Card sx={{ maxWidth: 345, height: 510, componentShadowSX }}>
-                  <CardContent id='global-info-cards'>
+                  <CardContent id="global-info-cards">
                     <CardMedia
-                      component='img'
-                      height='150'
+                      component="img"
+                      height="150"
                       image={newsItem?.image?.thumbnail?.contentUrl}
-                      alt='image'
+                      alt="image"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant='h5' component='div'>
+                      <Typography gutterBottom variant="h5" component="div">
                         {newsItem?.name}
                       </Typography>
-                      <Typography variant='body2' color='text.secondary'>
+                      <Typography variant="body2" color="text.secondary">
                         {newsItem?.description}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size='small' href={newsItem?.url}>
+                      <Button size="small" href={newsItem?.url}>
                         Learn More
                       </Button>
                     </CardActions>
@@ -76,30 +76,27 @@ export const HomeNewsCardsHoriz = (props: IProps) => {
     <>
       <Container>
         <Grid container>
-          {slicedCardNewsHorizItems?.map(newsItem => (
+          {slicedCardNewsHorizItems?.map((newsItem) => (
             <Grid item xs={12} md={12} lg={12}>
-              <Card
-                key={newsItem?.name}
-                sx={{ maxWidth: 2000, height: 250, componentShadowSX }}
-              >
-                <CardContent id='global-info-cards'>
+              <Card key={newsItem?.name} sx={{ maxWidth: 2000, height: 250, componentShadowSX }}>
+                <CardContent id="global-info-cards">
                   <CardMedia
-                    component='img'
-                    height='80'
+                    component="img"
+                    height="80"
                     sx={{ width: 1200 }}
                     image={newsItem?.image?.thumbnail?.contentUrl}
-                    alt='image'
+                    alt="image"
                   />
                   <CardContent>
-                    <Typography align='left' variant='h5' component='div'>
+                    <Typography align="left" variant="h5" component="div">
                       {newsItem?.name}
                     </Typography>
-                    <Typography variant='body2' color='text.secondary'>
+                    <Typography variant="body2" color="text.secondary">
                       {newsItem?.description}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size='small' href={newsItem?.url}>
+                    <Button size="small" href={newsItem?.url}>
                       Learn More
                     </Button>
                   </CardActions>

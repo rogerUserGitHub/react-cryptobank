@@ -1,14 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ReferenceLine,
-  Tooltip,
-  XAxis,
-} from 'recharts';
+import { Bar, BarChart, CartesianGrid, Legend, ReferenceLine, Tooltip, XAxis } from 'recharts';
 import { ICryptoData } from '../../common/interfaces/interfaces';
 
 interface IProps {
@@ -37,24 +29,24 @@ const HomeCryptoBarChart = (props: IProps) => {
       <Grid container>
         <Grid item xs={6} md={6} lg={6}>
           <BarChart width={550} height={400} data={slicedCryptoItems2}>
-            <CartesianGrid strokeDasharray='3 3' />
-            <XAxis dataKey='name' />
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
             {/* <YAxis /> */}
             <Tooltip />
             <Legend />
-            <Bar dataKey='market_cap' fill='lightseagreen' />
-            <Bar dataKey='total_volume' fill='lightpink' />
+            <Bar dataKey="market_cap" fill="lightseagreen" />
+            <Bar dataKey="total_volume" fill="lightpink" />
           </BarChart>
         </Grid>
 
         <Grid item xs={6} md={6} lg={6}>
           <BarChart width={550} height={400} data={slicedCryptoItems2}>
-            <CartesianGrid strokeDasharray='3 3' />
-            <XAxis dataKey='name' />
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
             <Tooltip />
             <Legend />
-            <ReferenceLine y={0} stroke='#000' />
-            <Bar dataKey='price_change_percentage_24h' fill='lightseagreen' />
+            <ReferenceLine y={0} stroke="#000" />
+            <Bar dataKey="price_change_percentage_24h" fill="lightseagreen" />
           </BarChart>
         </Grid>
       </Grid>

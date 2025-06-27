@@ -1,6 +1,6 @@
 export const componentShadowSX = {
-    "&:hover": {
-      color: 'gray',
-      boxShadow: 8,
-    },
-  };
+  '&:hover': {
+    color: 'gray',
+    boxShadow: 8,
+  },
+};

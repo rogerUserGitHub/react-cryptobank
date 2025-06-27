@@ -69,7 +69,7 @@ export const CryptoCards = (props: IProps) => {
         <Container>
           <Grid container spacing={3}>
             {slicedCryptoItems.map((crypto) => (
-              <Grid id={crypto?.name} item xs={12} md={6} lg={3}>
+              <Grid id={crypto?.name} item xs={12} md={6} lg={3} key={crypto?.name}>
                 <Card key={crypto?.name} className="card-grid" sx={componentShadowSX}>
                   <CardActionArea href={`/details/${crypto.id}`}>
                     <CardContent className="card-grid">

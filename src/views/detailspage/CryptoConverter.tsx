@@ -61,10 +61,10 @@ const CryptoConverter = (props: IProps) => {
   var ArrayPerCrypto = dataArray?.filter(function (el) {
     return el?.type === 'crypto';
   });
-  let result = ArrayPerCrypto?.map(a => a.name);
-  const menuItemsCrypto = result?.map(item => {
+  let result = ArrayPerCrypto?.map((a) => a.name);
+  const menuItemsCrypto = result?.map((item) => {
     return (
-      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
+      <MenuItem key={item} value={item} onClick={(e) => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
@@ -74,10 +74,10 @@ const CryptoConverter = (props: IProps) => {
   var arrayPerFiat = dataArray?.filter(function (el) {
     return el?.type === 'fiat';
   });
-  let result2 = arrayPerFiat?.map(a => a.name);
-  const menuItemsFiat = result2?.map(item => {
+  let result2 = arrayPerFiat?.map((a) => a.name);
+  const menuItemsFiat = result2?.map((item) => {
     return (
-      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
+      <MenuItem key={item} value={item} onClick={(e) => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
@@ -87,10 +87,10 @@ const CryptoConverter = (props: IProps) => {
   var arrayPerCommodity = dataArray?.filter(function (el) {
     return el?.type === 'commodity';
   });
-  let result3 = arrayPerCommodity?.map(a => a.name);
-  const menuItemsCommodity = result3?.map(item => {
+  let result3 = arrayPerCommodity?.map((a) => a.name);
+  const menuItemsCommodity = result3?.map((item) => {
     return (
-      <MenuItem key={item} value={item} onClick={e => handleValueClick(e, item)}>
+      <MenuItem key={item} value={item} onClick={(e) => handleValueClick(e, item)}>
         {item}
       </MenuItem>
     );
@@ -121,8 +121,8 @@ const CryptoConverter = (props: IProps) => {
         <Grid item xs={12} md={12} lg={12}>
           <Item>
             <FormControl sx={{ minWidth: 750, minHeight: 40 }}>
-              <InputLabel htmlFor='grouped-select'>Asset</InputLabel>
-              <Select defaultValue='' id='grouped-select' label='Asset'>
+              <InputLabel htmlFor="grouped-select">Asset</InputLabel>
+              <Select defaultValue="" id="grouped-select" label="Asset">
                 <ListSubheader>Crypto</ListSubheader>
                 {menuItemsCrypto}
                 <ListSubheader>Fiat</ListSubheader>
@@ -136,9 +136,9 @@ const CryptoConverter = (props: IProps) => {
         <Grid item xs={4.5} md={4.5} lg={4.5}>
           <Item>
             <TextField
-              id='filled-number'
-              label='Amount in Bitcoin'
-              type='number'
+              id="filled-number"
+              label="Amount in Bitcoin"
+              type="number"
               fullWidth
               InputLabelProps={{
                 shrink: true,
@@ -148,7 +148,7 @@ const CryptoConverter = (props: IProps) => {
                   min: 10,
                 },
               }}
-              variant='filled'
+              variant="filled"
               defaultValue={0}
               onClick={handleNumberClick}
             />

@@ -25,13 +25,7 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               Resources
             </Typography>
-            <Link
-              href="#"
-              color="text.primary"
-              underline="none"
-              display="block"
-              mb={1}
-            >
+            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
               Blog
             </Link>
           </Grid>
@@ -41,13 +35,7 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               About
             </Typography>
-            <Link
-              href="#"
-              color="text.primary"
-              underline="none"
-              display="block"
-              mb={1}
-            >
+            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
               about us
             </Link>
           </Grid>
@@ -57,53 +45,28 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               Community
             </Typography>
-            <Link
-              href="#"
-              color="text.primary"
-              underline="none"
-              display="block"
-              mb={1}
-            >
+            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
               Forums
             </Link>
-            <Link
-              href="#"
-              color="text.primary"
-              underline="none"
-              display="block"
-              mb={1}
-            >
+            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
               Discord
             </Link>
-            <Link
-              href="#"
-              color="text.primary"
-              underline="none"
-              display="block"
-            >
+            <Link href="#" color="text.primary" underline="none" display="block">
               GitHub
             </Link>
           </Grid>
 
           {/* Contact Section with Social Media */}
-          <Grid item xs={6} md={3} >
+          <Grid item xs={6} md={3}>
             <Typography variant="h6" gutterBottom>
               Contact
             </Typography>
             <Box display="flex" gap={2}>
               <Link href="https://www.linkedin.com/in/rogerdirkx/" target="_blank">
-                <img
-                  src={process.env.PUBLIC_URL + '/linkedin.png'}
-                  alt="LinkedIn"
-                  width={30}
-                />
+                <img src={process.env.PUBLIC_URL + '/linkedin.png'} alt="LinkedIn" width={30} />
               </Link>
               <Link href="https://github.com/rogerUserGitHub" target="_blank">
-                <img
-                  src={process.env.PUBLIC_URL + '/github.png'}
-                  alt="GitHub"
-                  width={30}
-                />
+                <img src={process.env.PUBLIC_URL + '/github.png'} alt="GitHub" width={30} />
               </Link>
               <Link href="https://react-portfolio-rdirkx.netlify.app/" target="_blank">
                 <img
