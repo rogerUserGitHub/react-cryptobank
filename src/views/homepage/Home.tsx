@@ -9,6 +9,7 @@ import HomeTrendingCards from './trending/HomeTrendingCards';
 import { useSnackbar } from 'material-ui-snackbar-provider';
 import Footer from '../../common/components/Footer';
 import { Container, Grid } from '@mui/material';
+import AnimatedBar from '../../common/components/AnimatedBar';
 
 export default function Home() {
   const [globalData, setGlobalData] = useState<IGlobalData>();
@@ -22,6 +23,7 @@ export default function Home() {
   const coins = useMemo(() => trendingCrypto?.coins || [], [trendingCrypto]);
   const [buttonClicked, setButtonClicked] = useState<string | undefined>('default');
   const snackbar = useSnackbar();
+
   const handleToggle = useCallback(() => {
     setButtonClicked((prev) => (prev === 'default' ? 'primary' : 'default'));
   }, []);
@@ -105,6 +107,7 @@ export default function Home() {
 
   return (
     <>
+      <AnimatedBar globalData={globalData} />
       <GlobalData
         globalData={globalData}
         trendingCrypto={coins}

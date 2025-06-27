@@ -25,39 +25,49 @@ interface Column {
 
 const columns: readonly Column[] = [
   {
+    id: 'logo',
+    label: '',
+    minWidth: 30,
+  },
+  {
     id: 'market_cap_rank',
     label: 'market cap rank',
-    minWidth: 120,
+    minWidth: 30,
   },
   {
     id: 'symbol',
     label: 'symbol',
-    minWidth: 90,
+    minWidth: 50,
   },
   {
     id: 'name',
     label: 'name',
-    minWidth: 170,
+    minWidth: 150,
   },
   {
     id: 'current_price',
     label: 'current price',
-    minWidth: 120,
+    minWidth: 110,
   },
   {
     id: 'low_24h',
     label: '24h low',
-    minWidth: 130,
+    minWidth: 110,
   },
   {
     id: 'high_24h',
     label: '24h high',
-    minWidth: 130,
+    minWidth: 110,
   },
   {
     id: 'price_change_percentage_24h',
     label: '24h price change',
-    minWidth: 120,
+    minWidth: 110,
+  },
+  {
+    id: 'sparkline',
+    label: 'sparkline',
+    minWidth: 110,
   },
 ];
 
@@ -81,6 +91,16 @@ const CryptoTable = (props: IProps) => {
     setPage(0);
   };
 
+  const extractCoinId = (url: string): string => {
+    const match = url?.match(/images\/(\d+)\/large/);
+    return match ? parseInt(match[1], 10).toString() : '';
+  };
+
+  cryptoData?.map((data) => {
+    const coinId = extractCoinId(data?.image);
+    data.sparkline = `https://www.coingecko.com/coins/${coinId}/sparkline.svg`;
+  });
+
   return (
     <>
       <Container>
@@ -95,10 +115,10 @@ const CryptoTable = (props: IProps) => {
       <Container>
         <TableContainer sx={{ maxHeight: 2000 }}>
           <Grid item xs={12} md={6} lg={4}>
-            <Table aria-label='sticky table'>
+            <Table aria-label="sticky table">
               <TableHead>
                 <TableRow>
-                  {columns.map(column => (
+                  {columns.map((column) => (
                     <TableCell
                       key={column.id}
                       align={column.align}
@@ -124,21 +144,39 @@ const CryptoTable = (props: IProps) => {
                         href={`/details/${row.id}`}
                         hover
                         tabIndex={-1}
-                        id={row.id}
+                        key={row.id}
                       >
-                        {columns.map(column => {
+                        {columns.map((column) => {
                           const value = row[column.id];
+
                           return (
                             <TableCell
                               key={column.id}
                               sx={{
-                                fontWeight: 'normal',
+                                fontWeight: 'semi-bold',
                                 fontSize: 19,
                               }}
                             >
-                              {column.format && typeof value === 'number'
-                                ? column.format(value)
-                                : value}
+                              {column.id === 'logo' ? (
+                                <img
+                                  src={row.image}
+                                  alt={row.name}
+                                  width="30"
+                                  height="30"
+                                  style={{ borderRadius: '50%' }}
+                                />
+                              ) : column.id === 'sparkline' ? (
+                                <img
+                                  src={row.sparkline}
+                                  alt={`${row.name} sparkline`}
+                                  width="100"
+                                  height="30"
+                                />
+                              ) : column.format && typeof value === 'number' ? (
+                                column.format(value)
+                              ) : (
+                                value
+                              )}
                             </TableCell>
                           );
                         })}
@@ -151,7 +189,7 @@ const CryptoTable = (props: IProps) => {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 50]}
-          component='div'
+          component="div"
           count={cryptoData.length}
           rowsPerPage={rowsPerPage}
           page={page}

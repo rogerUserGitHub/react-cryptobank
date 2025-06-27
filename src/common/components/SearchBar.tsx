@@ -16,14 +16,14 @@ const SearchBar = (props: any) => {
       <Grid item xs={12} md={12} lg={12}>
         <Autocomplete
           disablePortal
-          id='combo-box-demo'
+          id="combo-box-demo"
           options={dataList}
           onChange={onClickHandler}
           sx={{
             width: 500,
             paddingTop: 4,
           }}
-          renderInput={params => <TextField {...params} label='Search for crypto' />}
+          renderInput={(params) => <TextField {...params} label="Search for crypto" />}
         />
       </Grid>
     </Container>

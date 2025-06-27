@@ -108,7 +108,7 @@ const GlobalData = ({ globalData, trendingCrypto, isLoading, hasError }: IProps)
 
       {showStats && globalData && trendingCrypto?.length > 0 ? (
         <Grid2 container spacing={1}>
-          <Grid2 size={{ xs: 12, md: 6, lg: 6 }}>
+          <Grid2 size={{ md: 12, lg: 6 }}>
             <Grid2 container direction="row" spacing={1}>
               <Grid2 size={{ lg: 1 }}>
                 <StyledLogoBox>
@@ -159,7 +159,7 @@ const GlobalData = ({ globalData, trendingCrypto, isLoading, hasError }: IProps)
             </Grid2>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 6, lg: 6 }}>
+          <Grid2 size={{ md: 12, lg: 6 }}>
             <Grid2 container direction="row" spacing={1}>
               <Grid2 size={{ lg: 1 }}>
                 <StyledBox>

@@ -27,6 +27,7 @@ export interface ICryptoData {
   ath: number;
   atl: number;
   last_updated: string;
+  sparkline: string;
 }
 
 export interface IExchangeData {
@@ -62,8 +63,22 @@ export interface IGlobalData {
   data?: {
     active_cryptocurrencies?: number;
     upcoming_icos?: number;
+    ended_icos?: number;
     ongoing_icos?: number;
     markets?: number;
+    market_cap_change_percentage_24h_usd: string;
+    market_cap_percentage?: {
+      ada: number;
+      bnb: number;
+      btc: number;
+      doge: number;
+      eth: number;
+      sol: number;
+      steth: number;
+      usdc: number;
+      usdt: number;
+      xrp: number;
+    };
   };
 }
 
@@ -88,6 +103,7 @@ export interface ITrendingCrypto {
     score: number;
     data?: {
       price?: number;
+      sparkline: string;
     };
   };
 }
