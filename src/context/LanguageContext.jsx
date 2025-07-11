@@ -6,13 +6,16 @@ const LanguageContext = createContext();
 function LanguageProvider(props) {
   const [language, setLanguage] = useState('English');
 
-  const changeLanguage = (language) => {
-    if (language === 'English') {
+  const changeLanguage = (newLanguage) => {
+    if (newLanguage === language) return;
+
+    if (newLanguage === 'English') {
       setLanguage('English');
       changeLanguageI18n('en');
+    } else if (newLanguage === 'Dutch') {
+      setLanguage('Dutch');
+      changeLanguageI18n('nl');
     }
-    if (language === 'Dutch') setLanguage('Dutch');
-    changeLanguageI18n('nl');
   };
 
   return (

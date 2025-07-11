@@ -13,6 +13,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { SnackbarProvider } from 'notistack';
 import { Container, Grid } from '@mui/material';
 import ClickBar from './common/components/ClickBar';
+import Footer from './common/components/Footer';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path="/details/:id" element={<DetailsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
           </LanguageProvider>
         </BrowserRouter>
       </SnackbarProvider>

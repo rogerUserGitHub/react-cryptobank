@@ -9,7 +9,7 @@ export default function Footer() {
           <Grid item xs={12} md={3}>
             <Box>
               <img
-                src={process.env.PUBLIC_URL + '/goat.jpg'}
+                src={process.env.PUBLIC_URL + '/goat2.gif'}
                 alt="Logo"
                 width={80}
                 style={{ marginBottom: '1rem' }}
@@ -25,9 +25,6 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               Resources
             </Typography>
-            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
-              Blog
-            </Link>
           </Grid>
 
           {/* About Section */}
@@ -35,8 +32,8 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               About
             </Typography>
-            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
-              about us
+            <Link href="/about" color="text.primary" underline="none" display="block" mb={1}>
+              about me
             </Link>
           </Grid>
 
@@ -45,14 +42,14 @@ export default function Footer() {
             <Typography variant="h6" gutterBottom>
               Community
             </Typography>
-            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
+            <Link
+              href="https://www.reddit.com/r/CryptoCurrency/"
+              color="text.primary"
+              underline="none"
+              display="block"
+              mb={1}
+            >
               Forums
-            </Link>
-            <Link href="#" color="text.primary" underline="none" display="block" mb={1}>
-              Discord
-            </Link>
-            <Link href="#" color="text.primary" underline="none" display="block">
-              GitHub
             </Link>
           </Grid>
 

@@ -7,7 +7,6 @@ import HomeCryptoBarChart from './HomeCryptoBarChart';
 import { LanguageContext } from '../../context/LanguageContext';
 import HomeTrendingCards from './trending/HomeTrendingCards';
 import { useSnackbar } from 'notistack';
-import Footer from '../../common/components/Footer';
 import { Container, Grid } from '@mui/material';
 import AnimatedBar from '../../common/components/AnimatedBar';
 
@@ -125,7 +124,6 @@ export default function Home() {
       <CryptoTable cryptoData={cryptoData} />
       <HomeCryptoBarChart slicedCryptoItems2={slicedCryptoItems2} />
       <HomeTrendingCards trendingCrypto={coins} isLoading={isLoading} />
-      <Footer />
     </>
   );
 }

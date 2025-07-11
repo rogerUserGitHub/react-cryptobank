@@ -142,12 +142,22 @@ const GlobalData = ({ globalData, trendingCrypto, isLoading, hasError }: IProps)
                       />
                     </StyledLogoBox>
                   </Grid2>
-                  <Grid2 size={{ lg: 9 }}>
+                  <Grid2
+                    size={{ lg: 9 }}
+                    component={Link}
+                    href={`/details/${crypto?.item?.id}`}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
                     <StyledBox>
                       <Typography variant="body1">{crypto?.item?.name}</Typography>
                     </StyledBox>
                   </Grid2>
-                  <Grid2 size={{ lg: 2 }}>
+                  <Grid2
+                    size={{ lg: 2 }}
+                    component={Link}
+                    href={`/details/${crypto?.item?.id}`}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
                     <StyledBox>
                       <Typography variant="body1">
                         ${crypto?.item?.data?.price?.toFixed(3)}
@@ -193,12 +203,22 @@ const GlobalData = ({ globalData, trendingCrypto, isLoading, hasError }: IProps)
                       />
                     </StyledLogoBox>
                   </Grid2>
-                  <Grid2 size={{ lg: 9 }}>
+                  <Grid2
+                    size={{ lg: 9 }}
+                    component={Link}
+                    href={`/details/${crypto?.item?.id}`}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
                     <StyledBox>
                       <Typography variant="body1">{crypto?.item?.name}</Typography>
                     </StyledBox>
                   </Grid2>
-                  <Grid2 size={{ lg: 2 }}>
+                  <Grid2
+                    size={{ lg: 2 }}
+                    component={Link}
+                    href={`/details/${crypto?.item?.id}`}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
                     <StyledBox>
                       <Typography variant="body1">
                         ${crypto?.item?.data?.price?.toFixed(3)}

@@ -5,9 +5,7 @@ import { Container, Grid } from '@mui/material';
 import DetailsGraphFilter from './DetailsGraphFilter';
 import DetailsData from './DetailsData';
 import DetailsGraphAdditionalData from './DetailsGraphAdditionalData';
-import { useTranslation } from 'react-i18next';
 import CryptoConverter from './CryptoConverter';
-import Footer from '../../common/components/Footer';
 import { useSnackbar } from 'notistack';
 
 export default function Details() {
@@ -89,7 +87,6 @@ export default function Details() {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
     </>
   );
 }
